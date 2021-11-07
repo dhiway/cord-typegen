@@ -1,11 +1,11 @@
-name: Master
+name: Main
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
-  master:
+  main:
     strategy:
       matrix:
         step: ['build:release']
