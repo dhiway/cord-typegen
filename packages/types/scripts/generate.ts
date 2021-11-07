@@ -10,10 +10,13 @@ import {
   generateDefaultConsts,
   generateDefaultQuery,
   generateDefaultTx,
-  generateDefaultRpc
+  generateDefaultRpc,
+  generateDefaultErrors,
+  generateDefaultEvents
 } from '@polkadot/typegen/generate';
-import { registerDefinitions } from '@polkadot/typegen/util';
+import { registerDefinitions, HEADER } from '@polkadot/typegen/util';
 import metaHex from '../src/metadata/static-latest';
+import fs from 'fs';
 
 import * as defaultDefinitions from '@polkadot/types/interfaces/definitions';
 
@@ -58,9 +61,59 @@ const metadata = filterPallets(
   definitions
 );
 
+const aug_api_gen = [
+  HEADER('chain'),
+  ...[
+    '@polkadot/api/augment/rpc',
+    ...['consts', 'errors', 'events', 'query', 'tx', 'rpc'].filter((key) => !!key).map((key) => `./augment-api-${key}`)
+  ].map((path) => `import '${path}';\n`)
+].join('');
+
+function writeFile(dest, generator, noLog) {
+  !noLog && console.log(`${dest}\n\tGenerating`);
+  let generated = generator();
+
+  while (generated.includes('\n\n\n')) {
+    generated = generated.replace(/\n\n\n/g, '\n\n');
+  }
+
+  !noLog && console.log('\tWriting');
+  fs.writeFileSync(dest, generated, {
+    flag: 'w'
+  });
+  !noLog && console.log('');
+}
+
 generateTsDef(definitions, 'packages/types/src/interfaces', '@cordnetwork/types/interfaces');
 generateInterfaceTypes(definitions, 'packages/types/src/interfaces/augment-types.ts');
 generateDefaultConsts('packages/types/src/interfaces/augment-api-consts.ts', metadata, definitions);
-generateDefaultTx('packages/types/src/interfaces/augment-api-tx.ts', metadata, definitions);
+generateDefaultErrors('packages/types/src/interfaces/augment-api-errors.ts', metadata, definitions);
+generateDefaultEvents('packages/types/src/interfaces/augment-api-events.ts', metadata, definitions);
 generateDefaultQuery('packages/types/src/interfaces/augment-api-query.ts', metadata, definitions);
 generateDefaultRpc('packages/types/src/interfaces/augment-api-rpc.ts', definitions);
+generateDefaultTx('packages/types/src/interfaces/augment-api-tx.ts', metadata, definitions);
+// writeFile('packages/types/src/interfaces/augment-api.ts', aug_api_gen);
+
+writeFile('packages/types/src/interfaces/augment-api.ts', () =>
+  [
+    HEADER('chain'),
+    ...[
+      '@polkadot/api/augment/rpc',
+      ...['consts', 'errors', 'events', 'query', 'tx', 'rpc']
+        .filter((key) => !!key)
+        .map((key) => `./augment-api-${key}`)
+    ].map((path) => `import '${path}';\n`)
+  ].join('')
+);
+
+// writeFile(path.join(process.cwd(), output, 'augment-api.ts'), () =>
+//   [
+//     HEADER('chain'),
+//     ...[
+//       '@polkadot/api/augment/rpc',
+//       ...['consts', 'errors', 'events', 'query', 'tx', 'rpc']
+//         .filter((key) => !!key)
+//         .map((key) => `./augment-api-${key}`)
+//     ].map((path) => `import '${path}';\n`)
+//   ].join('')
+// );
