@@ -39,5 +39,5 @@
     "@polkadot/api": "^6.6.1",
     "@polkadot/types": "^6.6.1"
   },
-  "stableVersion": "0.2.4-6"
+  "stableVersion": "0.2.4-7"
 }

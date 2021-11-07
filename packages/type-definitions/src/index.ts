@@ -55,12 +55,12 @@ const cordVersioned: OverrideVersionedType[] = [
   }
 ];
 
-function getBundle (versioned: OverrideVersionedType[]) {
+function getBundle(versioned: OverrideVersionedType[]) {
   return {
     rpc,
     instances: {
       council: ['generalCouncil', 'builderCouncil'],
-      technicalCommitee: ['techinicalCouncil']
+      technicalCommittee: ['techinicalCouncil']
     },
     types: [...versioned].map((version) => {
       return {
