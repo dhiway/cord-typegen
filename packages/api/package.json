@@ -1,6 +1,6 @@
 {
   "name": "@cordnetwork/api",
-  "version": "0.2.4-6",
+  "version": "0.2.4-7",
   "description": "CORD JS API",
   "main": "index.js",
   "author": "Dhiway <info@dhiway.com>",
@@ -16,7 +16,7 @@
   "homepage": "https://github.com/dhiway/cord-types",
   "dependencies": {
     "@babel/runtime": "^7.10.2",
-    "@cordnetwork/types": "0.2.4-6",
+    "@cordnetwork/types": "0.2.4-7",
     "@open-web3/orml-api-derive": "^1.0.2-0",
     "@polkadot/api": "^6.5.2",
     "@polkadot/rpc-core": "^6.5.2"

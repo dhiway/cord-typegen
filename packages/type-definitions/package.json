@@ -1,6 +1,6 @@
 {
   "name": "@cordnetwork/type-definitions",
-  "version": "0.2.4-6",
+  "version": "0.2.4-7",
   "description": "Polkadot.js Type definitions for CORD Network",
   "main": "index.js",
   "author": "Dhiway <info@dhiway.com>",
@@ -18,4 +18,3 @@
     "@open-web3/orml-type-definitions": "^1.0.2-0"
   }
 }
-
