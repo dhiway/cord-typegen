@@ -9,7 +9,7 @@
     "url": "https://github.com/dhiway/cord-node.git"
   },
   "sideEffects": false,
-  "version": "0.2.4-7",
+  "version": "0.2.4-8",
   "workspaces": [
     "packages/*"
   ],
