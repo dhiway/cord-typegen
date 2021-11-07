@@ -1,3 +1,3 @@
 # @cordnetwork
 
-CORD type-definitions 
+CORD type config
