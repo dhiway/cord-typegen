@@ -1,0 +1,140 @@
+{
+    "spec": {
+        "cord": {
+            "rpc": {},
+            "instances": {
+                "council": [
+                    "generalCouncil",
+                    "builderCouncil"
+                ],
+                "technicalCommitee": [
+                    "techinicalCouncil"
+                ]
+            },
+            "types": [
+                {
+                    "minmax": [
+                        400,
+                        499
+                    ],
+                    "types": {
+                        "PublicBoxKey": "Hash",
+                        "PublicSigningKey": "Hash",
+                        "Address": "AccountId",
+                        "Signature": "MultiSignature",
+                        "BlockNumber": "u32",
+                        "LookupSource": "AccountId",
+                        "Index": "u32",
+                        "ErrorCode": "u16",
+                        "RefCount": "u32",
+                        "DelegationNodeId": "Hash",
+                        "Permissions": "u32",
+                        "Mark": {
+                            "mtypeHash": "Hash",
+                            "marker": "AccountId",
+                            "delegationId": "Option<DelegationNodeId>",
+                            "revoked": "bool"
+                        },
+                        "DelegationNode": {
+                            "rootId": "DelegationNodeId",
+                            "parent": "Option<DelegationNodeId>",
+                            "owner": "AccountId",
+                            "permissions": "Permissions",
+                            "revoked": "bool"
+                        },
+                        "DelegationRoot": {
+                            "mtypeHash": "Hash",
+                            "owner": "AccountId",
+                            "revoked": "bool"
+                        }
+                    }
+                },
+                {
+                    "minmax": [
+                        500,
+                        null
+                    ],
+                    "types": {
+                        "AccountIdentifierOf": "AccountId",
+                        "CordAccountOf": "AccountId",
+                        "DidIdentifierOf": "AccountId",
+                        "HashOf": "Hash",
+                        "IdOf": "Hash",
+                        "IdentifierOf": "Vec<u8>",
+                        "StatusOf": "bool",
+                        "PalletEntityVerifiersVerifierDetails": {
+                            "block": "BlockNumber",
+                            "revoked": "bool"
+                        },
+                        "SchemaDetails": {
+                            "hash": "HashOf",
+                            "cid": "Option<IdentifierOf>",
+                            "parent_cid": "Option<IdentifierOf>",
+                            "creator": "CordAccountOf",
+                            "block": "BlockNumber",
+                            "permissioned": "bool",
+                            "revoked": "bool"
+                        },
+                        "SchemaCommit": {
+                            "hash": "HashOf",
+                            "cid": "Option<IdentifierOf>",
+                            "block": "BlockNumber",
+                            "commit": "SchemaCommitOf"
+                        },
+                        "SchemaCommitOf": {
+                            "_enum": [
+                                "Genesis",
+                                "Update",
+                                "Delegate",
+                                "RevokeDelegation",
+                                "Permission",
+                                "Status"
+                            ]
+                        },
+                        "PalletSchemaSchemasSchemaDetails": "SchemaDetails",
+                        "PalletSchemaSchemasSchemaCommit": "SchemaCommit",
+                        "PalletSchemaSchemasSchemaCommitOf": "SchemaCommitOf",
+                        "StreamDetails": {
+                            "streamHash": "HashOf",
+                            "cid": "Option<IdentifierOf>",
+                            "parent_cid": "Option<IdentifierOf>",
+                            "schema": "Option<IdOf>",
+                            "link": "Option<IdOf>",
+                            "creator": "CordAccountOf",
+                            "block": "BlockNumber",
+                            "revoked": "bool"
+                        },
+                        "StreamCommit": {
+                            "hash": "HashOf",
+                            "cid": "Option<IdentifierOf>",
+                            "block": "BlockNumber",
+                            "commit": "StreamCommitOf"
+                        },
+                        "StreamCommitOf": {
+                            "_enum": [
+                                "Create",
+                                "Update",
+                                "Status"
+                            ]
+                        },
+                        "StreamLink": {
+                            "identifier": "IdOf",
+                            "creator": "CordAccountOf"
+                        },
+                        "PalletStreamStreamsStreamDetails": "StreamDetails",
+                        "PalletStreamStreamsStreamCommit": "StreamCommit",
+                        "PalletStreamStreamsStreamCommitOf": "StreamCommitOf",
+                        "PalletStreamStreamsStreamLink": "StreamLink",
+                        "PalletBuilderTreasuryProposal": {
+                            "proposer": "AccountId",
+                            "value": "Balance",
+                            "beneficiary": "AccountId",
+                            "bond": "Balance"
+                        }
+                    }
+                }
+            ],
+            "alias": {}
+        }
+    }
+}

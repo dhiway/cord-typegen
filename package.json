@@ -1,0 +1,43 @@
+{
+  "bugs": "https://github.com/dhiway/cord-node/issues",
+  "homepage": "https://github.com/dhiway/cord-node#readme",
+  "license": "Apache-2",
+  "packageManager": "yarn@3.0.1",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dhiway/cord-node.git"
+  },
+  "sideEffects": false,
+  "version": "0.2.4-6",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "yarn build:interfaces && polkadot-dev-build-ts",
+    "build:interfaces": "node -r ts-node/register -r tsconfig-paths/register packages/types/scripts/generate.ts && node -r ts-node/register -r tsconfig-paths/register packages/type-definitions/scripts/generate.ts",
+    "build:release": "polkadot-ci-ghact-build",
+    "check-deps": "./node_modules/@open-web3/util/scripts/check-deps.js yarn.lock @polkadot/ @open-web3/",
+    "clean": "polkadot-dev-clean-build",
+    "lint": "polkadot-dev-run-lint",
+    "postinstall": "polkadot-dev-yarn-only",
+    "test": "polkadot-dev-run-test --passWithNoTests",
+    "update-metadata": "ts-node --project ./tsconfig.json packages/types/scripts/updateMetadata.ts"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/register": "^7.15.3",
+    "@babel/runtime": "^7.15.4",
+    "@open-web3/dev-config": "^0.1.13",
+    "@open-web3/util": "^1.0.2-0",
+    "@types/jest": "^27.0.2",
+    "ts-node": "^8.6.1",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.3.5"
+  },
+  "resolutions": {
+    "@polkadot/api": "^6.6.1",
+    "@polkadot/types": "^6.6.1"
+  },
+  "stableVersion": "0.2.4-5"
+}

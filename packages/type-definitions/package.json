@@ -1,0 +1,20 @@
+{
+  "name": "@cordnetwork/type-definitions",
+  "version": "0.2.4-6",
+  "description": "Polkadot.js Type definitions for CORD Network",
+  "main": "index.js",
+  "author": "Dhiway <info@dhiway.com>",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": "https://github.com/dhiway/cord-types.git",
+  "bugs": {
+    "url": "https://github.com/dhiway/cord-types/issues"
+  },
+  "homepage": "https://github.com/dhiway/cord-types",
+  "dependencies": {
+    "@open-web3/orml-type-definitions": "^1.0.2-0"
+  }
+}

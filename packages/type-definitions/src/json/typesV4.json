@@ -1,0 +1,31 @@
+{
+    "PublicBoxKey": "Hash",
+    "PublicSigningKey": "Hash",
+    "Address": "AccountId",
+    "Signature": "MultiSignature",
+    "BlockNumber": "u32",
+    "LookupSource": "AccountId",
+    "Index": "u32",
+    "ErrorCode": "u16",
+    "RefCount": "u32",
+    "DelegationNodeId": "Hash",
+    "Permissions": "u32",
+    "Mark": {
+        "mtypeHash": "Hash",
+        "marker": "AccountId",
+        "delegationId": "Option<DelegationNodeId>",
+        "revoked": "bool"
+    },
+    "DelegationNode": {
+        "rootId": "DelegationNodeId",
+        "parent": "Option<DelegationNodeId>",
+        "owner": "AccountId",
+        "permissions": "Permissions",
+        "revoked": "bool"
+    },
+    "DelegationRoot": {
+        "mtypeHash": "Hash",
+        "owner": "AccountId",
+        "revoked": "bool"
+    }
+}

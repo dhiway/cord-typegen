@@ -1,0 +1,71 @@
+{
+    "IdOf": "Hash",
+    "HashOf": "Hash",
+    "StatusOf": "bool",
+    "CordAccountOf": "AccountId",
+    "DidIdentifierOf": "AccountId",
+    "AccountIdentifierOf": "AccountId",
+    "BlockNumberOf": "BlockNumber",
+    "PalletEntityVerifiersVerifierDetails": {
+        "block": "BlockNumber",
+        "revoked": "bool"
+    },
+    "PalletSchemaSchemasSchemaDetails": {
+        "hash": "HashOf",
+        "cid": "Option<IdentifierOf>",
+        "parent_cid": "Option<IdentifierOf>",
+        "creator": "CordAccountOf",
+        "block": "BlockNumber",
+        "permissioned": "bool",
+        "revoked": "bool"
+    },
+    "PalletSchemaSchemasSchemaCommit": {
+        "hash": "HashOf",
+        "cid": "Option<IdentifierOf>",
+        "block": "BlockNumber",
+        "commit": "SchemaCommitOf"
+    },
+    "PalletSchemaSchemasSchemaCommitOf": {
+        "_enum": [
+            "Genesis",
+            "Update",
+            "Delegate",
+            "RevokeDelegation",
+            "Permission",
+            "Status"
+        ]
+    },
+    "PalletStreamStreamsStreamDetails": {
+        "streamHash": "HashOf",
+        "cid": "Option<IdentifierOf>",
+        "parent_cid": "Option<IdentifierOf>",
+        "schema": "Option<IdOf>",
+        "link": "Option<IdOf>",
+        "creator": "CordAccountOf",
+        "block": "BlockNumber",
+        "revoked": "bool"
+    },
+    "PalletStreamStreamsStreamCommit": {
+        "hash": "HashOf",
+        "cid": "Option<IdentifierOf>",
+        "block": "BlockNumber",
+        "commit": "StreamCommitOf"
+    },
+    "PalletStreamStreamsStreamCommitOf": {
+        "_enum": [
+            "Create",
+            "Update",
+            "Status"
+        ]
+    },
+    "PalletStreamStreamsStreamLink": {
+        "identifier": "IdOf",
+        "creator": "CordAccountOf"
+    },
+    "PalletBuilderTreasuryProposal": {
+        "proposer": "AccountId",
+        "value": "Balance",
+        "beneficiary": "AccountId",
+        "bond": "Balance"
+    }
+}
