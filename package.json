@@ -9,7 +9,7 @@
     "url": "https://github.com/dhiway/cord-node.git"
   },
   "sideEffects": false,
-  "version": "0.2.4-8",
+  "version": "0.2.4-9",
   "workspaces": [
     "packages/*"
   ],
@@ -36,8 +36,8 @@
     "typescript": "^4.3.5"
   },
   "resolutions": {
-    "@polkadot/api": "^6.7.1",
-    "@polkadot/types": "^6.7.1"
+    "@polkadot/api": "^6.6.1",
+    "@polkadot/types": "^6.6.1"
   },
   "stableVersion": "0.2.4-8"
 }

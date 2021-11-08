@@ -1485,16 +1485,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cordnetwork/api-derive@0.2.4-8, @cordnetwork/api-derive@workspace:packages/api-derive":
+"@cordnetwork/api-derive@0.2.4-9, @cordnetwork/api-derive@workspace:packages/api-derive":
   version: 0.0.0-use.local
   resolution: "@cordnetwork/api-derive@workspace:packages/api-derive"
   dependencies:
     "@babel/runtime": ^7.10.2
-    "@cordnetwork/types": 0.2.4-8
+    "@cordnetwork/types": 0.2.4-9
     "@open-web3/orml-types": ^1.0.2-0
-    "@polkadot/api": ^6.7.1
-    "@polkadot/api-derive": ^6.7.1
-    "@polkadot/typegen": ^6.7.1
+    "@polkadot/api": ^6.6.1
+    "@polkadot/api-derive": ^6.6.1
+    "@polkadot/typegen": ^6.6.1
   languageName: unknown
   linkType: soft
 
@@ -1503,8 +1503,8 @@ __metadata:
   resolution: "@cordnetwork/api@workspace:packages/api"
   dependencies:
     "@babel/runtime": ^7.10.2
-    "@cordnetwork/api-derive": 0.2.4-8
-    "@cordnetwork/types": 0.2.4-8
+    "@cordnetwork/api-derive": 0.2.4-9
+    "@cordnetwork/types": 0.2.4-9
     "@open-web3/orml-api-derive": ^1.0.2-0
     "@polkadot/api": ^6.5.2
     "@polkadot/rpc-core": ^6.5.2
@@ -1514,7 +1514,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cordnetwork/type-definitions@0.2.4-8, @cordnetwork/type-definitions@workspace:packages/type-definitions":
+"@cordnetwork/type-definitions@0.2.4-9, @cordnetwork/type-definitions@workspace:packages/type-definitions":
   version: 0.0.0-use.local
   resolution: "@cordnetwork/type-definitions@workspace:packages/type-definitions"
   dependencies:
@@ -1522,12 +1522,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cordnetwork/types@0.2.4-8, @cordnetwork/types@workspace:packages/types":
+"@cordnetwork/types@0.2.4-9, @cordnetwork/types@workspace:packages/types":
   version: 0.0.0-use.local
   resolution: "@cordnetwork/types@workspace:packages/types"
   dependencies:
     "@babel/runtime": ^7.10.2
-    "@cordnetwork/type-definitions": 0.2.4-8
+    "@cordnetwork/type-definitions": 0.2.4-9
     "@open-web3/orml-types": ^1.0.2-0
     "@polkadot/api": ^6.5.2
     "@polkadot/typegen": ^6.5.2
@@ -2017,7 +2017,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@polkadot/api-derive@npm:^6.7.1":
+"@polkadot/api-derive@npm:^6.6.1":
   version: 6.7.1
   resolution: "@polkadot/api-derive@npm:6.7.1"
   dependencies:
@@ -2157,7 +2157,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@polkadot/typegen@npm:^6.7.1":
+"@polkadot/typegen@npm:^6.6.1":
   version: 6.7.1
   resolution: "@polkadot/typegen@npm:6.7.1"
   dependencies:

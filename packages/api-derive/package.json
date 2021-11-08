@@ -1,6 +1,6 @@
 {
   "name": "@cordnetwork/api-derive",
-  "version": "0.2.4-8",
+  "version": "0.2.4-9",
   "description": "Additional polkadot.js derives for Cord Network",
   "main": "index.js",
   "author": "Dhiway <info@dhiway.com>",
@@ -16,10 +16,10 @@
   "homepage": "https://github.com/dhiway/cord-types",
   "dependencies": {
     "@babel/runtime": "^7.10.2",
-    "@cordnetwork/types": "0.2.4-8",
+    "@cordnetwork/types": "0.2.4-9",
     "@open-web3/orml-types": "^1.0.2-0",
-    "@polkadot/api": "^6.7.1",
-    "@polkadot/api-derive": "^6.7.1",
-    "@polkadot/typegen": "^6.7.1"
+    "@polkadot/api": "^6.6.1",
+    "@polkadot/api-derive": "^6.6.1",
+    "@polkadot/typegen": "^6.6.1"
   }
 }
