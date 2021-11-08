@@ -16,6 +16,12 @@
       "@cordnetwork/api/*": [
         "packages/api/src/*"
       ],
+      "@cordnetwork/api-derive": [
+        "packages/api-derive/src"
+      ],
+      "@cordnetwork/api-derive/*": [
+        "packages/api-derive/src/*"
+      ],
       "@cordnetwork/types": [
         "packages/types/src"
       ],

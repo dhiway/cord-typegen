@@ -5,7 +5,7 @@
 export default {
   rpc: {},
   types: {
-    PalletBuilderTreasuryProposal: {
+    PalletNetworkTreasuryProposal: {
       proposer: 'AccountId',
       value: 'Balance',
       beneficiary: 'AccountId',

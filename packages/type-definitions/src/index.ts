@@ -7,7 +7,7 @@ import type { OverrideVersionedType } from '@polkadot/types/types';
 import { jsonrpcFromDefs, typesAliasFromDefs, typesFromDefs } from '@open-web3/orml-type-definitions/utils';
 
 import base from './base';
-import builderTreasury from './builderTreasury';
+import networkTreasury from './networkTreasury';
 import cordv1 from './cordv1';
 import delegation from './delegation';
 import entity from './entity';
@@ -27,7 +27,7 @@ const cordDefsV5 = {
   entity,
   schema,
   stream,
-  builderTreasury
+  networkTreasury
 };
 
 export const types04 = {
@@ -58,10 +58,6 @@ const cordVersioned: OverrideVersionedType[] = [
 function getBundle(versioned: OverrideVersionedType[]) {
   return {
     rpc,
-    instances: {
-      council: ['generalCouncil', 'builderCouncil'],
-      technicalCommittee: ['techinicalCouncil']
-    },
     types: [...versioned].map((version) => {
       return {
         minmax: version.minmax,

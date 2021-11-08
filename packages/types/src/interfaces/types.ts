@@ -3,7 +3,7 @@
 
 export * from './base/types';
 export * from './runtime/types';
-export * from './builderTreasury/types';
+export * from './networkTreasury/types';
 export * from './entity/types';
 export * from './schema/types';
 export * from './stream/types';

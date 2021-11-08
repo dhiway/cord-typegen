@@ -2,15 +2,6 @@
     "spec": {
         "cord": {
             "rpc": {},
-            "instances": {
-                "council": [
-                    "generalCouncil",
-                    "builderCouncil"
-                ],
-                "technicalCommittee": [
-                    "techinicalCouncil"
-                ]
-            },
             "types": [
                 {
                     "minmax": [
@@ -125,7 +116,7 @@
                         "PalletStreamStreamsStreamCommit": "StreamCommit",
                         "PalletStreamStreamsStreamCommitOf": "StreamCommitOf",
                         "PalletStreamStreamsStreamLink": "StreamLink",
-                        "PalletBuilderTreasuryProposal": {
+                        "PalletNetworkTreasuryProposal": {
                             "proposer": "AccountId",
                             "value": "Balance",
                             "beneficiary": "AccountId",

@@ -8,7 +8,26 @@ import type { FrameSupportWeightsDispatchInfo, SpRuntimeDispatchError } from '@p
 
 declare module '@polkadot/api/types/events' {
   export interface AugmentedEvents<ApiType> {
-    builderCouncil: {
+    entity: {
+      /**
+       * A registrar was added. \[registrar identifier\]
+       **/
+      TxAdd: AugmentedEvent<ApiType, [AccountId32]>;
+      /**
+       * A registrar was added. \[registrar identifier\]
+       **/
+      TxRevoke: AugmentedEvent<ApiType, [AccountId32]>;
+      /**
+       * An identity has been verified.
+       * \[identity, verifier\]
+       **/
+      TxVerify: AugmentedEvent<ApiType, [AccountId32, AccountId32]>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
+    networkCouncil: {
       /**
        * A motion was approved by the required threshold.
        * \[proposal_hash\]
@@ -51,7 +70,7 @@ declare module '@polkadot/api/types/events' {
        **/
       [key: string]: AugmentedEvent<ApiType>;
     };
-    builderCouncilMembership: {
+    networkCouncilMembership: {
       /**
        * Phantom member, never used.
        **/
@@ -81,7 +100,7 @@ declare module '@polkadot/api/types/events' {
        **/
       [key: string]: AugmentedEvent<ApiType>;
     };
-    builderTreasury: {
+    networkTreasury: {
       /**
        * Some funds have been allocated. \[proposal_index, award, beneficiary\]
        **/
@@ -111,68 +130,6 @@ declare module '@polkadot/api/types/events' {
        * We have ended a spend period and will now allocate funds. \[budget_remaining\]
        **/
       Spending: AugmentedEvent<ApiType, [u128]>;
-      /**
-       * Generic event
-       **/
-      [key: string]: AugmentedEvent<ApiType>;
-    };
-    entity: {
-      /**
-       * A registrar was added. \[registrar identifier\]
-       **/
-      TxAdd: AugmentedEvent<ApiType, [AccountId32]>;
-      /**
-       * A registrar was added. \[registrar identifier\]
-       **/
-      TxRevoke: AugmentedEvent<ApiType, [AccountId32]>;
-      /**
-       * An identity has been verified.
-       * \[identity, verifier\]
-       **/
-      TxVerify: AugmentedEvent<ApiType, [AccountId32, AccountId32]>;
-      /**
-       * Generic event
-       **/
-      [key: string]: AugmentedEvent<ApiType>;
-    };
-    generalCouncil: {
-      /**
-       * A motion was approved by the required threshold.
-       * \[proposal_hash\]
-       **/
-      Approved: AugmentedEvent<ApiType, [H256]>;
-      /**
-       * A proposal was closed because its threshold was reached or after its duration was up.
-       * \[proposal_hash, yes, no\]
-       **/
-      Closed: AugmentedEvent<ApiType, [H256, u32, u32]>;
-      /**
-       * A motion was not approved by the required threshold.
-       * \[proposal_hash\]
-       **/
-      Disapproved: AugmentedEvent<ApiType, [H256]>;
-      /**
-       * A motion was executed; result will be `Ok` if it returned without error.
-       * \[proposal_hash, result\]
-       **/
-      Executed: AugmentedEvent<ApiType, [H256, Result<Null, SpRuntimeDispatchError>]>;
-      /**
-       * A single member did some action; result will be `Ok` if it returned without error.
-       * \[proposal_hash, result\]
-       **/
-      MemberExecuted: AugmentedEvent<ApiType, [H256, Result<Null, SpRuntimeDispatchError>]>;
-      /**
-       * A motion (given hash) has been proposed (by given account) with a threshold (given
-       * `MemberCount`).
-       * \[account, proposal_index, proposal_hash, threshold\]
-       **/
-      Proposed: AugmentedEvent<ApiType, [AccountId32, u32, H256, u32]>;
-      /**
-       * A motion (given hash) has been voted on by given account, leaving
-       * a tally (yes votes and no votes given respectively as `MemberCount`).
-       * \[account, proposal_hash, voted, yes, no\]
-       **/
-      Voted: AugmentedEvent<ApiType, [AccountId32, H256, bool, u32, u32]>;
       /**
        * Generic event
        **/
@@ -260,79 +217,6 @@ declare module '@polkadot/api/types/events' {
        * On on-chain remark happened. \[origin, remark_hash\]
        **/
       Remarked: AugmentedEvent<ApiType, [AccountId32, H256]>;
-      /**
-       * Generic event
-       **/
-      [key: string]: AugmentedEvent<ApiType>;
-    };
-    technicalCouncil: {
-      /**
-       * A motion was approved by the required threshold.
-       * \[proposal_hash\]
-       **/
-      Approved: AugmentedEvent<ApiType, [H256]>;
-      /**
-       * A proposal was closed because its threshold was reached or after its duration was up.
-       * \[proposal_hash, yes, no\]
-       **/
-      Closed: AugmentedEvent<ApiType, [H256, u32, u32]>;
-      /**
-       * A motion was not approved by the required threshold.
-       * \[proposal_hash\]
-       **/
-      Disapproved: AugmentedEvent<ApiType, [H256]>;
-      /**
-       * A motion was executed; result will be `Ok` if it returned without error.
-       * \[proposal_hash, result\]
-       **/
-      Executed: AugmentedEvent<ApiType, [H256, Result<Null, SpRuntimeDispatchError>]>;
-      /**
-       * A single member did some action; result will be `Ok` if it returned without error.
-       * \[proposal_hash, result\]
-       **/
-      MemberExecuted: AugmentedEvent<ApiType, [H256, Result<Null, SpRuntimeDispatchError>]>;
-      /**
-       * A motion (given hash) has been proposed (by given account) with a threshold (given
-       * `MemberCount`).
-       * \[account, proposal_index, proposal_hash, threshold\]
-       **/
-      Proposed: AugmentedEvent<ApiType, [AccountId32, u32, H256, u32]>;
-      /**
-       * A motion (given hash) has been voted on by given account, leaving
-       * a tally (yes votes and no votes given respectively as `MemberCount`).
-       * \[account, proposal_hash, voted, yes, no\]
-       **/
-      Voted: AugmentedEvent<ApiType, [AccountId32, H256, bool, u32, u32]>;
-      /**
-       * Generic event
-       **/
-      [key: string]: AugmentedEvent<ApiType>;
-    };
-    technicalCouncilMembership: {
-      /**
-       * Phantom member, never used.
-       **/
-      Dummy: AugmentedEvent<ApiType, []>;
-      /**
-       * One of the members' keys changed.
-       **/
-      KeyChanged: AugmentedEvent<ApiType, []>;
-      /**
-       * The given member was added; see the transaction for who.
-       **/
-      MemberAdded: AugmentedEvent<ApiType, []>;
-      /**
-       * The given member was removed; see the transaction for who.
-       **/
-      MemberRemoved: AugmentedEvent<ApiType, []>;
-      /**
-       * The membership was reset; see the transaction for who the new set is.
-       **/
-      MembersReset: AugmentedEvent<ApiType, []>;
-      /**
-       * Two members were swapped; see the transaction for who.
-       **/
-      MembersSwapped: AugmentedEvent<ApiType, []>;
       /**
        * Generic event
        **/

@@ -69,7 +69,7 @@
     "PalletStreamStreamsStreamCommit": "StreamCommit",
     "PalletStreamStreamsStreamCommitOf": "StreamCommitOf",
     "PalletStreamStreamsStreamLink": "StreamLink",
-    "PalletBuilderTreasuryProposal": {
+    "PalletNetworkTreasuryProposal": {
         "proposer": "AccountId",
         "value": "Balance",
         "beneficiary": "AccountId",

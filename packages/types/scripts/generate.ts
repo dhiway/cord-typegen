@@ -46,18 +46,7 @@ const definitions = {
 } as any;
 
 const metadata = filterPallets(
-  [
-    'System',
-    'GeneralCouncil',
-    'BuilderCouncil',
-    'BuilderCouncilMembership',
-    'TechnicalCouncil',
-    'TechnicalCouncilMembership',
-    'BuilderTreasury',
-    'Entity',
-    'Schema',
-    'Stream'
-  ],
+  ['System', 'NetworkCouncil', 'NetworkCouncilMembership', 'NetworkTreasury', 'Entity', 'Schema', 'Stream'],
   definitions
 );
 
@@ -105,15 +94,3 @@ writeFile('packages/types/src/interfaces/augment-api.ts', () =>
     ].map((path) => `import '${path}';\n`)
   ].join('')
 );
-
-// writeFile(path.join(process.cwd(), output, 'augment-api.ts'), () =>
-//   [
-//     HEADER('chain'),
-//     ...[
-//       '@polkadot/api/augment/rpc',
-//       ...['consts', 'errors', 'events', 'query', 'tx', 'rpc']
-//         .filter((key) => !!key)
-//         .map((key) => `./augment-api-${key}`)
-//     ].map((path) => `import '${path}';\n`)
-//   ].join('')
-// );

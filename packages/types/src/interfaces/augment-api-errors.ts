@@ -5,84 +5,6 @@ import type { ApiTypes } from '@polkadot/api/types';
 
 declare module '@polkadot/api/types/errors' {
   export interface AugmentedErrors<ApiType> {
-    builderCouncil: {
-      /**
-       * Members are already initialized!
-       **/
-      AlreadyInitialized: AugmentedError<ApiType>;
-      /**
-       * Duplicate proposals not allowed
-       **/
-      DuplicateProposal: AugmentedError<ApiType>;
-      /**
-       * Duplicate vote ignored
-       **/
-      DuplicateVote: AugmentedError<ApiType>;
-      /**
-       * Account is not a member
-       **/
-      NotMember: AugmentedError<ApiType>;
-      /**
-       * Proposal must exist
-       **/
-      ProposalMissing: AugmentedError<ApiType>;
-      /**
-       * The close call was made too early, before the end of the voting.
-       **/
-      TooEarly: AugmentedError<ApiType>;
-      /**
-       * There can only be a maximum of `MaxProposals` active proposals.
-       **/
-      TooManyProposals: AugmentedError<ApiType>;
-      /**
-       * Mismatched index
-       **/
-      WrongIndex: AugmentedError<ApiType>;
-      /**
-       * The given length bound for the proposal was too low.
-       **/
-      WrongProposalLength: AugmentedError<ApiType>;
-      /**
-       * The given weight bound for the proposal was too low.
-       **/
-      WrongProposalWeight: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
-    builderCouncilMembership: {
-      /**
-       * Already a member.
-       **/
-      AlreadyMember: AugmentedError<ApiType>;
-      /**
-       * Not a member.
-       **/
-      NotMember: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
-    builderTreasury: {
-      /**
-       * Proposer's balance is too low.
-       **/
-      InsufficientProposersBalance: AugmentedError<ApiType>;
-      /**
-       * No proposal or bounty at that index.
-       **/
-      InvalidIndex: AugmentedError<ApiType>;
-      /**
-       * Too many approvals in the queue.
-       **/
-      TooManyApprovals: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
     entity: {
       /**
        * The registrar has already been revoked.
@@ -113,7 +35,7 @@ declare module '@polkadot/api/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
-    generalCouncil: {
+    networkCouncil: {
       /**
        * Members are already initialized!
        **/
@@ -154,6 +76,38 @@ declare module '@polkadot/api/types/errors' {
        * The given weight bound for the proposal was too low.
        **/
       WrongProposalWeight: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    networkCouncilMembership: {
+      /**
+       * Already a member.
+       **/
+      AlreadyMember: AugmentedError<ApiType>;
+      /**
+       * Not a member.
+       **/
+      NotMember: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    networkTreasury: {
+      /**
+       * Proposer's balance is too low.
+       **/
+      InsufficientProposersBalance: AugmentedError<ApiType>;
+      /**
+       * No proposal or bounty at that index.
+       **/
+      InvalidIndex: AugmentedError<ApiType>;
+      /**
+       * Too many approvals in the queue.
+       **/
+      TooManyApprovals: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -285,66 +239,6 @@ declare module '@polkadot/api/types/errors' {
        * and the new runtime.
        **/
       SpecVersionNeedsToIncrease: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
-    technicalCouncil: {
-      /**
-       * Members are already initialized!
-       **/
-      AlreadyInitialized: AugmentedError<ApiType>;
-      /**
-       * Duplicate proposals not allowed
-       **/
-      DuplicateProposal: AugmentedError<ApiType>;
-      /**
-       * Duplicate vote ignored
-       **/
-      DuplicateVote: AugmentedError<ApiType>;
-      /**
-       * Account is not a member
-       **/
-      NotMember: AugmentedError<ApiType>;
-      /**
-       * Proposal must exist
-       **/
-      ProposalMissing: AugmentedError<ApiType>;
-      /**
-       * The close call was made too early, before the end of the voting.
-       **/
-      TooEarly: AugmentedError<ApiType>;
-      /**
-       * There can only be a maximum of `MaxProposals` active proposals.
-       **/
-      TooManyProposals: AugmentedError<ApiType>;
-      /**
-       * Mismatched index
-       **/
-      WrongIndex: AugmentedError<ApiType>;
-      /**
-       * The given length bound for the proposal was too low.
-       **/
-      WrongProposalLength: AugmentedError<ApiType>;
-      /**
-       * The given weight bound for the proposal was too low.
-       **/
-      WrongProposalWeight: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
-    technicalCouncilMembership: {
-      /**
-       * Already a member.
-       **/
-      AlreadyMember: AugmentedError<ApiType>;
-      /**
-       * Not a member.
-       **/
-      NotMember: AugmentedError<ApiType>;
       /**
        * Generic error
        **/

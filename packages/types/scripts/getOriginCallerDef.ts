@@ -13,9 +13,7 @@ const POLKADOT_KNOWN_ORIGINS: Record<string, string> = {
 };
 
 const CORD_KNOWN_ORIGINS: Record<string, string> = {
-  BuilderCouncil: 'CollectiveOrigin',
-  GeneralCouncil: 'CollectiveOrigin',
-  TechnicalCouncil: 'CollectiveOrigin'
+  NetworkCouncil: 'CollectiveOrigin'
 };
 
 const KNOWN_ORIGINS = {

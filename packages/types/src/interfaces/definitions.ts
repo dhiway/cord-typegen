@@ -3,7 +3,7 @@
 
 export { default as base } from './base/definitions';
 export { default as runtime } from './runtime/definitions';
-export { default as builderTreasury } from './builderTreasury/definitions';
+export { default as networkTreasury } from './networkTreasury/definitions';
 export { default as entity } from './entity/definitions';
 export { default as schema } from './schema/definitions';
 export { default as stream } from './stream/definitions';

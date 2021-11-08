@@ -1,5 +1,6 @@
 // Copyright 2017-2021 @cordnetwork/api authors & contributors
 // SPDX-License-Identifier: Apache-2.0
+import { derive as cordDerives } from '@cordnetwork/api-derive';
 
 import {
   rpc as cordRpc,
@@ -38,6 +39,9 @@ export const options = ({
   typesAlias: {
     ...cordTypesAlias,
     ...typesAlias
+  },
+  derives: {
+    ...cordDerives
   },
   typesBundle: {
     ...typesBundle,

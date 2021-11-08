@@ -9,7 +9,7 @@ import type { Codec } from '@polkadot/types/types';
 
 declare module '@polkadot/api/types/consts' {
   export interface AugmentedConsts<ApiType> {
-    builderTreasury: {
+    networkTreasury: {
       /**
        * Percentage of spare funds (if any) that are burnt per spend period.
        **/
