@@ -1,3 +1,6 @@
+// Copyright 2017-2021 cord.network authors & contributors
+// SPDX-License-Identifier: Apache-2.0
+
 import { DeriveCustom } from '@polkadot/api-derive';
 
 import * as cordCollective from './cordCollective';
