@@ -53,10 +53,11 @@
                         "IdOf": "Hash",
                         "IdentifierOf": "Vec<u8>",
                         "StatusOf": "bool",
-                        "PalletEntityVerifiersVerifierDetails": {
+                        "VerifierDetails": {
                             "block": "BlockNumber",
                             "revoked": "bool"
                         },
+                        "PalletEntityVerifiersVerifierDetails": "VerifierDetails",
                         "SchemaDetails": {
                             "hash": "HashOf",
                             "cid": "Option<IdentifierOf>",
@@ -76,10 +77,10 @@
                             "_enum": [
                                 "Genesis",
                                 "Update",
-                                "Delegate",
-                                "RevokeDelegation",
+                                "Delegates",
+                                "RevokeDelegates",
                                 "Permission",
-                                "Status"
+                                "StatusChange"
                             ]
                         },
                         "PalletSchemaSchemasSchemaDetails": "SchemaDetails",
@@ -103,9 +104,9 @@
                         },
                         "StreamCommitOf": {
                             "_enum": [
-                                "Create",
+                                "Genesis",
                                 "Update",
-                                "Status"
+                                "StatusChange"
                             ]
                         },
                         "StreamLink": {

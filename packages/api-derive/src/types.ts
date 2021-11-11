@@ -3,7 +3,7 @@
 
 import type { Hash, Proposal, ProposalIndex, Votes } from '@polkadot/types/interfaces';
 // import type { PalletTreasuryProposal } from '@polkadot/types/lookup';
-import type { PalletNetworkTreasuryProposal } from '@cordnetwork/types/interfaces';
+import type { PalletNetworkTreasuryProposal } from '@cord.network/types/interfaces';
 
 export interface DeriveCordCollectiveProposal {
   hash: Hash;

@@ -1,7 +1,7 @@
-// Copyright 2017-2021 @cordnetwork/api authors & contributors
+// Copyright 2019-2021 cord.network authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import { derive as cordDerives } from '@cordnetwork/api-derive';
+import { derive as cordDerives } from '@cord.network/api-derive';
 
 import {
   rpc as cordRpc,
@@ -9,7 +9,7 @@ import {
   types as cordTypes,
   typesAlias as cordTypesAlias,
   typesBundle as cordTypesBundle
-} from '@cordnetwork/types';
+} from '@cord.network/types';
 
 import { ApiOptions } from '@polkadot/api/types';
 

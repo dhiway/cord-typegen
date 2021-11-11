@@ -1,12 +1,12 @@
 {
-  "bugs": "https://github.com/dhiway/cord-node/issues",
-  "homepage": "https://github.com/dhiway/cord-node#readme",
+  "bugs": "https://github.com/dhiway/types-config/issues",
+  "homepage": "https://github.com/dhiway/types-config#readme",
   "license": "Apache-2",
   "packageManager": "yarn@3.0.1",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/dhiway/cord-node.git"
+    "url": "https://github.com/dhiway/types-config.git"
   },
   "sideEffects": false,
   "version": "0.2.4-10",
@@ -39,5 +39,5 @@
     "@polkadot/api": "^6.7.2",
     "@polkadot/types": "^6.7.2"
   },
-  "stableVersion": "0.2.4-9"
+  "stableVersion": "0.2.4-10"
 }

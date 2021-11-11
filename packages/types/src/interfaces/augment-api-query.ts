@@ -1,11 +1,11 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
-import type { PalletEntityVerifiersVerifierDetails } from '@cordnetwork/types/interfaces/entity';
-import type { PalletNetworkTreasuryProposal } from '@cordnetwork/types/interfaces/networkTreasury';
-import type { AccountId32, Call, H256 } from '@cordnetwork/types/interfaces/runtime';
-import type { PalletSchemaSchemasSchemaCommit, PalletSchemaSchemasSchemaDetails } from '@cordnetwork/types/interfaces/schema';
-import type { PalletStreamStreamsStreamCommit, PalletStreamStreamsStreamDetails, PalletStreamStreamsStreamLink } from '@cordnetwork/types/interfaces/stream';
+import type { PalletEntityVerifiersVerifierDetails } from '@cord.network/types/interfaces/entity';
+import type { PalletNetworkTreasuryProposal } from '@cord.network/types/interfaces/networkTreasury';
+import type { AccountId32, Call, H256 } from '@cord.network/types/interfaces/runtime';
+import type { PalletSchemaSchemasSchemaCommit, PalletSchemaSchemasSchemaDetails } from '@cord.network/types/interfaces/schema';
+import type { PalletStreamStreamsStreamCommit, PalletStreamStreamsStreamDetails, PalletStreamStreamsStreamLink } from '@cord.network/types/interfaces/stream';
 import type { ApiTypes } from '@polkadot/api/types';
 import type { Bytes, Option, Vec, bool, u32 } from '@polkadot/types';
 import type { FrameSupportWeightsPerDispatchClassU64, FrameSystemAccountInfo, FrameSystemEventRecord, FrameSystemLastRuntimeUpgradeInfo, FrameSystemPhase, PalletCollectiveVotes, SpRuntimeGenericDigest } from '@polkadot/types/lookup';

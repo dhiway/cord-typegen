@@ -1,7 +1,7 @@
-// Copyright 2017-2021 @cordnetwork/api authors & contributors
+// Copyright 2019-2021 cord.network authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import { rpc, types04, types05, typesBundleForPolkadot } from '@cordnetwork/type-definitions';
+import { rpc, types04, types05, typesBundleForPolkadot } from '@cord.network/type-definitions';
 import fs from 'fs';
 
 fs.writeFileSync('packages/type-definitions/src/json/typesV4.json', JSON.stringify(types04, null, 4));

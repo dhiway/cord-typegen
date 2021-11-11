@@ -1,8 +1,8 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import type { CordAccountOf, HashOf, IdOf, IdentifierOf } from '@cordnetwork/types/interfaces/base';
-import type { BlockNumber } from '@cordnetwork/types/interfaces/runtime';
+import type { CordAccountOf, HashOf, IdOf, IdentifierOf } from '@cord.network/types/interfaces/base';
+import type { BlockNumber } from '@cord.network/types/interfaces/runtime';
 import type { Enum, Option, Struct, bool } from '@polkadot/types';
 
 /** @name PalletStreamStreamsStreamCommit */
@@ -27,9 +27,9 @@ export interface StreamCommit extends Struct {
 
 /** @name StreamCommitOf */
 export interface StreamCommitOf extends Enum {
-  readonly isCreate: boolean;
+  readonly isGenesis: boolean;
   readonly isUpdate: boolean;
-  readonly isStatus: boolean;
+  readonly isStatusChange: boolean;
 }
 
 /** @name StreamDetails */

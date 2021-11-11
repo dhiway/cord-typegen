@@ -1,7 +1,7 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
-import type { AccountId32, Call, H256, MultiAddress, Perbill } from '@cordnetwork/types/interfaces/runtime';
+import type { AccountId32, Call, H256, MultiAddress, Perbill } from '@cord.network/types/interfaces/runtime';
 import type { ApiTypes, SubmittableExtrinsic } from '@polkadot/api/types';
 import type { Bytes, Compact, Option, Vec, bool, u128, u32, u64 } from '@polkadot/types';
 import type { Extrinsic } from '@polkadot/types/interfaces/extrinsics';
