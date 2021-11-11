@@ -6,7 +6,7 @@ export default {
   rpc: {},
   types: {
     SchemaDetails: {
-      schema_hash: 'HashOf',
+      schemaHash: 'HashOf',
       cid: 'Option<IdentifierOf>',
       parent_cid: 'Option<IdentifierOf>',
       creator: 'CordAccountOf',
@@ -15,7 +15,7 @@ export default {
       revoked: 'bool'
     },
     SchemaCommit: {
-      schema_hash: 'HashOf',
+      schemaHash: 'HashOf',
       cid: 'Option<IdentifierOf>',
       block: 'BlockNumber',
       commit: 'SchemaCommitOf'
