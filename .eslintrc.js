@@ -1,4 +1,4 @@
-// Copyright 2017-2021 @polkadot/api authors & contributors
+// Copyright 2019-2021 @cord.network authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 const base = require('@open-web3/dev-config/config/eslint.cjs');
@@ -23,7 +23,7 @@ module.exports = {
   rules: {
     ...base.rules,
     'header/header': [2, 'line', [
-      { pattern: ' Copyright \\d{4}(-\\d{4})? @cordnetwork/' },
+      { pattern: ' Copyright \\d{4}(-\\d{4})? cord.network' },
       ' SPDX-License-Identifier: Apache-2.0'
     ], 2],
     // add override for any (a metric ton of them, initial conversion)

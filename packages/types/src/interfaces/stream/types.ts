@@ -19,7 +19,7 @@ export interface PalletStreamStreamsStreamLink extends StreamLink {}
 
 /** @name StreamCommit */
 export interface StreamCommit extends Struct {
-  readonly hash: HashOf;
+  readonly stream_hash: HashOf;
   readonly cid: Option<IdentifierOf>;
   readonly block: BlockNumber;
   readonly commit: StreamCommitOf;
@@ -34,7 +34,7 @@ export interface StreamCommitOf extends Enum {
 
 /** @name StreamDetails */
 export interface StreamDetails extends Struct {
-  readonly streamHash: HashOf;
+  readonly stream_hash: HashOf;
   readonly cid: Option<IdentifierOf>;
   readonly parent_cid: Option<IdentifierOf>;
   readonly schema: Option<IdOf>;

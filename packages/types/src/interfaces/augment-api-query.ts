@@ -118,15 +118,15 @@ declare module '@polkadot/api/types/storage' {
        **/
       commits: AugmentedQuery<ApiType, (arg: H256 | string | Uint8Array) => Observable<Option<Vec<PalletStreamStreamsStreamCommit>>>, [H256]> & QueryableStorageEntry<ApiType, [H256]>;
       /**
-       * stream hashes stored on chain.
-       * It maps from a stream hash to Id (resolve from hash).
-       **/
-      hashes: AugmentedQuery<ApiType, (arg: H256 | string | Uint8Array) => Observable<Option<H256>>, [H256]> & QueryableStorageEntry<ApiType, [H256]>;
-      /**
        * stream links stored on chain.
        * It maps from a stream Id to a vector of stream links.
        **/
       links: AugmentedQuery<ApiType, (arg: H256 | string | Uint8Array) => Observable<Option<Vec<PalletStreamStreamsStreamLink>>>, [H256]> & QueryableStorageEntry<ApiType, [H256]>;
+      /**
+       * stream hashes stored on chain.
+       * It maps from a stream hash to Id (resolve from hash).
+       **/
+      streamHash: AugmentedQuery<ApiType, (arg: H256 | string | Uint8Array) => Observable<Option<H256>>, [H256]> & QueryableStorageEntry<ApiType, [H256]>;
       /**
        * streams stored on chain.
        * It maps from stream Id to its details.

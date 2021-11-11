@@ -6,7 +6,7 @@ export default {
   rpc: {},
   types: {
     StreamDetails: {
-      streamHash: 'HashOf',
+      stream_hash: 'HashOf',
       cid: 'Option<IdentifierOf>',
       parent_cid: 'Option<IdentifierOf>',
       schema: 'Option<IdOf>',
@@ -16,7 +16,7 @@ export default {
       revoked: 'bool'
     },
     StreamCommit: {
-      hash: 'HashOf',
+      stream_hash: 'HashOf',
       cid: 'Option<IdentifierOf>',
       block: 'BlockNumber',
       commit: 'StreamCommitOf'
