@@ -5,7 +5,7 @@ import type { Observable } from 'rxjs';
 import type { ApiInterfaceRx } from '@polkadot/api/types';
 import type { Option } from '@polkadot/types';
 import type { ProposalIndex } from '@polkadot/types/interfaces';
-import type { PalletNetworkTreasuryProposal } from '@cordnetwork/types/interfaces';
+import type { PalletNetworkTreasuryProposal } from '@cord.network/types/interfaces';
 import type { DeriveCollectiveProposal } from '@polkadot/api-derive/types';
 
 import type {

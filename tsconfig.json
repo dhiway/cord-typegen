@@ -10,28 +10,28 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "@cordnetwork/api": [
+      "@cord.network/api": [
         "packages/api/src"
       ],
-      "@cordnetwork/api/*": [
+      "@cord.network/api/*": [
         "packages/api/src/*"
       ],
-      "@cordnetwork/api-derive": [
+      "@cord.network/api-derive": [
         "packages/api-derive/src"
       ],
-      "@cordnetwork/api-derive/*": [
+      "@cord.network/api-derive/*": [
         "packages/api-derive/src/*"
       ],
-      "@cordnetwork/types": [
+      "@cord.network/types": [
         "packages/types/src"
       ],
-      "@cordnetwork/types/*": [
+      "@cord.network/types/*": [
         "packages/types/src/*"
       ],
-      "@cordnetwork/type-definitions": [
+      "@cord.network/type-definitions": [
         "packages/type-definitions/src"
       ],
-      "@cordnetwork/type-definitions/*": [
+      "@cord.network/type-definitions/*": [
         "packages/type-definitions/src/*"
       ],
     },

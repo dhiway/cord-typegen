@@ -1,7 +1,7 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
-import type { Permill } from '@cordnetwork/types/interfaces/runtime';
+import type { Permill } from '@cord.network/types/interfaces/runtime';
 import type { ApiTypes } from '@polkadot/api/types';
 import type { u128, u16, u32 } from '@polkadot/types';
 import type { FrameSupportPalletId, FrameSupportWeightsRuntimeDbWeight, FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, SpVersionRuntimeVersion } from '@polkadot/types/lookup';

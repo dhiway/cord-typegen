@@ -1,12 +1,13 @@
-// Copyright 2017-2021 @cordnetwork/api authors & contributors
+// Copyright 2019-2021 cord.network authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 export default {
   rpc: {},
   types: {
-    PalletEntityVerifiersVerifierDetails: {
+    VerifierDetails: {
       block: 'BlockNumber',
       revoked: 'bool'
-    }
+    },
+    PalletEntityVerifiersVerifierDetails: 'VerifierDetails'
   }
 };

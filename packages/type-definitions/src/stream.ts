@@ -22,7 +22,7 @@ export default {
       commit: 'StreamCommitOf'
     },
     StreamCommitOf: {
-      _enum: ['Create', 'Update', 'Status']
+      _enum: ['Genesis', 'Update', 'StatusChange']
     },
     StreamLink: {
       identifier: 'IdOf',

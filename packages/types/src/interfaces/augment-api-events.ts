@@ -1,7 +1,7 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
-import type { AccountId32, H256 } from '@cordnetwork/types/interfaces/runtime';
+import type { AccountId32, H256 } from '@cord.network/types/interfaces/runtime';
 import type { ApiTypes } from '@polkadot/api/types';
 import type { Null, Result, bool, u128, u32 } from '@polkadot/types';
 import type { FrameSupportWeightsDispatchInfo, SpRuntimeDispatchError } from '@polkadot/types/lookup';

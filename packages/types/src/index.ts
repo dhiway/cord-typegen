@@ -1,4 +1,4 @@
-// Copyright 2017-2021 @cordnetwork/api authors & contributors
+// Copyright 2019-2021 cord.network authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
 import './interfaces/augment-api';
@@ -14,7 +14,7 @@ import {
   types05 as cordTypes,
   typesAlias as cordTypeAlias,
   typesBundle as cordTypesBundle
-} from '@cordnetwork/type-definitions';
+} from '@cord.network/type-definitions';
 
 import {
   DefinitionRpc,

@@ -1,8 +1,8 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import type { CordAccountOf, HashOf, IdentifierOf } from '@cordnetwork/types/interfaces/base';
-import type { BlockNumber } from '@cordnetwork/types/interfaces/runtime';
+import type { CordAccountOf, HashOf, IdentifierOf } from '@cord.network/types/interfaces/base';
+import type { BlockNumber } from '@cord.network/types/interfaces/runtime';
 import type { Enum, Option, Struct, bool } from '@polkadot/types';
 
 /** @name PalletSchemaSchemasSchemaCommit */
@@ -26,10 +26,10 @@ export interface SchemaCommit extends Struct {
 export interface SchemaCommitOf extends Enum {
   readonly isGenesis: boolean;
   readonly isUpdate: boolean;
-  readonly isDelegate: boolean;
-  readonly isRevokeDelegation: boolean;
+  readonly isDelegates: boolean;
+  readonly isRevokeDelegates: boolean;
   readonly isPermission: boolean;
-  readonly isStatus: boolean;
+  readonly isStatusChange: boolean;
 }
 
 /** @name SchemaDetails */

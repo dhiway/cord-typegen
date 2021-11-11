@@ -42,7 +42,7 @@ const { runtime, ...substrateDefinitions } = defaultDefinitions;
 
 const definitions = {
   '@polkadot/types/interfaces': substrateDefinitions,
-  '@cordnetwork/types/interfaces': cordDefinitions
+  '@cord.network/types/interfaces': cordDefinitions
 } as any;
 
 const metadata = filterPallets(
@@ -73,15 +73,15 @@ function writeFile(dest, generator, noLog) {
   !noLog && console.log('');
 }
 
-generateTsDef(definitions, 'packages/types/src/interfaces', '@cordnetwork/types/interfaces');
+generateTsDef(definitions, 'packages/types/src/interfaces', '@cord.network/types/interfaces');
 generateInterfaceTypes(definitions, 'packages/types/src/interfaces/augment-types.ts');
 generateDefaultConsts('packages/types/src/interfaces/augment-api-consts.ts', metadata, definitions);
-generateDefaultErrors('packages/types/src/interfaces/augment-api-errors.ts', metadata, definitions);
+// TODO: Check failure
+// generateDefaultErrors('packages/types/src/interfaces/augment-api-errors.ts', metadata, definitions);
 generateDefaultEvents('packages/types/src/interfaces/augment-api-events.ts', metadata, definitions);
 generateDefaultQuery('packages/types/src/interfaces/augment-api-query.ts', metadata, definitions);
 generateDefaultRpc('packages/types/src/interfaces/augment-api-rpc.ts', definitions);
 generateDefaultTx('packages/types/src/interfaces/augment-api-tx.ts', metadata, definitions);
-// writeFile('packages/types/src/interfaces/augment-api.ts', aug_api_gen);
 
 writeFile('packages/types/src/interfaces/augment-api.ts', () =>
   [

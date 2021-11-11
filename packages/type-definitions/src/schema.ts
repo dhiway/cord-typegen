@@ -21,7 +21,7 @@ export default {
       commit: 'SchemaCommitOf'
     },
     SchemaCommitOf: {
-      _enum: ['Genesis', 'Update', 'Delegate', 'RevokeDelegation', 'Permission', 'Status']
+      _enum: ['Genesis', 'Update', 'Delegates', 'RevokeDelegates', 'Permission', 'StatusChange']
     },
     PalletSchemaSchemasSchemaDetails: 'SchemaDetails',
     PalletSchemaSchemasSchemaCommit: 'SchemaCommit',
