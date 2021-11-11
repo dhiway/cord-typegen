@@ -16,7 +16,7 @@ export interface PalletSchemaSchemasSchemaDetails extends SchemaDetails {}
 
 /** @name SchemaCommit */
 export interface SchemaCommit extends Struct {
-  readonly hash: HashOf;
+  readonly schema_hash: HashOf;
   readonly cid: Option<IdentifierOf>;
   readonly block: BlockNumber;
   readonly commit: SchemaCommitOf;
@@ -34,7 +34,7 @@ export interface SchemaCommitOf extends Enum {
 
 /** @name SchemaDetails */
 export interface SchemaDetails extends Struct {
-  readonly hash: HashOf;
+  readonly schema_hash: HashOf;
   readonly cid: Option<IdentifierOf>;
   readonly parent_cid: Option<IdentifierOf>;
   readonly creator: CordAccountOf;

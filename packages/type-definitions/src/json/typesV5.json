@@ -12,7 +12,7 @@
     },
     "PalletEntityVerifiersVerifierDetails": "VerifierDetails",
     "SchemaDetails": {
-        "hash": "HashOf",
+        "schema_hash": "HashOf",
         "cid": "Option<IdentifierOf>",
         "parent_cid": "Option<IdentifierOf>",
         "creator": "CordAccountOf",
@@ -21,7 +21,7 @@
         "revoked": "bool"
     },
     "SchemaCommit": {
-        "hash": "HashOf",
+        "schema_hash": "HashOf",
         "cid": "Option<IdentifierOf>",
         "block": "BlockNumber",
         "commit": "SchemaCommitOf"
@@ -40,7 +40,7 @@
     "PalletSchemaSchemasSchemaCommit": "SchemaCommit",
     "PalletSchemaSchemasSchemaCommitOf": "SchemaCommitOf",
     "StreamDetails": {
-        "streamHash": "HashOf",
+        "stream_hash": "HashOf",
         "cid": "Option<IdentifierOf>",
         "parent_cid": "Option<IdentifierOf>",
         "schema": "Option<IdOf>",
@@ -50,7 +50,7 @@
         "revoked": "bool"
     },
     "StreamCommit": {
-        "hash": "HashOf",
+        "stream_hash": "HashOf",
         "cid": "Option<IdentifierOf>",
         "block": "BlockNumber",
         "commit": "StreamCommitOf"
