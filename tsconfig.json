@@ -11,10 +11,10 @@
     "baseUrl": ".",
     "paths": {
       "@cord.network/chain.api": [
-        "packages/api/src"
+        "packages/chain-api/src"
       ],
       "@cord.network/chain.api/*": [
-        "packages/api/src/*"
+        "packages/chain-api/src/*"
       ],
       "@cord.network/chain.api-derive": [
         "packages/api-derive/src"
