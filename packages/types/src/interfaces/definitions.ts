@@ -7,3 +7,4 @@ export { default as networkTreasury } from './networkTreasury/definitions';
 export { default as entity } from './entity/definitions';
 export { default as schema } from './schema/definitions';
 export { default as stream } from './stream/definitions';
+export { default as product } from './product/definitions';

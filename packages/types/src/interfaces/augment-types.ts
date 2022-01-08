@@ -4,6 +4,7 @@
 import type { AccountIdentifierOf, CordAccountOf, DidIdentifierOf, HashOf, IdOf, IdentifierOf, StatusOf } from '@cord.network/types/interfaces/base';
 import type { PalletEntityVerifiersVerifierDetails, VerifierDetails } from '@cord.network/types/interfaces/entity';
 import type { PalletNetworkTreasuryProposal } from '@cord.network/types/interfaces/networkTreasury';
+import type { PalletProductProductsProductCommit, PalletProductProductsProductCommitOf, PalletProductProductsProductDetails, PalletProductProductsProductLink, ProductCommit, ProductCommitOf, ProductDetails, ProductLink } from '@cord.network/types/interfaces/product';
 import type { AccountId, AccountId20, AccountId32, AccountIdOf, AccountIndex, Address, AssetId, Balance, BalanceOf, Block, BlockNumber, BlockNumberFor, BlockNumberOf, Call, CallHash, CallHashOf, ChangesTrieConfiguration, ChangesTrieSignal, CodecHash, Consensus, ConsensusEngineId, CrateVersion, Digest, DigestItem, EncodedJustification, ExtrinsicsWeight, Fixed128, Fixed64, FixedI128, FixedI64, FixedU128, FixedU64, H1024, H128, H160, H2048, H256, H32, H512, H64, Hash, Header, HeaderPartial, I32F32, Index, IndicesLookupSource, Justification, Justifications, KeyTypeId, KeyValue, LockIdentifier, LookupSource, LookupTarget, ModuleId, Moment, MultiAddress, MultiSigner, OpaqueCall, Origin, OriginCaller, PalletId, PalletVersion, PalletsOrigin, Pays, PerU16, Perbill, Percent, Permill, Perquintill, Phantom, PhantomData, PreRuntime, Releases, RuntimeDbWeight, Seal, SealV0, SignedBlock, SignedBlockWithJustification, SignedBlockWithJustifications, Slot, StorageData, StorageProof, TransactionInfo, TransactionPriority, TransactionStorageProof, U32F32, ValidatorId, ValidatorIdOf, Weight, WeightMultiplier } from '@cord.network/types/interfaces/runtime';
 import type { PalletSchemaSchemasSchemaCommit, PalletSchemaSchemasSchemaCommitOf, PalletSchemaSchemasSchemaDetails, SchemaCommit, SchemaCommitOf, SchemaDetails } from '@cord.network/types/interfaces/schema';
 import type { PalletStreamStreamsStreamCommit, PalletStreamStreamsStreamCommitOf, PalletStreamStreamsStreamDetails, PalletStreamStreamsStreamLink, StreamCommit, StreamCommitOf, StreamDetails, StreamLink } from '@cord.network/types/interfaces/stream';
@@ -665,6 +666,10 @@ declare module '@polkadot/types/types/registry' {
     PalletMetadataLatest: PalletMetadataLatest;
     PalletMetadataV14: PalletMetadataV14;
     PalletNetworkTreasuryProposal: PalletNetworkTreasuryProposal;
+    PalletProductProductsProductCommit: PalletProductProductsProductCommit;
+    PalletProductProductsProductCommitOf: PalletProductProductsProductCommitOf;
+    PalletProductProductsProductDetails: PalletProductProductsProductDetails;
+    PalletProductProductsProductLink: PalletProductProductsProductLink;
     PalletSchemaSchemasSchemaCommit: PalletSchemaSchemasSchemaCommit;
     PalletSchemaSchemasSchemaCommitOf: PalletSchemaSchemasSchemaCommitOf;
     PalletSchemaSchemasSchemaDetails: PalletSchemaSchemasSchemaDetails;
@@ -729,6 +734,10 @@ declare module '@polkadot/types/types/registry' {
     Prevotes: Prevotes;
     Priority: Priority;
     PriorLock: PriorLock;
+    ProductCommit: ProductCommit;
+    ProductCommitOf: ProductCommitOf;
+    ProductDetails: ProductDetails;
+    ProductLink: ProductLink;
     PropIndex: PropIndex;
     Proposal: Proposal;
     ProposalIndex: ProposalIndex;

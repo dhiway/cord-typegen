@@ -15,6 +15,7 @@ import mark from './mark';
 import schema from './schema';
 import { signedExtensions as cordSignedExtensions } from './signedExtensions';
 import stream from './stream';
+import product from './product';
 
 const cordDefsV4 = {
   cordv1,
@@ -27,6 +28,7 @@ const cordDefsV5 = {
   entity,
   schema,
   stream,
+  product,
   networkTreasury
 };
 

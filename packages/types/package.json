@@ -1,6 +1,6 @@
 {
   "name": "@cord.network/types",
-  "version": "0.2.4-14",
+  "version": "0.2.4-15",
   "description": "Polkadot.js type definitions for CORD Network",
   "main": "index.js",
   "author": "Dhiway <info@dhiway.com>",
@@ -16,7 +16,7 @@
   "homepage": "https://github.com/dhiway/cord-typegen",
   "dependencies": {
     "@babel/runtime": "^7.10.2",
-    "@cord.network/type-definitions": "0.2.4-14",
+    "@cord.network/type-definitions": "0.2.4-15",
     "@open-web3/orml-types": "^1.0.2-1",
     "@polkadot/api": "^6.7.2",
     "@polkadot/typegen": "^6.7.2",

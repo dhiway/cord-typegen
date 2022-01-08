@@ -1485,12 +1485,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cord.network/chain.api-derive@0.2.4-14, @cord.network/chain.api-derive@workspace:packages/api-derive":
+"@cord.network/chain.api-derive@0.2.4-15, @cord.network/chain.api-derive@workspace:packages/api-derive":
   version: 0.0.0-use.local
   resolution: "@cord.network/chain.api-derive@workspace:packages/api-derive"
   dependencies:
     "@babel/runtime": ^7.10.2
-    "@cord.network/types": 0.2.4-14
+    "@cord.network/types": 0.2.4-15
     "@open-web3/orml-types": ^1.0.2-1
     "@polkadot/api": ^6.7.2
     "@polkadot/api-derive": ^6.7.2
@@ -1503,8 +1503,8 @@ __metadata:
   resolution: "@cord.network/chain.api@workspace:packages/chain-api"
   dependencies:
     "@babel/runtime": ^7.10.2
-    "@cord.network/chain.api-derive": 0.2.4-14
-    "@cord.network/types": 0.2.4-14
+    "@cord.network/chain.api-derive": 0.2.4-15
+    "@cord.network/types": 0.2.4-15
     "@open-web3/orml-api-derive": ^1.0.2-0
     "@polkadot/api": ^6.7.2
     "@polkadot/rpc-core": ^6.7.2
@@ -1514,7 +1514,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cord.network/type-definitions@0.2.4-14, @cord.network/type-definitions@workspace:packages/type-definitions":
+"@cord.network/type-definitions@0.2.4-15, @cord.network/type-definitions@workspace:packages/type-definitions":
   version: 0.0.0-use.local
   resolution: "@cord.network/type-definitions@workspace:packages/type-definitions"
   dependencies:
@@ -1522,12 +1522,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cord.network/types@0.2.4-14, @cord.network/types@workspace:packages/types":
+"@cord.network/types@0.2.4-15, @cord.network/types@workspace:packages/types":
   version: 0.0.0-use.local
   resolution: "@cord.network/types@workspace:packages/types"
   dependencies:
     "@babel/runtime": ^7.10.2
-    "@cord.network/type-definitions": 0.2.4-14
+    "@cord.network/type-definitions": 0.2.4-15
     "@open-web3/orml-types": ^1.0.2-1
     "@polkadot/api": ^6.7.2
     "@polkadot/typegen": ^6.7.2
