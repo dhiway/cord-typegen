@@ -3,7 +3,7 @@
 
 import type { CordAccountOf, HashOf, IdOf, IdentifierOf } from '@cord.network/types/interfaces/base';
 import type { BlockNumber } from '@cord.network/types/interfaces/runtime';
-import type { Enum, Option, Struct, bool, u32, u8 } from '@polkadot/types';
+import type { Enum, Option, Struct, bool, u32 } from '@polkadot/types';
 
 /** @name PalletProductProductsProductCommit */
 export interface PalletProductProductsProductCommit extends ProductCommit {}
@@ -46,7 +46,7 @@ export interface ProductDetails extends Struct {
   readonly link: Option<IdOf>;
   readonly creator: CordAccountOf;
   readonly price: Option<u32>;
-  readonly rating: Option<u8>;
+  readonly rating: Option<u32>;
   readonly block: BlockNumber;
   readonly status: bool;
 }

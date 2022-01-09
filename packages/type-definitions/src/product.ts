@@ -14,7 +14,7 @@ export default {
       link: 'Option<IdOf>',
       creator: 'CordAccountOf',
       price: 'Option<u32>',
-      rating: 'Option<u8>',
+      rating: 'Option<u32>',
       block: 'BlockNumber',
       status: 'bool'
     },
