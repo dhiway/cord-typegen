@@ -6,25 +6,15 @@ export default {
   rpc: {},
   types: {
     SchemaDetails: {
-      schemaHash: 'HashOf',
-      cid: 'Option<IdentifierOf>',
-      parent_cid: 'Option<IdentifierOf>',
+      version: 'VersionOf',
+      schema_id: 'IdOf',
       creator: 'CordAccountOf',
+      cid: 'Option<CidOf>',
+      parent: 'Option<HashOf>',
       block: 'BlockNumber',
-      permissioned: 'bool',
-      revoked: 'bool'
-    },
-    SchemaCommit: {
-      schemaHash: 'HashOf',
-      cid: 'Option<IdentifierOf>',
-      block: 'BlockNumber',
-      commit: 'SchemaCommitOf'
-    },
-    SchemaCommitOf: {
-      _enum: ['Genesis', 'Update', 'Delegates', 'RevokeDelegates', 'Permission', 'StatusChange']
-    },
-    PalletSchemaSchemasSchemaDetails: 'SchemaDetails',
-    PalletSchemaSchemasSchemaCommit: 'SchemaCommit',
-    PalletSchemaSchemasSchemaCommitOf: 'SchemaCommitOf'
+      permissioned: 'StatusOf',
+      revoked: 'StatusOf'
+    }
+    // PalletSchemaSchemasSchemaDetails: 'SchemaDetails'
   }
 };

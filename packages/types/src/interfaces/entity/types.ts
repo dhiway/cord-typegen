@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import type { BlockNumber } from '@cord.network/types/interfaces/runtime';
-import type { Struct, bool } from '@polkadot/types';
+import type { Struct, bool } from '@polkadot/types-codec';
 
 /** @name PalletEntityVerifiersVerifierDetails */
 export interface PalletEntityVerifiersVerifierDetails extends VerifierDetails {}

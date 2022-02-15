@@ -11,7 +11,7 @@ import './interfaces/augment-types';
 import {
   rpc as cordRpc,
   signedExtensions as cordSignedExtensions,
-  types05 as cordTypes,
+  types2 as cordTypes,
   typesAlias as cordTypeAlias,
   typesBundle as cordTypesBundle
 } from '@cord.network/type-definitions';

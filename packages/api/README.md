@@ -1,3 +1,3 @@
-# @cord.network/chain.api
+# @cord.network/api
 
 Contains necessary options to create a polkadot.js API instance

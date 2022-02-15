@@ -10,17 +10,11 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "@cord.network/chain.api": [
-        "packages/chain-api/src"
+      "@cord.network/api": [
+        "packages/api/src"
       ],
-      "@cord.network/chain.api/*": [
-        "packages/chain-api/src/*"
-      ],
-      "@cord.network/chain.api-derive": [
-        "packages/api-derive/src"
-      ],
-      "@cord.network/chain.api-derive/*": [
-        "packages/api-derive/src/*"
+      "@cord.network/api/*": [
+        "packages/api/src/*"
       ],
       "@cord.network/types": [
         "packages/types/src"
