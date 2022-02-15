@@ -2,10 +2,13 @@
 /* eslint-disable */
 
 import type { AccountId, Hash } from '@cord.network/types/interfaces/runtime';
-import type { Bytes, bool } from '@polkadot/types';
+import type { Bytes, bool } from '@polkadot/types-codec';
 
 /** @name AccountIdentifierOf */
 export interface AccountIdentifierOf extends AccountId {}
+
+/** @name CidOf */
+export interface CidOf extends Bytes {}
 
 /** @name CordAccountOf */
 export interface CordAccountOf extends AccountId {}
@@ -24,5 +27,8 @@ export interface IdOf extends Hash {}
 
 /** @name StatusOf */
 export interface StatusOf extends bool {}
+
+/** @name VersionOf */
+export interface VersionOf extends Hash {}
 
 export type PHANTOM_BASE = 'base';

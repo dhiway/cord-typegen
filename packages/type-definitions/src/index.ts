@@ -7,7 +7,6 @@ import type { OverrideVersionedType } from '@polkadot/types/types';
 import { jsonrpcFromDefs, typesAliasFromDefs, typesFromDefs } from '@open-web3/orml-type-definitions/utils';
 
 import base from './base';
-import networkTreasury from './networkTreasury';
 import cordv1 from './cordv1';
 import delegation from './delegation';
 import entity from './entity';
@@ -16,41 +15,56 @@ import schema from './schema';
 import { signedExtensions as cordSignedExtensions } from './signedExtensions';
 import stream from './stream';
 
-const cordDefsV4 = {
+const cordDefsV0 = {
   cordv1,
   mark,
   delegation
 };
 
-const cordDefsV5 = {
+const cordDefsV1 = {
   base,
   entity,
   schema,
-  stream,
-  networkTreasury
+  stream
 };
 
-export const types04 = {
-  ...typesFromDefs(cordDefsV4)
+const cordDefsV2 = {
+  base,
+  schema,
+  stream
 };
 
-export const types05 = {
-  ...typesFromDefs(cordDefsV5)
+export const types0 = {
+  ...typesFromDefs(cordDefsV0)
 };
-export const rpc = jsonrpcFromDefs(cordDefsV5);
-export const typesAlias = typesAliasFromDefs(cordDefsV5);
+
+export const types1 = {
+  ...typesFromDefs(cordDefsV1)
+};
+export const types2 = {
+  ...typesFromDefs(cordDefsV2)
+};
+
+export const rpc = jsonrpcFromDefs(cordDefsV2);
+export const typesAlias = typesAliasFromDefs(cordDefsV2);
 
 const cordVersioned: OverrideVersionedType[] = [
   {
-    minmax: [400, 499],
+    minmax: [0, 99],
     types: {
-      ...types04
+      ...types0
     }
   },
   {
-    minmax: [500, undefined],
+    minmax: [100, 199],
     types: {
-      ...types05
+      ...types1
+    }
+  },
+  {
+    minmax: [200, undefined],
+    types: {
+      ...types2
     }
   }
 ];

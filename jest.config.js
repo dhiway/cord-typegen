@@ -5,7 +5,7 @@ const config = require('@open-web3/dev-config/config/jest.cjs');
 
 module.exports = Object.assign({}, config, {
   moduleNameMapper: {
-    '@cord.network/chain.api(.*)$': '<rootDir>/packages/api/src/$1',
+    '@cord.network/api(.*)$': '<rootDir>/packages/api/src/$1',
     '@cord.network/type-definitions(.*)$': '<rootDir>/packages/type-definitions/src/$1',
     '@cord.network/types(.*)$': '<rootDir>/packages/types/src/$1'
   },

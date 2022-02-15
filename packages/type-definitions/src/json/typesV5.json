@@ -3,77 +3,29 @@
     "CordAccountOf": "AccountId",
     "DidIdentifierOf": "AccountId",
     "HashOf": "Hash",
+    "VersionOf": "Hash",
     "IdOf": "Hash",
     "IdentifierOf": "Vec<u8>",
+    "CidOf": "Vec<u8>",
     "StatusOf": "bool",
-    "VerifierDetails": {
-        "block": "BlockNumber",
-        "revoked": "bool"
-    },
-    "PalletEntityVerifiersVerifierDetails": "VerifierDetails",
     "SchemaDetails": {
-        "schemaHash": "HashOf",
-        "cid": "Option<IdentifierOf>",
-        "parent_cid": "Option<IdentifierOf>",
+        "version": "VersionOf",
+        "schema_id": "IdOf",
         "creator": "CordAccountOf",
+        "cid": "Option<CidOf>",
+        "parent": "Option<HashOf>",
         "block": "BlockNumber",
-        "permissioned": "bool",
-        "revoked": "bool"
+        "permissioned": "StatusOf",
+        "revoked": "StatusOf"
     },
-    "SchemaCommit": {
-        "schemaHash": "HashOf",
-        "cid": "Option<IdentifierOf>",
-        "block": "BlockNumber",
-        "commit": "SchemaCommitOf"
-    },
-    "SchemaCommitOf": {
-        "_enum": [
-            "Genesis",
-            "Update",
-            "Delegates",
-            "RevokeDelegates",
-            "Permission",
-            "StatusChange"
-        ]
-    },
-    "PalletSchemaSchemasSchemaDetails": "SchemaDetails",
-    "PalletSchemaSchemasSchemaCommit": "SchemaCommit",
-    "PalletSchemaSchemasSchemaCommitOf": "SchemaCommitOf",
     "StreamDetails": {
-        "streamHash": "HashOf",
-        "cid": "Option<IdentifierOf>",
-        "parent_cid": "Option<IdentifierOf>",
-        "schema": "Option<IdOf>",
-        "link": "Option<IdOf>",
+        "stream_id": "IdOf",
         "creator": "CordAccountOf",
-        "block": "BlockNumber",
-        "revoked": "bool"
-    },
-    "StreamCommit": {
-        "streamHash": "HashOf",
-        "cid": "Option<IdentifierOf>",
-        "block": "BlockNumber",
-        "commit": "StreamCommitOf"
-    },
-    "StreamCommitOf": {
-        "_enum": [
-            "Genesis",
-            "Update",
-            "StatusChange"
-        ]
-    },
-    "StreamLink": {
-        "identifier": "IdOf",
-        "creator": "CordAccountOf"
-    },
-    "PalletStreamStreamsStreamDetails": "StreamDetails",
-    "PalletStreamStreamsStreamCommit": "StreamCommit",
-    "PalletStreamStreamsStreamCommitOf": "StreamCommitOf",
-    "PalletStreamStreamsStreamLink": "StreamLink",
-    "PalletNetworkTreasuryProposal": {
-        "proposer": "AccountId",
-        "value": "Balance",
-        "beneficiary": "AccountId",
-        "bond": "Balance"
+        "holder": "Option<CordAccountOf>",
+        "schema": "Option<IdOf>",
+        "cid": "Option<CidOf>",
+        "parent": "Option<HashOf>",
+        "link": "Option<IdOf>",
+        "revoked": "StatusOf"
     }
 }
