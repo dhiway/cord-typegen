@@ -1,6 +1,6 @@
 {
   "name": "@cord.network/types",
-  "version": "0.6.1",
+  "version": "0.6.1-4",
   "description": "Polkadot.js type definitions for CORD Network",
   "main": "index.js",
   "author": "Dhiway <engineering@dhiway.com>",

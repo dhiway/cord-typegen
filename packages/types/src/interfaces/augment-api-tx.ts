@@ -16,13 +16,13 @@ declare module '@polkadot/api-base/types/submittable' {
        * 
        * The removed authorities will be deactivated from current session + 2.
        **/
-      deregisterValidators: AugmentedSubmittable<(authorities: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Vec<AccountId32>]>;
+      deregister: AugmentedSubmittable<(authorities: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Vec<AccountId32>]>;
       /**
        * Add new authorities to the set.
        * 
        * The new authorities will be active from current session + 2.
        **/
-      registerAuthorities: AugmentedSubmittable<(authorities: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Vec<AccountId32>]>;
+      register: AugmentedSubmittable<(authorities: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Vec<AccountId32>]>;
       /**
        * Generic tx
        **/
@@ -1602,16 +1602,17 @@ declare module '@polkadot/api-base/types/submittable' {
     };
     schema: {
       /**
-       * Add delegates to a schema.
+       * Add schema authorisations (delegation).
        * 
-       * This transaction can only be performed by the schema controller.
+       * This transaction can only be performed by the schema controller on
+       * permissioned schemas.
        * 
        * * origin: the identity of the schema controller.
        * * schema: unique identifier of the schema.
        * * creator: controller of the schema.
-       * * delegates: schema delegates to add.
+       * * delegates: authorised identities to add.
        **/
-      addDelegates: AugmentedSubmittable<(schema: H256 | string | Uint8Array, creator: AccountId32 | string | Uint8Array, delegates: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [H256, AccountId32, Vec<AccountId32>]>;
+      authorise: AugmentedSubmittable<(schema: H256 | string | Uint8Array, creator: AccountId32 | string | Uint8Array, delegates: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [H256, AccountId32, Vec<AccountId32>]>;
       /**
        * Create a new schema and associates with its identifier.
        * 
@@ -1619,31 +1620,33 @@ declare module '@polkadot/api-base/types/submittable' {
        * * identifier: unique identifier of the incoming schema stream.
        * * creator: controller of the schema.
        * * version: version of the  schema stream.
-       * * hash: hash of the incoming schema stream.
+       * * schema_hash: hash of the incoming schema stream.
+       * * cid: \[OPTIONAL\] storage Id of the incoming stream.
        * * permissioned: schema type - permissioned or not.
        **/
-      anchor: AugmentedSubmittable<(identifier: H256 | string | Uint8Array, creator: AccountId32 | string | Uint8Array, version: Bytes | string | Uint8Array, schemaHash: H256 | string | Uint8Array, cid: Option<Bytes> | null | object | string | Uint8Array, permissioned: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, AccountId32, Bytes, H256, Option<Bytes>, bool]>;
+      create: AugmentedSubmittable<(identifier: H256 | string | Uint8Array, creator: AccountId32 | string | Uint8Array, version: Bytes | string | Uint8Array, schemaHash: H256 | string | Uint8Array, cid: Option<Bytes> | null | object | string | Uint8Array, permissioned: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, AccountId32, Bytes, H256, Option<Bytes>, bool]>;
       /**
-       * Remove schema delegates.
+       * Remove schema authorisations (delegation).
        * 
-       * This transaction can only be performed by the schema controller.
+       * This transaction can only be performed by the schema controller
+       * permissioned schemas.
        * 
        * * origin: the identity of the schema controller.
        * * schema: unique identifier of the schema.
        * * creator: controller of the schema.
-       * * delegates: schema delegates to be removed.
+       * * delegates: identities (delegates) to be removed.
        **/
-      removeDelegates: AugmentedSubmittable<(schema: H256 | string | Uint8Array, creator: AccountId32 | string | Uint8Array, delegates: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [H256, AccountId32, Vec<AccountId32>]>;
+      deauthorise: AugmentedSubmittable<(schema: H256 | string | Uint8Array, creator: AccountId32 | string | Uint8Array, delegates: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [H256, AccountId32, Vec<AccountId32>]>;
       /**
        * Update the schema type - permissioned or not
        * 
-       * This update can only be performed by by the schema controller
+       * This update can only be performed by the schema controller
        * 
        * * origin: the identity of the schema controller.
        * * identifier: unique identifier of the incoming stream.
        * * status: status to be updated
        **/
-      setPermission: AugmentedSubmittable<(identifier: H256 | string | Uint8Array, updater: AccountId32 | string | Uint8Array, permissioned: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, AccountId32, bool]>;
+      permission: AugmentedSubmittable<(identifier: H256 | string | Uint8Array, updater: AccountId32 | string | Uint8Array, permissioned: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, AccountId32, bool]>;
       /**
        * Update the status of the schema - revoked or not
        * 
@@ -1653,7 +1656,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * * identifier: unique identifier of the incoming stream.
        * * status: status to be updated
        **/
-      setStatus: AugmentedSubmittable<(identifier: H256 | string | Uint8Array, updater: AccountId32 | string | Uint8Array, status: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, AccountId32, bool]>;
+      status: AugmentedSubmittable<(identifier: H256 | string | Uint8Array, updater: AccountId32 | string | Uint8Array, status: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, AccountId32, bool]>;
       /**
        * Update version of an existing schema.
        * 
@@ -1663,10 +1666,10 @@ declare module '@polkadot/api-base/types/submittable' {
        * * identifier: unique identifier of the incoming schema stream.
        * * updater: controller of the schema.
        * * version: version of the  schema stream.
-       * * hash: hash of the incoming schema stream.
-       * * genesis: schema genesis identifier
+       * * schema_hash: hash of the new schema stream.
+       * * cid: \[OPTIONAL\] storage Id of the incoming stream.
        **/
-      updateVersion: AugmentedSubmittable<(identifier: H256 | string | Uint8Array, updater: AccountId32 | string | Uint8Array, version: Bytes | string | Uint8Array, schemaHash: H256 | string | Uint8Array, cid: Option<Bytes> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, AccountId32, Bytes, H256, Option<Bytes>]>;
+      version: AugmentedSubmittable<(identifier: H256 | string | Uint8Array, updater: AccountId32 | string | Uint8Array, version: Bytes | string | Uint8Array, schemaHash: H256 | string | Uint8Array, cid: Option<Bytes> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, AccountId32, Bytes, H256, Option<Bytes>]>;
       /**
        * Generic tx
        **/
@@ -1727,7 +1730,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * * cid: \[OPTIONAL\] CID of the incoming  stream.
        * * link: \[OPTIONAL\]stream link.
        **/
-      anchor: AugmentedSubmittable<(identifier: H256 | string | Uint8Array, creator: AccountId32 | string | Uint8Array, streamHash: H256 | string | Uint8Array, holder: Option<AccountId32> | null | object | string | Uint8Array, schema: Option<H256> | null | object | string | Uint8Array, cid: Option<Bytes> | null | object | string | Uint8Array, link: Option<H256> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, AccountId32, H256, Option<AccountId32>, Option<H256>, Option<Bytes>, Option<H256>]>;
+      create: AugmentedSubmittable<(identifier: H256 | string | Uint8Array, creator: AccountId32 | string | Uint8Array, streamHash: H256 | string | Uint8Array, holder: Option<AccountId32> | null | object | string | Uint8Array, schema: Option<H256> | null | object | string | Uint8Array, cid: Option<Bytes> | null | object | string | Uint8Array, link: Option<H256> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, AccountId32, H256, Option<AccountId32>, Option<H256>, Option<Bytes>, Option<H256>]>;
       /**
        * Update the status of the stream
        * 
@@ -1736,7 +1739,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * * updater: controller of the stream.
        * * status: stream revocation status (bool).
        **/
-      setStatus: AugmentedSubmittable<(identifier: H256 | string | Uint8Array, updater: AccountId32 | string | Uint8Array, status: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, AccountId32, bool]>;
+      status: AugmentedSubmittable<(identifier: H256 | string | Uint8Array, updater: AccountId32 | string | Uint8Array, status: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, AccountId32, bool]>;
       /**
        * Updates the stream information.
        * 

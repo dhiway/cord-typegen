@@ -1511,12 +1511,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cord.network/api@workspace:packages/api":
+"@cord.network/base@workspace:packages/base":
   version: 0.0.0-use.local
-  resolution: "@cord.network/api@workspace:packages/api"
+  resolution: "@cord.network/base@workspace:packages/base"
   dependencies:
     "@babel/runtime": ^7.10.2
-    "@cord.network/types": 0.6.1
+    "@cord.network/types": 0.6.1-4
     "@open-web3/orml-api-derive": ^1.0.2-0
     "@polkadot/api": ^7.8.1
     "@polkadot/rpc-core": ^6.7.2
@@ -1534,7 +1534,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cord.network/types@0.6.1, @cord.network/types@workspace:packages/types":
+"@cord.network/types@0.6.1-4, @cord.network/types@workspace:packages/types":
   version: 0.0.0-use.local
   resolution: "@cord.network/types@workspace:packages/types"
   dependencies:
@@ -2028,7 +2028,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@open-web3/util@npm:^1.0.2-0":
+"@open-web3/util@npm:^1.0.2-3":
   version: 1.0.2-3
   resolution: "@open-web3/util@npm:1.0.2-3"
   dependencies:
@@ -9869,7 +9869,7 @@ resolve@^2.0.0-next.3:
     "@babel/register": ^7.15.3
     "@babel/runtime": ^7.15.4
     "@open-web3/dev-config": ^0.1.13
-    "@open-web3/util": ^1.0.2-0
+    "@open-web3/util": ^1.0.2-3
     "@types/jest": ^27.0.2
     ts-node: ^8.6.1
     tsconfig-paths: ^3.9.0
