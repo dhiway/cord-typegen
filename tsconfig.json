@@ -10,11 +10,11 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "@cord.network/api": [
-        "packages/api/src"
+      "@cord.network/base": [
+        "packages/base/src"
       ],
-      "@cord.network/api/*": [
-        "packages/api/src/*"
+      "@cord.network/base/*": [
+        "packages/base/src/*"
       ],
       "@cord.network/types": [
         "packages/types/src"

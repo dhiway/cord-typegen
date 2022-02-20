@@ -1285,10 +1285,10 @@ export default {
    **/
   PalletAuthoritiesCall: {
     _enum: {
-      register_authorities: {
+      register: {
         authorities: 'Vec<AccountId32>',
       },
-      deregister_validators: {
+      deregister: {
         authorities: 'Vec<AccountId32>'
       }
     }
@@ -1914,17 +1914,17 @@ export default {
    **/
   PalletSchemaCall: {
     _enum: {
-      add_delegates: {
+      authorise: {
         schema: 'H256',
         creator: 'AccountId32',
         delegates: 'Vec<AccountId32>',
       },
-      remove_delegates: {
+      deauthorise: {
         schema: 'H256',
         creator: 'AccountId32',
         delegates: 'Vec<AccountId32>',
       },
-      anchor: {
+      create: {
         identifier: 'H256',
         creator: 'AccountId32',
         version: 'Bytes',
@@ -1932,19 +1932,19 @@ export default {
         cid: 'Option<Bytes>',
         permissioned: 'bool',
       },
-      update_version: {
+      version: {
         identifier: 'H256',
         updater: 'AccountId32',
         version: 'Bytes',
         schemaHash: 'H256',
         cid: 'Option<Bytes>',
       },
-      set_status: {
+      status: {
         identifier: 'H256',
         updater: 'AccountId32',
         status: 'bool',
       },
-      set_permission: {
+      permission: {
         identifier: 'H256',
         updater: 'AccountId32',
         permissioned: 'bool'
@@ -1956,7 +1956,7 @@ export default {
    **/
   PalletStreamCall: {
     _enum: {
-      anchor: {
+      create: {
         identifier: 'H256',
         creator: 'AccountId32',
         streamHash: 'H256',
@@ -1971,7 +1971,7 @@ export default {
         streamHash: 'H256',
         cid: 'Option<Bytes>',
       },
-      set_status: {
+      status: {
         identifier: 'H256',
         updater: 'AccountId32',
         status: 'bool'
@@ -2190,7 +2190,7 @@ export default {
    * Lookup324: pallet_schema::pallet::Error<T>
    **/
   PalletSchemaError: {
-    _enum: ['SameIdentifierAsGenesis', 'NotGenesisIdentifier', 'SchemaAlreadyAnchored', 'SchemaNotFound', 'SchemaRevoked', 'GenesisSchemaRevoked', 'InvalidCidEncoding', 'CidAlreadyAnchored', 'InvalidCidVersion', 'StatusChangeNotRequired', 'UnauthorizedOperation', 'TooManyDelegates', 'SchemaNotPermissioned', 'NoPermissionChangeRequired', 'InvalidSchemaVersion', 'SchemaGenesisNotFound', 'UnauthorizedDelegation']
+    _enum: ['SchemaAlreadyAnchored', 'SchemaNotFound', 'SchemaRevoked', 'InvalidCidEncoding', 'InvalidCidVersion', 'StatusChangeNotRequired', 'UnauthorizedOperation', 'TooManyDelegates', 'SchemaNotPermissioned', 'NoPermissionChangeRequired', 'InvalidSchemaVersion', 'SchemaGenesisNotFound', 'UnauthorizedDelegation']
   },
   /**
    * Lookup325: pallet_stream::streams::StreamDetails<T>
@@ -2209,7 +2209,7 @@ export default {
    * Lookup326: pallet_stream::pallet::Error<T>
    **/
   PalletStreamError: {
-    _enum: ['SameIdentifierAndHash', 'StreamAlreadyAnchored', 'StreamNotFound', 'StreamRevoked', 'CidAlreadyAnchored', 'StatusChangeNotRequired', 'UnauthorizedOperation', 'StreamLinkNotFound', 'StreamLinkRevoked']
+    _enum: ['StreamAlreadyAnchored', 'StreamNotFound', 'StreamRevoked', 'StatusChangeNotRequired', 'UnauthorizedOperation', 'StreamLinkNotFound', 'StreamLinkRevoked']
   },
   /**
    * Lookup327: pallet_preimage::RequestStatus<sp_core::crypto::AccountId32, Balance>

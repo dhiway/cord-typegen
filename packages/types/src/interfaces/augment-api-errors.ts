@@ -634,14 +634,6 @@ declare module '@polkadot/api-base/types/errors' {
     };
     schema: {
       /**
-       * CID already anchored
-       **/
-      CidAlreadyAnchored: AugmentedError<ApiType>;
-      /**
-       * Genesis Schema revoked
-       **/
-      GenesisSchemaRevoked: AugmentedError<ApiType>;
-      /**
        * Invalid CID encoding.
        **/
       InvalidCidEncoding: AugmentedError<ApiType>;
@@ -651,14 +643,6 @@ declare module '@polkadot/api-base/types/errors' {
       InvalidCidVersion: AugmentedError<ApiType>;
       InvalidSchemaVersion: AugmentedError<ApiType>;
       NoPermissionChangeRequired: AugmentedError<ApiType>;
-      /**
-       * Not a genesis Identifier
-       **/
-      NotGenesisIdentifier: AugmentedError<ApiType>;
-      /**
-       * Hash and Identifier are the same
-       **/
-      SameIdentifierAsGenesis: AugmentedError<ApiType>;
       /**
        * Schema idenfier is not unique
        **/
@@ -715,14 +699,6 @@ declare module '@polkadot/api-base/types/errors' {
       [key: string]: AugmentedError<ApiType>;
     };
     stream: {
-      /**
-       * CID already anchored
-       **/
-      CidAlreadyAnchored: AugmentedError<ApiType>;
-      /**
-       * Hash and Identifier are the same
-       **/
-      SameIdentifierAndHash: AugmentedError<ApiType>;
       /**
        * No stream status change required
        **/

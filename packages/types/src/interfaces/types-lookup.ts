@@ -1348,15 +1348,15 @@ declare module '@polkadot/types/lookup' {
 
   /** @name PalletAuthoritiesCall (191) */
   export interface PalletAuthoritiesCall extends Enum {
-    readonly isRegisterAuthorities: boolean;
-    readonly asRegisterAuthorities: {
+    readonly isRegister: boolean;
+    readonly asRegister: {
       readonly authorities: Vec<AccountId32>;
     } & Struct;
-    readonly isDeregisterValidators: boolean;
-    readonly asDeregisterValidators: {
+    readonly isDeregister: boolean;
+    readonly asDeregister: {
       readonly authorities: Vec<AccountId32>;
     } & Struct;
-    readonly type: 'RegisterAuthorities' | 'DeregisterValidators';
+    readonly type: 'Register' | 'Deregister';
   }
 
   /** @name PalletDemocracyPreimageStatus (195) */
@@ -2041,20 +2041,20 @@ declare module '@polkadot/types/lookup' {
 
   /** @name PalletSchemaCall (273) */
   export interface PalletSchemaCall extends Enum {
-    readonly isAddDelegates: boolean;
-    readonly asAddDelegates: {
+    readonly isAuthorise: boolean;
+    readonly asAuthorise: {
       readonly schema: H256;
       readonly creator: AccountId32;
       readonly delegates: Vec<AccountId32>;
     } & Struct;
-    readonly isRemoveDelegates: boolean;
-    readonly asRemoveDelegates: {
+    readonly isDeauthorise: boolean;
+    readonly asDeauthorise: {
       readonly schema: H256;
       readonly creator: AccountId32;
       readonly delegates: Vec<AccountId32>;
     } & Struct;
-    readonly isAnchor: boolean;
-    readonly asAnchor: {
+    readonly isCreate: boolean;
+    readonly asCreate: {
       readonly identifier: H256;
       readonly creator: AccountId32;
       readonly version: Bytes;
@@ -2062,33 +2062,33 @@ declare module '@polkadot/types/lookup' {
       readonly cid: Option<Bytes>;
       readonly permissioned: bool;
     } & Struct;
-    readonly isUpdateVersion: boolean;
-    readonly asUpdateVersion: {
+    readonly isVersion: boolean;
+    readonly asVersion: {
       readonly identifier: H256;
       readonly updater: AccountId32;
       readonly version: Bytes;
       readonly schemaHash: H256;
       readonly cid: Option<Bytes>;
     } & Struct;
-    readonly isSetStatus: boolean;
-    readonly asSetStatus: {
+    readonly isStatus: boolean;
+    readonly asStatus: {
       readonly identifier: H256;
       readonly updater: AccountId32;
       readonly status: bool;
     } & Struct;
-    readonly isSetPermission: boolean;
-    readonly asSetPermission: {
+    readonly isPermission: boolean;
+    readonly asPermission: {
       readonly identifier: H256;
       readonly updater: AccountId32;
       readonly permissioned: bool;
     } & Struct;
-    readonly type: 'AddDelegates' | 'RemoveDelegates' | 'Anchor' | 'UpdateVersion' | 'SetStatus' | 'SetPermission';
+    readonly type: 'Authorise' | 'Deauthorise' | 'Create' | 'Version' | 'Status' | 'Permission';
   }
 
   /** @name PalletStreamCall (274) */
   export interface PalletStreamCall extends Enum {
-    readonly isAnchor: boolean;
-    readonly asAnchor: {
+    readonly isCreate: boolean;
+    readonly asCreate: {
       readonly identifier: H256;
       readonly creator: AccountId32;
       readonly streamHash: H256;
@@ -2104,13 +2104,13 @@ declare module '@polkadot/types/lookup' {
       readonly streamHash: H256;
       readonly cid: Option<Bytes>;
     } & Struct;
-    readonly isSetStatus: boolean;
-    readonly asSetStatus: {
+    readonly isStatus: boolean;
+    readonly asStatus: {
       readonly identifier: H256;
       readonly updater: AccountId32;
       readonly status: bool;
     } & Struct;
-    readonly type: 'Anchor' | 'Update' | 'SetStatus';
+    readonly type: 'Create' | 'Update' | 'Status';
   }
 
   /** @name PalletPreimageCall (276) */
@@ -2369,14 +2369,10 @@ declare module '@polkadot/types/lookup' {
 
   /** @name PalletSchemaError (324) */
   export interface PalletSchemaError extends Enum {
-    readonly isSameIdentifierAsGenesis: boolean;
-    readonly isNotGenesisIdentifier: boolean;
     readonly isSchemaAlreadyAnchored: boolean;
     readonly isSchemaNotFound: boolean;
     readonly isSchemaRevoked: boolean;
-    readonly isGenesisSchemaRevoked: boolean;
     readonly isInvalidCidEncoding: boolean;
-    readonly isCidAlreadyAnchored: boolean;
     readonly isInvalidCidVersion: boolean;
     readonly isStatusChangeNotRequired: boolean;
     readonly isUnauthorizedOperation: boolean;
@@ -2386,7 +2382,7 @@ declare module '@polkadot/types/lookup' {
     readonly isInvalidSchemaVersion: boolean;
     readonly isSchemaGenesisNotFound: boolean;
     readonly isUnauthorizedDelegation: boolean;
-    readonly type: 'SameIdentifierAsGenesis' | 'NotGenesisIdentifier' | 'SchemaAlreadyAnchored' | 'SchemaNotFound' | 'SchemaRevoked' | 'GenesisSchemaRevoked' | 'InvalidCidEncoding' | 'CidAlreadyAnchored' | 'InvalidCidVersion' | 'StatusChangeNotRequired' | 'UnauthorizedOperation' | 'TooManyDelegates' | 'SchemaNotPermissioned' | 'NoPermissionChangeRequired' | 'InvalidSchemaVersion' | 'SchemaGenesisNotFound' | 'UnauthorizedDelegation';
+    readonly type: 'SchemaAlreadyAnchored' | 'SchemaNotFound' | 'SchemaRevoked' | 'InvalidCidEncoding' | 'InvalidCidVersion' | 'StatusChangeNotRequired' | 'UnauthorizedOperation' | 'TooManyDelegates' | 'SchemaNotPermissioned' | 'NoPermissionChangeRequired' | 'InvalidSchemaVersion' | 'SchemaGenesisNotFound' | 'UnauthorizedDelegation';
   }
 
   /** @name PalletStreamStreamsStreamDetails (325) */
@@ -2403,16 +2399,14 @@ declare module '@polkadot/types/lookup' {
 
   /** @name PalletStreamError (326) */
   export interface PalletStreamError extends Enum {
-    readonly isSameIdentifierAndHash: boolean;
     readonly isStreamAlreadyAnchored: boolean;
     readonly isStreamNotFound: boolean;
     readonly isStreamRevoked: boolean;
-    readonly isCidAlreadyAnchored: boolean;
     readonly isStatusChangeNotRequired: boolean;
     readonly isUnauthorizedOperation: boolean;
     readonly isStreamLinkNotFound: boolean;
     readonly isStreamLinkRevoked: boolean;
-    readonly type: 'SameIdentifierAndHash' | 'StreamAlreadyAnchored' | 'StreamNotFound' | 'StreamRevoked' | 'CidAlreadyAnchored' | 'StatusChangeNotRequired' | 'UnauthorizedOperation' | 'StreamLinkNotFound' | 'StreamLinkRevoked';
+    readonly type: 'StreamAlreadyAnchored' | 'StreamNotFound' | 'StreamRevoked' | 'StatusChangeNotRequired' | 'UnauthorizedOperation' | 'StreamLinkNotFound' | 'StreamLinkRevoked';
   }
 
   /** @name PalletPreimageRequestStatus (327) */
