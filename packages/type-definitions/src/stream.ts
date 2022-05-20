@@ -6,13 +6,12 @@ export default {
   rpc: {},
   types: {
     StreamDetails: {
-      stream_id: 'IdOf',
-      creator: 'CordAccountOf',
+      stream_hash: 'HashOf',
+      controller: 'CordAccountOf',
       holder: 'Option<CordAccountOf>',
       schema: 'Option<IdOf>',
-      cid: 'Option<CidOf>',
-      parent: 'Option<HashOf>',
       link: 'Option<IdOf>',
+      space_id: 'Option<IdentifierOf>',
       revoked: 'StatusOf'
     }
     // PalletStreamStreamsStreamDetails: 'StreamDetails'

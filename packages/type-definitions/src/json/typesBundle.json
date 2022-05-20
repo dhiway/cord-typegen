@@ -61,23 +61,18 @@
                         },
                         "PalletEntityVerifiersVerifierDetails": "VerifierDetails",
                         "SchemaDetails": {
-                            "version": "VersionOf",
-                            "schema_id": "IdOf",
-                            "creator": "CordAccountOf",
-                            "cid": "Option<CidOf>",
-                            "parent": "Option<HashOf>",
-                            "block": "BlockNumber",
-                            "permissioned": "StatusOf",
+                            "schema_hash": "HashOf",
+                            "contoller": "CordAccountOf",
+                            "space_id": "Option<IdentifierOf>",
                             "revoked": "StatusOf"
                         },
                         "StreamDetails": {
-                            "stream_id": "IdOf",
-                            "creator": "CordAccountOf",
+                            "stream_hash": "HashOf",
+                            "controller": "CordAccountOf",
                             "holder": "Option<CordAccountOf>",
                             "schema": "Option<IdOf>",
-                            "cid": "Option<CidOf>",
-                            "parent": "Option<HashOf>",
                             "link": "Option<IdOf>",
+                            "space_id": "Option<IdentifierOf>",
                             "revoked": "StatusOf"
                         }
                     }
@@ -97,24 +92,22 @@
                         "IdentifierOf": "Vec<u8>",
                         "CidOf": "Vec<u8>",
                         "StatusOf": "bool",
+                        "SpaceDetails": {
+                            "contoller": "CordAccountOf"
+                        },
                         "SchemaDetails": {
-                            "version": "VersionOf",
-                            "schema_id": "IdOf",
-                            "creator": "CordAccountOf",
-                            "cid": "Option<CidOf>",
-                            "parent": "Option<HashOf>",
-                            "block": "BlockNumber",
-                            "permissioned": "StatusOf",
+                            "schema_hash": "HashOf",
+                            "contoller": "CordAccountOf",
+                            "space_id": "Option<IdentifierOf>",
                             "revoked": "StatusOf"
                         },
                         "StreamDetails": {
-                            "stream_id": "IdOf",
-                            "creator": "CordAccountOf",
+                            "stream_hash": "HashOf",
+                            "controller": "CordAccountOf",
                             "holder": "Option<CordAccountOf>",
                             "schema": "Option<IdOf>",
-                            "cid": "Option<CidOf>",
-                            "parent": "Option<HashOf>",
                             "link": "Option<IdOf>",
+                            "space_id": "Option<IdentifierOf>",
                             "revoked": "StatusOf"
                         }
                     }

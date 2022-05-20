@@ -11,6 +11,7 @@ import cordv1 from './cordv1';
 import delegation from './delegation';
 import entity from './entity';
 import mark from './mark';
+import space from './space';
 import schema from './schema';
 import { signedExtensions as cordSignedExtensions } from './signedExtensions';
 import stream from './stream';
@@ -30,6 +31,7 @@ const cordDefsV1 = {
 
 const cordDefsV2 = {
   base,
+  space,
   schema,
   stream
 };

@@ -5,11 +5,8 @@
 export default {
   rpc: {},
   types: {
-    SchemaDetails: {
-      schema_hash: 'HashOf',
-      contoller: 'CordAccountOf',
-      space_id: 'Option<IdentifierOf>',
-      revoked: 'StatusOf'
+    SpaceDetails: {
+      contoller: 'CordAccountOf'
     }
   }
 };

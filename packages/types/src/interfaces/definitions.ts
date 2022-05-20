@@ -4,5 +4,6 @@
 export { default as base } from './base/definitions';
 export { default as runtime } from './runtime/definitions';
 export { default as entity } from './entity/definitions';
+export { default as space } from './space/definitions';
 export { default as schema } from './schema/definitions';
 export { default as stream } from './stream/definitions';

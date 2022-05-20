@@ -5,6 +5,13 @@ import type { ApiTypes } from '@polkadot/api-base/types';
 
 declare module '@polkadot/api-base/types/errors' {
   export interface AugmentedErrors<ApiType extends ApiTypes> {
+    authorities: {
+      NoAuthorities: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
     authorship: {
       /**
        * The uncle is genesis.
@@ -34,24 +41,6 @@ declare module '@polkadot/api-base/types/errors' {
        * Uncles already set in the block.
        **/
       UnclesAlreadySet: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
-    babe: {
-      /**
-       * A given equivocation report is valid but already previously reported.
-       **/
-      DuplicateOffenceReport: AugmentedError<ApiType>;
-      /**
-       * An equivocation proof provided as part of an equivocation report is invalid.
-       **/
-      InvalidEquivocationProof: AugmentedError<ApiType>;
-      /**
-       * A key ownership proof provided as part of an equivocation report is invalid.
-       **/
-      InvalidKeyOwnershipProof: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -90,6 +79,76 @@ declare module '@polkadot/api-base/types/errors' {
        * Vesting balance too high to send value
        **/
       VestingBalance: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    builder: {
+      /**
+       * Builder balance is too low.
+       **/
+      InsufficientBalance: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    builderCouncil: {
+      /**
+       * Members are already initialized!
+       **/
+      AlreadyInitialized: AugmentedError<ApiType>;
+      /**
+       * Duplicate proposals not allowed
+       **/
+      DuplicateProposal: AugmentedError<ApiType>;
+      /**
+       * Duplicate vote ignored
+       **/
+      DuplicateVote: AugmentedError<ApiType>;
+      /**
+       * Account is not a member
+       **/
+      NotMember: AugmentedError<ApiType>;
+      /**
+       * Proposal must exist
+       **/
+      ProposalMissing: AugmentedError<ApiType>;
+      /**
+       * The close call was made too early, before the end of the voting.
+       **/
+      TooEarly: AugmentedError<ApiType>;
+      /**
+       * There can only be a maximum of `MaxProposals` active proposals.
+       **/
+      TooManyProposals: AugmentedError<ApiType>;
+      /**
+       * Mismatched index
+       **/
+      WrongIndex: AugmentedError<ApiType>;
+      /**
+       * The given length bound for the proposal was too low.
+       **/
+      WrongProposalLength: AugmentedError<ApiType>;
+      /**
+       * The given weight bound for the proposal was too low.
+       **/
+      WrongProposalWeight: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    builderCouncilMembership: {
+      /**
+       * Already a member.
+       **/
+      AlreadyMember: AugmentedError<ApiType>;
+      /**
+       * Not a member.
+       **/
+      NotMember: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -136,6 +195,20 @@ declare module '@polkadot/api-base/types/errors' {
        * The given weight bound for the proposal was too low.
        **/
       WrongProposalWeight: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    councilMembership: {
+      /**
+       * Already a member.
+       **/
+      AlreadyMember: AugmentedError<ApiType>;
+      /**
+       * Not a member.
+       **/
+      NotMember: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -260,75 +333,71 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
-    elections: {
+    foundation: {
       /**
-       * Duplicated candidate submission.
+       * treasury balance is too low.
        **/
-      DuplicatedCandidate: AugmentedError<ApiType>;
+      InsufficientBalance: AugmentedError<ApiType>;
       /**
-       * Candidate does not have enough funds.
+       * Generic error
        **/
-      InsufficientCandidateFunds: AugmentedError<ApiType>;
+      [key: string]: AugmentedError<ApiType>;
+    };
+    foundationCouncil: {
       /**
-       * The renouncing origin presented a wrong `Renouncing` parameter.
+       * Members are already initialized!
        **/
-      InvalidRenouncing: AugmentedError<ApiType>;
+      AlreadyInitialized: AugmentedError<ApiType>;
       /**
-       * Prediction regarding replacement after member removal is wrong.
+       * Duplicate proposals not allowed
        **/
-      InvalidReplacement: AugmentedError<ApiType>;
+      DuplicateProposal: AugmentedError<ApiType>;
       /**
-       * The provided count of number of votes is incorrect.
+       * Duplicate vote ignored
        **/
-      InvalidVoteCount: AugmentedError<ApiType>;
+      DuplicateVote: AugmentedError<ApiType>;
       /**
-       * The provided count of number of candidates is incorrect.
+       * Account is not a member
        **/
-      InvalidWitnessData: AugmentedError<ApiType>;
+      NotMember: AugmentedError<ApiType>;
       /**
-       * Cannot vote with stake less than minimum balance.
+       * Proposal must exist
        **/
-      LowBalance: AugmentedError<ApiType>;
+      ProposalMissing: AugmentedError<ApiType>;
       /**
-       * Cannot vote more than maximum allowed.
+       * The close call was made too early, before the end of the voting.
        **/
-      MaximumVotesExceeded: AugmentedError<ApiType>;
+      TooEarly: AugmentedError<ApiType>;
       /**
-       * Member cannot re-submit candidacy.
+       * There can only be a maximum of `MaxProposals` active proposals.
        **/
-      MemberSubmit: AugmentedError<ApiType>;
+      TooManyProposals: AugmentedError<ApiType>;
       /**
-       * Must be a voter.
+       * Mismatched index
        **/
-      MustBeVoter: AugmentedError<ApiType>;
+      WrongIndex: AugmentedError<ApiType>;
+      /**
+       * The given length bound for the proposal was too low.
+       **/
+      WrongProposalLength: AugmentedError<ApiType>;
+      /**
+       * The given weight bound for the proposal was too low.
+       **/
+      WrongProposalWeight: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    foundationCouncilMembership: {
+      /**
+       * Already a member.
+       **/
+      AlreadyMember: AugmentedError<ApiType>;
       /**
        * Not a member.
        **/
       NotMember: AugmentedError<ApiType>;
-      /**
-       * Must vote for at least one candidate.
-       **/
-      NoVotes: AugmentedError<ApiType>;
-      /**
-       * Cannot report self.
-       **/
-      ReportSelf: AugmentedError<ApiType>;
-      /**
-       * Runner cannot re-submit candidacy.
-       **/
-      RunnerUpSubmit: AugmentedError<ApiType>;
-      /**
-       * Cannot vote more than candidates.
-       **/
-      TooManyVotes: AugmentedError<ApiType>;
-      /**
-       * Voter can not pay voting bond.
-       **/
-      UnableToPayBond: AugmentedError<ApiType>;
-      /**
-       * Cannot vote when no candidates or members exist.
-       **/
-      UnableToVote: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -365,76 +434,6 @@ declare module '@polkadot/api-base/types/errors' {
        * Cannot signal forced change so soon after last.
        **/
       TooSoon: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
-    identity: {
-      /**
-       * Account ID is already named.
-       **/
-      AlreadyClaimed: AugmentedError<ApiType>;
-      /**
-       * Empty index.
-       **/
-      EmptyIndex: AugmentedError<ApiType>;
-      /**
-       * Fee is changed.
-       **/
-      FeeChanged: AugmentedError<ApiType>;
-      /**
-       * The index is invalid.
-       **/
-      InvalidIndex: AugmentedError<ApiType>;
-      /**
-       * Invalid judgement.
-       **/
-      InvalidJudgement: AugmentedError<ApiType>;
-      /**
-       * The target is invalid.
-       **/
-      InvalidTarget: AugmentedError<ApiType>;
-      /**
-       * Judgement given.
-       **/
-      JudgementGiven: AugmentedError<ApiType>;
-      /**
-       * No identity found.
-       **/
-      NoIdentity: AugmentedError<ApiType>;
-      /**
-       * Account isn't found.
-       **/
-      NotFound: AugmentedError<ApiType>;
-      /**
-       * Account isn't named.
-       **/
-      NotNamed: AugmentedError<ApiType>;
-      /**
-       * Sub-account isn't owned by sender.
-       **/
-      NotOwned: AugmentedError<ApiType>;
-      /**
-       * Sender is not a sub-account.
-       **/
-      NotSub: AugmentedError<ApiType>;
-      /**
-       * Sticky judgement.
-       **/
-      StickyJudgement: AugmentedError<ApiType>;
-      /**
-       * Too many additional fields.
-       **/
-      TooManyFields: AugmentedError<ApiType>;
-      /**
-       * Maximum amount of registrars reached. Cannot add any more.
-       **/
-      TooManyRegistrars: AugmentedError<ApiType>;
-      /**
-       * Too many subs-accounts.
-       **/
-      TooManySubAccounts: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -572,44 +571,6 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
-    proxy: {
-      /**
-       * Account is already a proxy.
-       **/
-      Duplicate: AugmentedError<ApiType>;
-      /**
-       * Call may not be made by proxy because it may escalate its privileges.
-       **/
-      NoPermission: AugmentedError<ApiType>;
-      /**
-       * Cannot add self as proxy.
-       **/
-      NoSelfProxy: AugmentedError<ApiType>;
-      /**
-       * Proxy registration not found.
-       **/
-      NotFound: AugmentedError<ApiType>;
-      /**
-       * Sender is not a proxy of the account to be proxied.
-       **/
-      NotProxy: AugmentedError<ApiType>;
-      /**
-       * There are too many proxies registered or too many announcements pending.
-       **/
-      TooMany: AugmentedError<ApiType>;
-      /**
-       * Announcement, if made at all, was made too recently.
-       **/
-      Unannounced: AugmentedError<ApiType>;
-      /**
-       * A call which is incompatible with the proxy type's filter was attempted.
-       **/
-      Unproxyable: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
     scheduler: {
       /**
        * Failed to schedule a call
@@ -633,34 +594,22 @@ declare module '@polkadot/api-base/types/errors' {
       [key: string]: AugmentedError<ApiType>;
     };
     schema: {
-      /**
-       * Invalid CID encoding.
-       **/
-      InvalidCidEncoding: AugmentedError<ApiType>;
-      /**
-       * Invalid CID version
-       **/
-      InvalidCidVersion: AugmentedError<ApiType>;
-      InvalidSchemaVersion: AugmentedError<ApiType>;
-      NoPermissionChangeRequired: AugmentedError<ApiType>;
+      InvalidIdentifier: AugmentedError<ApiType>;
+      InvalidIdentifierLength: AugmentedError<ApiType>;
+      InvalidIdentifierPrefix: AugmentedError<ApiType>;
       /**
        * Schema idenfier is not unique
        **/
       SchemaAlreadyAnchored: AugmentedError<ApiType>;
-      SchemaGenesisNotFound: AugmentedError<ApiType>;
       /**
        * Schema idenfier not found
        **/
       SchemaNotFound: AugmentedError<ApiType>;
-      SchemaNotPermissioned: AugmentedError<ApiType>;
       /**
        * Schema revoked
        **/
       SchemaRevoked: AugmentedError<ApiType>;
-      /**
-       * no status change required
-       **/
-      StatusChangeNotRequired: AugmentedError<ApiType>;
+      SchemaSpaceMismatch: AugmentedError<ApiType>;
       TooManyDelegates: AugmentedError<ApiType>;
       UnauthorizedDelegation: AugmentedError<ApiType>;
       /**
@@ -698,11 +647,34 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
-    stream: {
+    space: {
+      InvalidIdentifier: AugmentedError<ApiType>;
+      InvalidIdentifierLength: AugmentedError<ApiType>;
+      InvalidIdentifierPrefix: AugmentedError<ApiType>;
       /**
-       * No stream status change required
+       * Space idenfier is not unique
        **/
-      StatusChangeNotRequired: AugmentedError<ApiType>;
+      SpaceAlreadyAnchored: AugmentedError<ApiType>;
+      /**
+       * Space idenfier not found
+       **/
+      SpaceNotFound: AugmentedError<ApiType>;
+      TooManyDelegates: AugmentedError<ApiType>;
+      UnauthorizedDelegation: AugmentedError<ApiType>;
+      /**
+       * Only when the author is not the controller.
+       **/
+      UnauthorizedOperation: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    stream: {
+      ExpiredSignature: AugmentedError<ApiType>;
+      HashAlreadyAnchored: AugmentedError<ApiType>;
+      InvalidIdentifier: AugmentedError<ApiType>;
+      InvalidSignature: AugmentedError<ApiType>;
       /**
        * Stream idenfier is not unique
        **/
@@ -723,6 +695,7 @@ declare module '@polkadot/api-base/types/errors' {
        * Stream idenfier marked inactive
        **/
       StreamRevoked: AugmentedError<ApiType>;
+      StreamSpaceMismatch: AugmentedError<ApiType>;
       /**
        * Only when the author is not the controller/delegate.
        **/
