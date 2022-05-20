@@ -1,7 +1,7 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import type { CordAccountOf, HashOf, IdentifierOf, StatusOf } from '@cord.network/types/interfaces/base';
+import type { CordAccountOf, HashOf, IdentifierOf, StatusOf } from '@cord.network/known-types/interfaces/base';
 import type { Option, Struct } from '@polkadot/types-codec';
 
 /** @name SchemaDetails */

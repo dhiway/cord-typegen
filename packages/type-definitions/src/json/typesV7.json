@@ -9,7 +9,9 @@
     "CidOf": "Vec<u8>",
     "StatusOf": "bool",
     "SpaceDetails": {
-        "contoller": "CordAccountOf"
+        "stream_hash": "HashOf",
+        "contoller": "CordAccountOf",
+        "archived": "StatusOf"
     },
     "SchemaDetails": {
         "schema_hash": "HashOf",
@@ -21,9 +23,9 @@
         "stream_hash": "HashOf",
         "controller": "CordAccountOf",
         "holder": "Option<CordAccountOf>",
-        "schema": "Option<IdOf>",
-        "link": "Option<IdOf>",
-        "space_id": "Option<IdentifierOf>",
+        "schema": "Option<IdentifierOf>",
+        "link": "Option<IdentifierOf>",
+        "space": "Option<IdentifierOf>",
         "revoked": "StatusOf"
     }
 }

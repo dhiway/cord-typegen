@@ -9,9 +9,9 @@ export default {
       stream_hash: 'HashOf',
       controller: 'CordAccountOf',
       holder: 'Option<CordAccountOf>',
-      schema: 'Option<IdOf>',
-      link: 'Option<IdOf>',
-      space_id: 'Option<IdentifierOf>',
+      schema: 'Option<IdentifierOf>',
+      link: 'Option<IdentifierOf>',
+      space: 'Option<IdentifierOf>',
       revoked: 'StatusOf'
     }
     // PalletStreamStreamsStreamDetails: 'StreamDetails'

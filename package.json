@@ -9,20 +9,20 @@
     "url": "https://github.com/dhiway/cord-typegen.git"
   },
   "sideEffects": false,
-  "version": "0.7.2-0",
+  "version": "0.7.2-2",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
     "build": "yarn build:interfaces && polkadot-dev-build-ts",
-    "build:interfaces": "node -r ts-node/register -r tsconfig-paths/register packages/types/scripts/generate.ts && node -r ts-node/register -r tsconfig-paths/register packages/type-definitions/scripts/generate.ts",
+    "build:interfaces": "node -r ts-node/register -r tsconfig-paths/register packages/known-types/scripts/generate.ts && node -r ts-node/register -r tsconfig-paths/register packages/type-definitions/scripts/generate.ts",
     "build:release": "ts-node packages/scripts/cord-types-build.mjs",
     "check-deps": "./node_modules/@open-web3/util/scripts/check-deps.js yarn.lock @polkadot/ @open-web3/",
     "clean": "polkadot-dev-clean-build",
     "lint": "polkadot-dev-run-lint",
     "postinstall": "polkadot-dev-yarn-only",
     "test": "polkadot-dev-run-test --passWithNoTests",
-    "update-metadata": "ts-node --project ./tsconfig.json packages/types/scripts/updateMetadata.ts"
+    "update-metadata": "ts-node --project ./tsconfig.json packages/known-types/scripts/updateMetadata.ts"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
@@ -52,10 +52,10 @@
     "typescript": "^4.6.4"
   },
   "resolutions": {
-    "@polkadot/api": "^8.3.2",
-    "@polkadot/types": "^8.3.2",
+    "@polkadot/api": "7.12.1",
+    "@polkadot/types": "7.12.1",
     "styled-components": "^5.3.1",
     "typescript": "^4.6.4"
   },
-  "stableVersion": "0.7.1"
+  "stableVersion": "0.7.2-1"
 }

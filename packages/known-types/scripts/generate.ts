@@ -24,7 +24,7 @@ const { runtime, ...substrateDefinitions } = defaultDefinitions;
 
 const definitions = {
   '@polkadot/types/interfaces': substrateDefinitions,
-  '@cord.network/types/interfaces': cordDefinitions
+  '@cord.network/known-types/interfaces': cordDefinitions
 } as any;
 
 const customLookupDefinitions = {
@@ -33,41 +33,41 @@ const customLookupDefinitions = {
   types: require('../src/interfaces/lookup.ts').default
 } as Definitions;
 
-generateTsDef(definitions, 'packages/types/src/interfaces', '@cord.network/types/interfaces');
-generateInterfaceTypes(definitions, 'packages/types/src/interfaces/augment-types.ts');
+generateTsDef(definitions, 'packages/known-types/src/interfaces', '@cord.network/known-types/interfaces');
+generateInterfaceTypes(definitions, 'packages/known-types/src/interfaces/augment-types.ts');
 generateDefaultConsts(
-  'packages/types/src/interfaces/augment-api-consts.ts',
+  'packages/known-types/src/interfaces/augment-api-consts.ts',
   metadata,
   definitions,
   false,
   customLookupDefinitions
 );
-generateDefaultLookup('packages/types/src/interfaces', metadata);
+generateDefaultLookup('packages/known-types/src/interfaces', metadata);
 generateDefaultConsts(
-  'packages/types/src/interfaces/augment-api-consts.ts',
+  'packages/known-types/src/interfaces/augment-api-consts.ts',
   metadata,
   definitions,
   false,
   customLookupDefinitions
 );
-generateDefaultErrors('packages/types/src/interfaces/augment-api-errors.ts', metadata, definitions);
+generateDefaultErrors('packages/known-types/src/interfaces/augment-api-errors.ts', metadata, definitions);
 generateDefaultEvents(
-  'packages/types/src/interfaces/augment-api-events.ts',
+  'packages/known-types/src/interfaces/augment-api-events.ts',
   metadata,
   definitions,
   false,
   customLookupDefinitions
 );
 generateDefaultQuery(
-  'packages/types/src/interfaces/augment-api-query.ts',
+  'packages/known-types/src/interfaces/augment-api-query.ts',
   metadata,
   definitions,
   false,
   customLookupDefinitions
 );
-generateDefaultRpc('packages/types/src/interfaces/augment-api-rpc.ts', definitions);
+generateDefaultRpc('packages/known-types/src/interfaces/augment-api-rpc.ts', definitions);
 generateDefaultTx(
-  'packages/types/src/interfaces/augment-api-tx.ts',
+  'packages/known-types/src/interfaces/augment-api-tx.ts',
   metadata,
   definitions,
   false,

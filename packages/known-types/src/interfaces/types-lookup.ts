@@ -202,12 +202,17 @@ declare module '@polkadot/types/lookup' {
       readonly error: SpRuntimeDispatchError;
     } & Struct;
     readonly isBatchCompleted: boolean;
+    readonly isBatchCompletedWithErrors: boolean;
     readonly isItemCompleted: boolean;
+    readonly isItemFailed: boolean;
+    readonly asItemFailed: {
+      readonly error: SpRuntimeDispatchError;
+    } & Struct;
     readonly isDispatchedAs: boolean;
     readonly asDispatchedAs: {
       readonly result: Result<Null, SpRuntimeDispatchError>;
     } & Struct;
-    readonly type: 'BatchInterrupted' | 'BatchCompleted' | 'ItemCompleted' | 'DispatchedAs';
+    readonly type: 'BatchInterrupted' | 'BatchCompleted' | 'BatchCompletedWithErrors' | 'ItemCompleted' | 'ItemFailed' | 'DispatchedAs';
   }
 
   /** @name PalletMultisigEvent (34) */
@@ -646,15 +651,19 @@ declare module '@polkadot/types/lookup' {
 
   /** @name PalletSpaceEvent (71) */
   export interface PalletSpaceEvent extends Enum {
-    readonly isCreate: boolean;
-    readonly asCreate: ITuple<[H256, Bytes, AccountId32]>;
-    readonly isTransfer: boolean;
-    readonly asTransfer: ITuple<[Bytes, AccountId32]>;
     readonly isAddDelegates: boolean;
     readonly asAddDelegates: ITuple<[Bytes, AccountId32]>;
     readonly isRemoveDelegates: boolean;
     readonly asRemoveDelegates: ITuple<[Bytes, AccountId32]>;
-    readonly type: 'Create' | 'Transfer' | 'AddDelegates' | 'RemoveDelegates';
+    readonly isCreate: boolean;
+    readonly asCreate: ITuple<[H256, Bytes, AccountId32]>;
+    readonly isTransfer: boolean;
+    readonly asTransfer: ITuple<[Bytes, AccountId32]>;
+    readonly isArchive: boolean;
+    readonly asArchive: ITuple<[Bytes, AccountId32]>;
+    readonly isRestore: boolean;
+    readonly asRestore: ITuple<[Bytes, AccountId32]>;
+    readonly type: 'AddDelegates' | 'RemoveDelegates' | 'Create' | 'Transfer' | 'Archive' | 'Restore';
   }
 
   /** @name PalletSchemaEvent (72) */
@@ -917,7 +926,11 @@ declare module '@polkadot/types/lookup' {
       readonly asOrigin: CordRuntimeOriginCaller;
       readonly call: Call;
     } & Struct;
-    readonly type: 'Batch' | 'AsDerivative' | 'BatchAll' | 'DispatchAs';
+    readonly isForceBatch: boolean;
+    readonly asForceBatch: {
+      readonly calls: Vec<Call>;
+    } & Struct;
+    readonly type: 'Batch' | 'AsDerivative' | 'BatchAll' | 'DispatchAs' | 'ForceBatch';
   }
 
   /** @name CordRuntimeOriginCaller (112) */
@@ -1413,7 +1426,11 @@ declare module '@polkadot/types/lookup' {
     readonly asApproveProposal: {
       readonly proposalId: Compact<u32>;
     } & Struct;
-    readonly type: 'ProposeSpend' | 'RejectProposal' | 'ApproveProposal';
+    readonly isRemoveApproval: boolean;
+    readonly asRemoveApproval: {
+      readonly proposalId: Compact<u32>;
+    } & Struct;
+    readonly type: 'ProposeSpend' | 'RejectProposal' | 'ApproveProposal' | 'RemoveApproval';
   }
 
   /** @name PalletImOnlineCall (162) */
@@ -1475,54 +1492,104 @@ declare module '@polkadot/types/lookup' {
   export interface PalletSpaceCall extends Enum {
     readonly isAuthorise: boolean;
     readonly asAuthorise: {
+      readonly creator: AccountId32;
       readonly space: Bytes;
+      readonly txHash: H256;
       readonly delegates: Vec<AccountId32>;
+      readonly txSignature: SpRuntimeMultiSignature;
     } & Struct;
     readonly isDeauthorise: boolean;
     readonly asDeauthorise: {
+      readonly updater: AccountId32;
       readonly space: Bytes;
+      readonly txHash: H256;
       readonly delegates: Vec<AccountId32>;
+      readonly txSignature: SpRuntimeMultiSignature;
     } & Struct;
     readonly isCreate: boolean;
     readonly asCreate: {
+      readonly creator: AccountId32;
       readonly spaceHash: H256;
+      readonly txSignature: SpRuntimeMultiSignature;
+    } & Struct;
+    readonly isArchive: boolean;
+    readonly asArchive: {
+      readonly updater: AccountId32;
+      readonly space: Bytes;
+      readonly txHash: H256;
+      readonly txSignature: SpRuntimeMultiSignature;
+    } & Struct;
+    readonly isRestore: boolean;
+    readonly asRestore: {
+      readonly updater: AccountId32;
+      readonly space: Bytes;
+      readonly txHash: H256;
+      readonly txSignature: SpRuntimeMultiSignature;
     } & Struct;
     readonly isTransfer: boolean;
     readonly asTransfer: {
-      readonly identifier: Bytes;
+      readonly space: Bytes;
+      readonly updater: AccountId32;
       readonly transferTo: AccountId32;
+      readonly txHash: H256;
+      readonly txSignature: SpRuntimeMultiSignature;
     } & Struct;
-    readonly type: 'Authorise' | 'Deauthorise' | 'Create' | 'Transfer';
+    readonly type: 'Authorise' | 'Deauthorise' | 'Create' | 'Archive' | 'Restore' | 'Transfer';
   }
 
-  /** @name PalletSchemaCall (173) */
+  /** @name SpRuntimeMultiSignature (173) */
+  export interface SpRuntimeMultiSignature extends Enum {
+    readonly isEd25519: boolean;
+    readonly asEd25519: SpCoreEd25519Signature;
+    readonly isSr25519: boolean;
+    readonly asSr25519: SpCoreSr25519Signature;
+    readonly isEcdsa: boolean;
+    readonly asEcdsa: SpCoreEcdsaSignature;
+    readonly type: 'Ed25519' | 'Sr25519' | 'Ecdsa';
+  }
+
+  /** @name SpCoreEcdsaSignature (174) */
+  export interface SpCoreEcdsaSignature extends U8aFixed {}
+
+  /** @name PalletSchemaCall (176) */
   export interface PalletSchemaCall extends Enum {
     readonly isAuthorise: boolean;
     readonly asAuthorise: {
+      readonly creator: AccountId32;
       readonly schema: Bytes;
+      readonly txHash: H256;
       readonly delegates: Vec<AccountId32>;
-      readonly spaceId: Option<Bytes>;
+      readonly space: Option<Bytes>;
+      readonly txSignature: SpRuntimeMultiSignature;
     } & Struct;
     readonly isDeauthorise: boolean;
     readonly asDeauthorise: {
+      readonly updater: AccountId32;
       readonly schema: Bytes;
-      readonly spaceId: Option<Bytes>;
+      readonly txHash: H256;
       readonly delegates: Vec<AccountId32>;
+      readonly space: Option<Bytes>;
+      readonly txSignature: SpRuntimeMultiSignature;
     } & Struct;
     readonly isCreate: boolean;
     readonly asCreate: {
+      readonly creator: AccountId32;
       readonly schemaHash: H256;
-      readonly spaceId: Option<Bytes>;
+      readonly space: Option<Bytes>;
+      readonly txSignature: SpRuntimeMultiSignature;
     } & Struct;
     readonly isRevoke: boolean;
     readonly asRevoke: {
-      readonly identifier: Bytes;
-      readonly spaceId: Option<Bytes>;
+      readonly updater: AccountId32;
+      readonly schema: Bytes;
+      readonly txHash: H256;
+      readonly space: Option<Bytes>;
+      readonly txSignature: SpRuntimeMultiSignature;
     } & Struct;
     readonly type: 'Authorise' | 'Deauthorise' | 'Create' | 'Revoke';
   }
 
-  /** @name PalletStreamCall (174) */
+  /** @name PalletStreamCall (177) */
   export interface PalletStreamCall extends Enum {
     readonly isCreate: boolean;
     readonly asCreate: {
@@ -1531,7 +1598,7 @@ declare module '@polkadot/types/lookup' {
       readonly holder: Option<AccountId32>;
       readonly schema: Option<Bytes>;
       readonly link: Option<Bytes>;
-      readonly spaceId: Option<Bytes>;
+      readonly space: Option<Bytes>;
       readonly txSignature: SpRuntimeMultiSignature;
     } & Struct;
     readonly isUpdate: boolean;
@@ -1540,7 +1607,7 @@ declare module '@polkadot/types/lookup' {
       readonly updater: AccountId32;
       readonly streamHash: H256;
       readonly txSignature: SpRuntimeMultiSignature;
-      readonly spaceId: Option<Bytes>;
+      readonly space: Option<Bytes>;
     } & Struct;
     readonly isRevoke: boolean;
     readonly asRevoke: {
@@ -1548,12 +1615,12 @@ declare module '@polkadot/types/lookup' {
       readonly updater: AccountId32;
       readonly txHash: H256;
       readonly txSignature: SpRuntimeMultiSignature;
-      readonly spaceId: Option<Bytes>;
+      readonly space: Option<Bytes>;
     } & Struct;
     readonly isRemoveSpaceStream: boolean;
     readonly asRemoveSpaceStream: {
       readonly identifier: Bytes;
-      readonly spaceId: Bytes;
+      readonly space: Bytes;
     } & Struct;
     readonly isCouncilRemove: boolean;
     readonly asCouncilRemove: {
@@ -1568,20 +1635,6 @@ declare module '@polkadot/types/lookup' {
     } & Struct;
     readonly type: 'Create' | 'Update' | 'Revoke' | 'RemoveSpaceStream' | 'CouncilRemove' | 'Digest';
   }
-
-  /** @name SpRuntimeMultiSignature (175) */
-  export interface SpRuntimeMultiSignature extends Enum {
-    readonly isEd25519: boolean;
-    readonly asEd25519: SpCoreEd25519Signature;
-    readonly isSr25519: boolean;
-    readonly asSr25519: SpCoreSr25519Signature;
-    readonly isEcdsa: boolean;
-    readonly asEcdsa: SpCoreEcdsaSignature;
-    readonly type: 'Ed25519' | 'Sr25519' | 'Ecdsa';
-  }
-
-  /** @name SpCoreEcdsaSignature (176) */
-  export interface SpCoreEcdsaSignature extends U8aFixed {}
 
   /** @name PalletSudoCall (178) */
   export interface PalletSudoCall extends Enum {
@@ -1968,7 +2021,8 @@ declare module '@polkadot/types/lookup' {
     readonly isInsufficientProposersBalance: boolean;
     readonly isInvalidIndex: boolean;
     readonly isTooManyApprovals: boolean;
-    readonly type: 'InsufficientProposersBalance' | 'InvalidIndex' | 'TooManyApprovals';
+    readonly isProposalNotApproved: boolean;
+    readonly type: 'InsufficientProposersBalance' | 'InvalidIndex' | 'TooManyApprovals' | 'ProposalNotApproved';
   }
 
   /** @name PalletImOnlineBoundedOpaqueNetworkState (260) */
@@ -2002,28 +2056,39 @@ declare module '@polkadot/types/lookup' {
     readonly type: 'InsufficientBalance';
   }
 
-  /** @name PalletSpaceError (274) */
+  /** @name PalletSpaceSpacesSpaceDetails (273) */
+  export interface PalletSpaceSpacesSpaceDetails extends Struct {
+    readonly spaceHash: H256;
+    readonly controller: AccountId32;
+    readonly archived: bool;
+  }
+
+  /** @name PalletSpaceError (275) */
   export interface PalletSpaceError extends Enum {
     readonly isSpaceAlreadyAnchored: boolean;
     readonly isSpaceNotFound: boolean;
     readonly isUnauthorizedOperation: boolean;
     readonly isTooManyDelegates: boolean;
     readonly isUnauthorizedDelegation: boolean;
-    readonly isInvalidIdentifier: boolean;
+    readonly isInvalidSpaceIdentifier: boolean;
     readonly isInvalidIdentifierLength: boolean;
     readonly isInvalidIdentifierPrefix: boolean;
-    readonly type: 'SpaceAlreadyAnchored' | 'SpaceNotFound' | 'UnauthorizedOperation' | 'TooManyDelegates' | 'UnauthorizedDelegation' | 'InvalidIdentifier' | 'InvalidIdentifierLength' | 'InvalidIdentifierPrefix';
+    readonly isInvalidSignature: boolean;
+    readonly isArchivedSpace: boolean;
+    readonly isSpaceAlreadyArchived: boolean;
+    readonly isSpaceNotArchived: boolean;
+    readonly type: 'SpaceAlreadyAnchored' | 'SpaceNotFound' | 'UnauthorizedOperation' | 'TooManyDelegates' | 'UnauthorizedDelegation' | 'InvalidSpaceIdentifier' | 'InvalidIdentifierLength' | 'InvalidIdentifierPrefix' | 'InvalidSignature' | 'ArchivedSpace' | 'SpaceAlreadyArchived' | 'SpaceNotArchived';
   }
 
-  /** @name PalletSchemaSchemasSchemaDetails (275) */
+  /** @name PalletSchemaSchemasSchemaDetails (276) */
   export interface PalletSchemaSchemasSchemaDetails extends Struct {
     readonly schemaHash: H256;
     readonly controller: AccountId32;
-    readonly spaceId: Option<Bytes>;
+    readonly space: Option<Bytes>;
     readonly revoked: bool;
   }
 
-  /** @name PalletSchemaError (277) */
+  /** @name PalletSchemaError (278) */
   export interface PalletSchemaError extends Enum {
     readonly isSchemaAlreadyAnchored: boolean;
     readonly isSchemaNotFound: boolean;
@@ -2031,25 +2096,26 @@ declare module '@polkadot/types/lookup' {
     readonly isUnauthorizedOperation: boolean;
     readonly isTooManyDelegates: boolean;
     readonly isUnauthorizedDelegation: boolean;
-    readonly isInvalidIdentifier: boolean;
+    readonly isInvalidSchemaIdentifier: boolean;
     readonly isInvalidIdentifierLength: boolean;
     readonly isInvalidIdentifierPrefix: boolean;
     readonly isSchemaSpaceMismatch: boolean;
-    readonly type: 'SchemaAlreadyAnchored' | 'SchemaNotFound' | 'SchemaRevoked' | 'UnauthorizedOperation' | 'TooManyDelegates' | 'UnauthorizedDelegation' | 'InvalidIdentifier' | 'InvalidIdentifierLength' | 'InvalidIdentifierPrefix' | 'SchemaSpaceMismatch';
+    readonly isInvalidSignature: boolean;
+    readonly type: 'SchemaAlreadyAnchored' | 'SchemaNotFound' | 'SchemaRevoked' | 'UnauthorizedOperation' | 'TooManyDelegates' | 'UnauthorizedDelegation' | 'InvalidSchemaIdentifier' | 'InvalidIdentifierLength' | 'InvalidIdentifierPrefix' | 'SchemaSpaceMismatch' | 'InvalidSignature';
   }
 
-  /** @name PalletStreamStreamsStreamDetails (278) */
+  /** @name PalletStreamStreamsStreamDetails (279) */
   export interface PalletStreamStreamsStreamDetails extends Struct {
     readonly streamHash: H256;
     readonly controller: AccountId32;
     readonly holder: Option<AccountId32>;
     readonly schema: Option<Bytes>;
     readonly link: Option<Bytes>;
-    readonly spaceId: Option<Bytes>;
+    readonly space: Option<Bytes>;
     readonly revoked: bool;
   }
 
-  /** @name PalletStreamError (279) */
+  /** @name PalletStreamError (280) */
   export interface PalletStreamError extends Enum {
     readonly isStreamAlreadyAnchored: boolean;
     readonly isStreamNotFound: boolean;
@@ -2060,39 +2126,40 @@ declare module '@polkadot/types/lookup' {
     readonly isInvalidSignature: boolean;
     readonly isHashAlreadyAnchored: boolean;
     readonly isExpiredSignature: boolean;
-    readonly isInvalidIdentifier: boolean;
+    readonly isInvalidStreamIdentifier: boolean;
     readonly isStreamSpaceMismatch: boolean;
-    readonly type: 'StreamAlreadyAnchored' | 'StreamNotFound' | 'StreamRevoked' | 'UnauthorizedOperation' | 'StreamLinkNotFound' | 'StreamLinkRevoked' | 'InvalidSignature' | 'HashAlreadyAnchored' | 'ExpiredSignature' | 'InvalidIdentifier' | 'StreamSpaceMismatch';
+    readonly isDigestHashAlreadyAnchored: boolean;
+    readonly type: 'StreamAlreadyAnchored' | 'StreamNotFound' | 'StreamRevoked' | 'UnauthorizedOperation' | 'StreamLinkNotFound' | 'StreamLinkRevoked' | 'InvalidSignature' | 'HashAlreadyAnchored' | 'ExpiredSignature' | 'InvalidStreamIdentifier' | 'StreamSpaceMismatch' | 'DigestHashAlreadyAnchored';
   }
 
-  /** @name PalletSudoError (280) */
+  /** @name PalletSudoError (281) */
   export interface PalletSudoError extends Enum {
     readonly isRequireSudo: boolean;
     readonly type: 'RequireSudo';
   }
 
-  /** @name FrameSystemExtensionsCheckNonZeroSender (283) */
+  /** @name FrameSystemExtensionsCheckNonZeroSender (284) */
   export type FrameSystemExtensionsCheckNonZeroSender = Null;
 
-  /** @name FrameSystemExtensionsCheckSpecVersion (284) */
+  /** @name FrameSystemExtensionsCheckSpecVersion (285) */
   export type FrameSystemExtensionsCheckSpecVersion = Null;
 
-  /** @name FrameSystemExtensionsCheckTxVersion (285) */
+  /** @name FrameSystemExtensionsCheckTxVersion (286) */
   export type FrameSystemExtensionsCheckTxVersion = Null;
 
-  /** @name FrameSystemExtensionsCheckGenesis (286) */
+  /** @name FrameSystemExtensionsCheckGenesis (287) */
   export type FrameSystemExtensionsCheckGenesis = Null;
 
-  /** @name FrameSystemExtensionsCheckNonce (289) */
+  /** @name FrameSystemExtensionsCheckNonce (290) */
   export interface FrameSystemExtensionsCheckNonce extends Compact<u32> {}
 
-  /** @name FrameSystemExtensionsCheckWeight (290) */
+  /** @name FrameSystemExtensionsCheckWeight (291) */
   export type FrameSystemExtensionsCheckWeight = Null;
 
-  /** @name PalletTransactionPaymentChargeTransactionPayment (291) */
+  /** @name PalletTransactionPaymentChargeTransactionPayment (292) */
   export interface PalletTransactionPaymentChargeTransactionPayment extends Compact<u128> {}
 
-  /** @name CordRuntimeRuntime (292) */
+  /** @name CordRuntimeRuntime (293) */
   export type CordRuntimeRuntime = Null;
 
 } // declare module

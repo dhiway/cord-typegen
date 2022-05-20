@@ -594,26 +594,27 @@ declare module '@polkadot/api-base/types/errors' {
       [key: string]: AugmentedError<ApiType>;
     };
     schema: {
-      InvalidIdentifier: AugmentedError<ApiType>;
       InvalidIdentifierLength: AugmentedError<ApiType>;
       InvalidIdentifierPrefix: AugmentedError<ApiType>;
+      InvalidSchemaIdentifier: AugmentedError<ApiType>;
+      InvalidSignature: AugmentedError<ApiType>;
       /**
-       * Schema idenfier is not unique
+       * Schema identifier is not unique
        **/
       SchemaAlreadyAnchored: AugmentedError<ApiType>;
       /**
-       * Schema idenfier not found
+       * Schema not found
        **/
       SchemaNotFound: AugmentedError<ApiType>;
       /**
-       * Schema revoked
+       * Schema is revoked
        **/
       SchemaRevoked: AugmentedError<ApiType>;
       SchemaSpaceMismatch: AugmentedError<ApiType>;
       TooManyDelegates: AugmentedError<ApiType>;
       UnauthorizedDelegation: AugmentedError<ApiType>;
       /**
-       * Only when the author is not the controller.
+       * When the author is not the controller or delegate.
        **/
       UnauthorizedOperation: AugmentedError<ApiType>;
       /**
@@ -648,13 +649,17 @@ declare module '@polkadot/api-base/types/errors' {
       [key: string]: AugmentedError<ApiType>;
     };
     space: {
-      InvalidIdentifier: AugmentedError<ApiType>;
+      ArchivedSpace: AugmentedError<ApiType>;
       InvalidIdentifierLength: AugmentedError<ApiType>;
       InvalidIdentifierPrefix: AugmentedError<ApiType>;
+      InvalidSignature: AugmentedError<ApiType>;
+      InvalidSpaceIdentifier: AugmentedError<ApiType>;
       /**
        * Space idenfier is not unique
        **/
       SpaceAlreadyAnchored: AugmentedError<ApiType>;
+      SpaceAlreadyArchived: AugmentedError<ApiType>;
+      SpaceNotArchived: AugmentedError<ApiType>;
       /**
        * Space idenfier not found
        **/
@@ -671,10 +676,11 @@ declare module '@polkadot/api-base/types/errors' {
       [key: string]: AugmentedError<ApiType>;
     };
     stream: {
+      DigestHashAlreadyAnchored: AugmentedError<ApiType>;
       ExpiredSignature: AugmentedError<ApiType>;
       HashAlreadyAnchored: AugmentedError<ApiType>;
-      InvalidIdentifier: AugmentedError<ApiType>;
       InvalidSignature: AugmentedError<ApiType>;
+      InvalidStreamIdentifier: AugmentedError<ApiType>;
       /**
        * Stream idenfier is not unique
        **/
@@ -818,6 +824,10 @@ declare module '@polkadot/api-base/types/errors' {
        * No proposal or bounty at that index.
        **/
       InvalidIndex: AugmentedError<ApiType>;
+      /**
+       * Proposal has not been approved.
+       **/
+      ProposalNotApproved: AugmentedError<ApiType>;
       /**
        * Too many approvals in the queue.
        **/

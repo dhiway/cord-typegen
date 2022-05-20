@@ -1,7 +1,7 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
-import type { AccountId32, Call, H256, MultiAddress, Perbill } from '@cord.network/types/interfaces/runtime';
+import type { AccountId32, Call, H256, MultiAddress, Perbill } from '@cord.network/known-types/interfaces/runtime';
 import type { ApiTypes } from '@polkadot/api-base/types';
 import type { Bytes, Compact, Option, U8aFixed, Vec, WrapperKeepOpaque, bool, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
 import type { AnyNumber, ITuple } from '@polkadot/types-codec/types';
@@ -1484,46 +1484,57 @@ declare module '@polkadot/api-base/types/submittable' {
       /**
        * Add schema authorisations (delegation).
        * 
-       * This transaction can only be performed by the schema controller on
-       * permissioned schemas.
+       * This transaction can only be performed by the schema controller or
+       * delegates.
        * 
-       * * origin: the identity of the schema controller.
+       * * origin: the identity of the schema anchor.
+       * * creator: creator (controller) of the schema.
        * * schema: unique identifier of the schema.
+       * * tx_hash: transaction hash to verify the signature.
        * * delegates: authorised identities to add.
-       * * space_id: \[OPTIONAL\] schema space link identifier.
+       * * space: \[OPTIONAL\] schema space link identifier.
+       * * tx_signature: creator signature.
        **/
-      authorise: AugmentedSubmittable<(schema: Bytes | string | Uint8Array, delegates: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[], spaceId: Option<Bytes> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Bytes, Vec<AccountId32>, Option<Bytes>]>;
+      authorise: AugmentedSubmittable<(creator: AccountId32 | string | Uint8Array, schema: Bytes | string | Uint8Array, txHash: H256 | string | Uint8Array, delegates: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[], space: Option<Bytes> | null | object | string | Uint8Array, txSignature: SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, Bytes, H256, Vec<AccountId32>, Option<Bytes>, SpRuntimeMultiSignature]>;
       /**
        * Create a new schema and associates with its identifier.
        * 
-       * * origin: the identity of the schema controller.
-       * * version: version of the  schema stream.
+       * * origin: the identity of the schema anchor.
+       * * creator: creator (controller) of the schema.
        * * schema_hash: hash of the incoming schema stream.
-       * * space_id: \[OPTIONAL\] schema space link identifier.
+       * * space: \[OPTIONAL\] schema space link identifier.
+       * * tx_signature: creator signature.
        **/
-      create: AugmentedSubmittable<(schemaHash: H256 | string | Uint8Array, spaceId: Option<Bytes> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, Option<Bytes>]>;
+      create: AugmentedSubmittable<(creator: AccountId32 | string | Uint8Array, schemaHash: H256 | string | Uint8Array, space: Option<Bytes> | null | object | string | Uint8Array, txSignature: SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, H256, Option<Bytes>, SpRuntimeMultiSignature]>;
       /**
        * Remove schema authorisations (delegation).
        * 
-       * This transaction can only be performed by the schema controller
-       * permissioned schemas.
+       * This transaction can only be performed by the schema controller or
+       * delegates.
        * 
-       * * origin: the identity of the schema controller.
+       * * origin: the identity of the schema anchor.
+       * * updater: updater (controller) of the schema.
        * * schema: unique identifier of the schema.
-       * * delegates: identities (delegates) to be removed.
-       * * space_id: \[OPTIONAL\] schema space link identifier.
+       * * tx_hash: transaction hash to verify the signature.
+       * * delegates: authorised identities to add.
+       * * space: \[OPTIONAL\] schema space link identifier.
+       * * tx_signature: updater signature.
        **/
-      deauthorise: AugmentedSubmittable<(schema: Bytes | string | Uint8Array, spaceId: Option<Bytes> | null | object | string | Uint8Array, delegates: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Bytes, Option<Bytes>, Vec<AccountId32>]>;
+      deauthorise: AugmentedSubmittable<(updater: AccountId32 | string | Uint8Array, schema: Bytes | string | Uint8Array, txHash: H256 | string | Uint8Array, delegates: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[], space: Option<Bytes> | null | object | string | Uint8Array, txSignature: SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, Bytes, H256, Vec<AccountId32>, Option<Bytes>, SpRuntimeMultiSignature]>;
       /**
        * Revoke a Schema
        * 
-       * This transaction can only be performed by the schema controller
+       * This transaction can only be performed by the schema controller or
+       * delegates
        * 
        * * origin: the identity of the schema controller.
+       * * updater: updater (controller) of the schema.
        * * identifier: unique identifier of the incoming stream.
-       * * space_id: \[OPTIONAL\] schema space link identifier.
+       * * tx_hash: transaction hash to verify the signature.
+       * * space: \[OPTIONAL\] schema space link identifier.
+       * * tx_signature: updater signature.
        **/
-      revoke: AugmentedSubmittable<(identifier: Bytes | string | Uint8Array, spaceId: Option<Bytes> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Bytes, Option<Bytes>]>;
+      revoke: AugmentedSubmittable<(updater: AccountId32 | string | Uint8Array, schema: Bytes | string | Uint8Array, txHash: H256 | string | Uint8Array, space: Option<Bytes> | null | object | string | Uint8Array, txSignature: SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, Bytes, H256, Option<Bytes>, SpRuntimeMultiSignature]>;
       /**
        * Generic tx
        **/
@@ -1573,44 +1584,81 @@ declare module '@polkadot/api-base/types/submittable' {
     };
     space: {
       /**
+       * Archive a Space
+       * 
+       * This transaction can only be performed by the space controller or
+       * delegates
+       * 
+       * * origin: the identity of the space controller.
+       * * updater: updater (controller) of the space.
+       * * identifier: unique identifier of the space.
+       * * tx_hash: transaction hash to verify the signature.
+       * * tx_signature: updater signature.
+       **/
+      archive: AugmentedSubmittable<(updater: AccountId32 | string | Uint8Array, space: Bytes | string | Uint8Array, txHash: H256 | string | Uint8Array, txSignature: SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, Bytes, H256, SpRuntimeMultiSignature]>;
+      /**
        * Add space authorisations (delegation).
        * 
        * This transaction can only be performed by the space controller or
-       * delegated identities.
+       * delegates.
        * 
        * * origin: the identity of the space controller.
+       * * creator: creator (controller) of the space.
        * * space: unique identifier of the space.
+       * * tx_hash: transaction hash to verify the signature.
        * * delegates: authorised identities to add.
+       * * tx_signature: creator signature.
        **/
-      authorise: AugmentedSubmittable<(space: Bytes | string | Uint8Array, delegates: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Bytes, Vec<AccountId32>]>;
+      authorise: AugmentedSubmittable<(creator: AccountId32 | string | Uint8Array, space: Bytes | string | Uint8Array, txHash: H256 | string | Uint8Array, delegates: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[], txSignature: SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, Bytes, H256, Vec<AccountId32>, SpRuntimeMultiSignature]>;
       /**
        * Create a new space and associates with its identifier.
        * 
        * * origin: the identity of the space controller.
+       * * creator: creator (controller) of the space.
        * * space_hash: hash of the incoming space stream.
+       * * tx_signature: creator signature.
        **/
-      create: AugmentedSubmittable<(spaceHash: H256 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256]>;
+      create: AugmentedSubmittable<(creator: AccountId32 | string | Uint8Array, spaceHash: H256 | string | Uint8Array, txSignature: SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, H256, SpRuntimeMultiSignature]>;
       /**
        * Remove space authorisations (delegation).
        * 
        * This transaction can only be performed by the space controller or
-       * delegated identities.
+       * delegates.
        * 
        * * origin: the identity of the space controller.
+       * * updater: updater (controller) of the space.
        * * space: unique identifier of the space.
+       * * tx_hash: transaction hash to verify the signature.
        * * delegates: identities (delegates) to be removed.
+       * * tx_signature: updater signature.
        **/
-      deauthorise: AugmentedSubmittable<(space: Bytes | string | Uint8Array, delegates: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Bytes, Vec<AccountId32>]>;
+      deauthorise: AugmentedSubmittable<(updater: AccountId32 | string | Uint8Array, space: Bytes | string | Uint8Array, txHash: H256 | string | Uint8Array, delegates: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[], txSignature: SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, Bytes, H256, Vec<AccountId32>, SpRuntimeMultiSignature]>;
       /**
-       * Transfer the space to a new controller.
+       * Restore an archived space
+       * 
+       * This transaction can only be performed by the space controller or
+       * delegates
+       * 
+       * * origin: the identity of the space controller.
+       * * updater: updater (controller) of the space.
+       * * identifier: unique identifier of the space.
+       * * tx_hash: transaction hash to verify the signature.
+       * * tx_signature: updater signature.
+       **/
+      restore: AugmentedSubmittable<(updater: AccountId32 | string | Uint8Array, space: Bytes | string | Uint8Array, txHash: H256 | string | Uint8Array, txSignature: SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, Bytes, H256, SpRuntimeMultiSignature]>;
+      /**
+       * Transfer an active space to a new controller.
        * 
        * This transaction can only be performed by the space controller
        * 
        * * origin: the identity of the space controller.
+       * * updater: updater (controller) of the space.
        * * identifier: unique identifier of the incoming space stream.
        * * transfer_to: new controller of the space.
+       * * tx_hash: transaction hash to verify the signature.
+       * * tx_signature: creator signature.
        **/
-      transfer: AugmentedSubmittable<(identifier: Bytes | string | Uint8Array, transferTo: AccountId32 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Bytes, AccountId32]>;
+      transfer: AugmentedSubmittable<(space: Bytes | string | Uint8Array, updater: AccountId32 | string | Uint8Array, transferTo: AccountId32 | string | Uint8Array, txHash: H256 | string | Uint8Array, txSignature: SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Bytes, AccountId32, AccountId32, H256, SpRuntimeMultiSignature]>;
       /**
        * Generic tx
        **/
@@ -1633,10 +1681,10 @@ declare module '@polkadot/api-base/types/submittable' {
        * * holder: \[OPTIONAL\] holder (recipient) of the stream.
        * * schema: \[OPTIONAL\] stream schema identifier.
        * * link: \[OPTIONAL\] stream link identifier.
+       * * space: \[OPTIONAL\] stream space link identifier.
        * * tx_signature: creator signature.
-       * * space_id: \[OPTIONAL\] stream space link identifier.
        **/
-      create: AugmentedSubmittable<(creator: AccountId32 | string | Uint8Array, streamHash: H256 | string | Uint8Array, holder: Option<AccountId32> | null | object | string | Uint8Array, schema: Option<Bytes> | null | object | string | Uint8Array, link: Option<Bytes> | null | object | string | Uint8Array, spaceId: Option<Bytes> | null | object | string | Uint8Array, txSignature: SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, H256, Option<AccountId32>, Option<Bytes>, Option<Bytes>, Option<Bytes>, SpRuntimeMultiSignature]>;
+      create: AugmentedSubmittable<(creator: AccountId32 | string | Uint8Array, streamHash: H256 | string | Uint8Array, holder: Option<AccountId32> | null | object | string | Uint8Array, schema: Option<Bytes> | null | object | string | Uint8Array, link: Option<Bytes> | null | object | string | Uint8Array, space: Option<Bytes> | null | object | string | Uint8Array, txSignature: SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AccountId32, H256, Option<AccountId32>, Option<Bytes>, Option<Bytes>, Option<Bytes>, SpRuntimeMultiSignature]>;
       /**
        * Adds stream digest information.
        * 
@@ -1652,9 +1700,9 @@ declare module '@polkadot/api-base/types/submittable' {
        * 
        * * origin: the identity of the space origin.
        * * identifier: unique identifier of the incoming stream.
-       * * space_id: stream space link identifier.
+       * * space: stream space link identifier.
        **/
-      removeSpaceStream: AugmentedSubmittable<(identifier: Bytes | string | Uint8Array, spaceId: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Bytes, Bytes]>;
+      removeSpaceStream: AugmentedSubmittable<(identifier: Bytes | string | Uint8Array, space: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Bytes, Bytes]>;
       /**
        * Revoke a stream
        * 
@@ -1662,10 +1710,10 @@ declare module '@polkadot/api-base/types/submittable' {
        * * identifier: unique identifier of the stream.
        * * updater: controller or delegate of the stream.
        * * tx_hash: transaction hash.
-       * * tx_signature: signature of the contoller.
-       * * space_id: \[OPTIONAL\] stream space link identifier.
+       * * tx_signature: signature of the controller.
+       * * space: \[OPTIONAL\] stream space link identifier.
        **/
-      revoke: AugmentedSubmittable<(identifier: Bytes | string | Uint8Array, updater: AccountId32 | string | Uint8Array, txHash: H256 | string | Uint8Array, txSignature: SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array, spaceId: Option<Bytes> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Bytes, AccountId32, H256, SpRuntimeMultiSignature, Option<Bytes>]>;
+      revoke: AugmentedSubmittable<(identifier: Bytes | string | Uint8Array, updater: AccountId32 | string | Uint8Array, txHash: H256 | string | Uint8Array, txSignature: SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array, space: Option<Bytes> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Bytes, AccountId32, H256, SpRuntimeMultiSignature, Option<Bytes>]>;
       /**
        * Updates the stream information.
        * 
@@ -1674,9 +1722,9 @@ declare module '@polkadot/api-base/types/submittable' {
        * * updater: controller or delegate of the stream.
        * * stream_hash: hash of the incoming stream.
        * * tx_signature: signature of the controller.
-       * * space_id: \[OPTIONAL\] stream space link identifier.
+       * * space: \[OPTIONAL\] stream space link identifier.
        **/
-      update: AugmentedSubmittable<(identifier: Bytes | string | Uint8Array, updater: AccountId32 | string | Uint8Array, streamHash: H256 | string | Uint8Array, txSignature: SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array, spaceId: Option<Bytes> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Bytes, AccountId32, H256, SpRuntimeMultiSignature, Option<Bytes>]>;
+      update: AugmentedSubmittable<(identifier: Bytes | string | Uint8Array, updater: AccountId32 | string | Uint8Array, streamHash: H256 | string | Uint8Array, txSignature: SpRuntimeMultiSignature | { Ed25519: any } | { Sr25519: any } | { Ecdsa: any } | string | Uint8Array, space: Option<Bytes> | null | object | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Bytes, AccountId32, H256, SpRuntimeMultiSignature, Option<Bytes>]>;
       /**
        * Generic tx
        **/
@@ -2081,6 +2129,24 @@ declare module '@polkadot/api-base/types/submittable' {
        **/
       rejectProposal: AugmentedSubmittable<(proposalId: Compact<u32> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [Compact<u32>]>;
       /**
+       * Force a previously approved proposal to be removed from the approval queue.
+       * The original deposit will no longer be returned.
+       * 
+       * May only be called from `T::RejectOrigin`.
+       * - `proposal_id`: The index of a proposal
+       * 
+       * # <weight>
+       * - Complexity: O(A) where `A` is the number of approvals
+       * - Db reads and writes: `Approvals`
+       * # </weight>
+       * 
+       * Errors:
+       * - `ProposalNotApproved`: The `proposal_id` supplied was not found in the approval queue,
+       * i.e., the proposal has not been approved. This could also mean the proposal does not
+       * exist altogether, thus there is no way it would have been approved in the first place.
+       **/
+      removeApproval: AugmentedSubmittable<(proposalId: Compact<u32> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [Compact<u32>]>;
+      /**
        * Generic tx
        **/
       [key: string]: SubmittableExtrinsicFunction<ApiType>;
@@ -2154,6 +2220,23 @@ declare module '@polkadot/api-base/types/submittable' {
        * # </weight>
        **/
       dispatchAs: AugmentedSubmittable<(asOrigin: CordRuntimeOriginCaller | { system: any } | { Void: any } | { Council: any } | { TechnicalCommittee: any } | { BuilderCouncil: any } | { FoundationCouncil: any } | string | Uint8Array, call: Call | { callIndex?: any; args?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [CordRuntimeOriginCaller, Call]>;
+      /**
+       * Send a batch of dispatch calls.
+       * Unlike `batch`, it allows errors and won't interrupt.
+       * 
+       * May be called from any origin.
+       * 
+       * - `calls`: The calls to be dispatched from the same origin. The number of call must not
+       * exceed the constant: `batched_calls_limit` (available in constant metadata).
+       * 
+       * If origin is root then call are dispatch without checking origin filter. (This includes
+       * bypassing `frame_system::Config::BaseCallFilter`).
+       * 
+       * # <weight>
+       * - Complexity: O(C) where C is the number of calls to be batched.
+       * # </weight>
+       **/
+      forceBatch: AugmentedSubmittable<(calls: Vec<Call> | (Call | { callIndex?: any; args?: any } | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Vec<Call>]>;
       /**
        * Generic tx
        **/

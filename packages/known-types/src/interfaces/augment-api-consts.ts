@@ -1,7 +1,7 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
-import type { Permill } from '@cord.network/types/interfaces/runtime';
+import type { Permill } from '@cord.network/known-types/interfaces/runtime';
 import type { ApiTypes } from '@polkadot/api-base/types';
 import type { Option, Vec, bool, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
 import type { Codec } from '@polkadot/types-codec/types';

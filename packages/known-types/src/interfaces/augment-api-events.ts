@@ -1,7 +1,7 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
-import type { AccountId32, H256 } from '@cord.network/types/interfaces/runtime';
+import type { AccountId32, H256 } from '@cord.network/known-types/interfaces/runtime';
 import type { ApiTypes } from '@polkadot/api-base/types';
 import type { Bytes, Null, Option, Result, U8aFixed, Vec, bool, u128, u32, u64 } from '@polkadot/types-codec';
 import type { ITuple } from '@polkadot/types-codec/types';
@@ -557,6 +557,11 @@ declare module '@polkadot/api-base/types/events' {
        **/
       AddDelegates: AugmentedEvent<ApiType, [Bytes, AccountId32]>;
       /**
+       * A spaces has been archived.
+       * \[space identifier\]
+       **/
+      Archive: AugmentedEvent<ApiType, [Bytes, AccountId32]>;
+      /**
        * A new space has been created.
        * \[space hash, space identifier, controller\]
        **/
@@ -566,6 +571,11 @@ declare module '@polkadot/api-base/types/events' {
        * \[space identifier,  controller\]
        **/
       RemoveDelegates: AugmentedEvent<ApiType, [Bytes, AccountId32]>;
+      /**
+       * A spaces has been restored.
+       * \[space identifier\]
+       **/
+      Restore: AugmentedEvent<ApiType, [Bytes, AccountId32]>;
       /**
        * A space controller has changed.
        * \[space identifier, new controller\]
@@ -761,6 +771,10 @@ declare module '@polkadot/api-base/types/events' {
        **/
       BatchCompleted: AugmentedEvent<ApiType, []>;
       /**
+       * Batch of dispatches completed but has errors.
+       **/
+      BatchCompletedWithErrors: AugmentedEvent<ApiType, []>;
+      /**
        * Batch of dispatches did not complete fully. Index of first failing dispatch given, as
        * well as the error.
        **/
@@ -773,6 +787,10 @@ declare module '@polkadot/api-base/types/events' {
        * A single item within a Batch of dispatches has completed with no error.
        **/
       ItemCompleted: AugmentedEvent<ApiType, []>;
+      /**
+       * A single item within a Batch of dispatches has completed with error.
+       **/
+      ItemFailed: AugmentedEvent<ApiType, [SpRuntimeDispatchError]>;
       /**
        * Generic event
        **/

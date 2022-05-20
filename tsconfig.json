@@ -16,11 +16,11 @@
       "@cord.network/base/*": [
         "packages/base/src/*"
       ],
-      "@cord.network/types": [
-        "packages/types/src"
+      "@cord.network/known-types": [
+        "packages/known-types/src"
       ],
-      "@cord.network/types/*": [
-        "packages/types/src/*"
+      "@cord.network/known-types/*": [
+        "packages/known-types/src/*"
       ],
       "@cord.network/type-definitions": [
         "packages/type-definitions/src"

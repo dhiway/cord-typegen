@@ -6,7 +6,9 @@ export default {
   rpc: {},
   types: {
     SpaceDetails: {
-      contoller: 'CordAccountOf'
+      stream_hash: 'HashOf',
+      contoller: 'CordAccountOf',
+      archived: 'StatusOf'
     }
   }
 };

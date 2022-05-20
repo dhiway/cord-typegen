@@ -7,7 +7,7 @@ import {
   types as cordTypes,
   typesAlias as cordTypesAlias,
   typesBundle as cordTypesBundle
-} from '@cord.network/types';
+} from '@cord.network/known-types';
 
 import { ApiOptions } from '@polkadot/api/types';
 

@@ -192,7 +192,11 @@ export default {
         error: 'SpRuntimeDispatchError',
       },
       BatchCompleted: 'Null',
+      BatchCompletedWithErrors: 'Null',
       ItemCompleted: 'Null',
+      ItemFailed: {
+        error: 'SpRuntimeDispatchError',
+      },
       DispatchedAs: {
         result: 'Result<Null, SpRuntimeDispatchError>'
       }
@@ -609,10 +613,12 @@ export default {
    **/
   PalletSpaceEvent: {
     _enum: {
+      AddDelegates: '(Bytes,AccountId32)',
+      RemoveDelegates: '(Bytes,AccountId32)',
       Create: '(H256,Bytes,AccountId32)',
       Transfer: '(Bytes,AccountId32)',
-      AddDelegates: '(Bytes,AccountId32)',
-      RemoveDelegates: '(Bytes,AccountId32)'
+      Archive: '(Bytes,AccountId32)',
+      Restore: '(Bytes,AccountId32)'
     }
   },
   /**
@@ -862,7 +868,10 @@ export default {
       },
       dispatch_as: {
         asOrigin: 'CordRuntimeOriginCaller',
-        call: 'Call'
+        call: 'Call',
+      },
+      force_batch: {
+        calls: 'Vec<Call>'
       }
     }
   },
@@ -1360,6 +1369,9 @@ export default {
         proposalId: 'Compact<u32>',
       },
       approve_proposal: {
+        proposalId: 'Compact<u32>',
+      },
+      remove_approval: {
         proposalId: 'Compact<u32>'
       }
     }
@@ -1431,49 +1443,97 @@ export default {
   PalletSpaceCall: {
     _enum: {
       authorise: {
+        creator: 'AccountId32',
         space: 'Bytes',
+        txHash: 'H256',
         delegates: 'Vec<AccountId32>',
+        txSignature: 'SpRuntimeMultiSignature',
       },
       deauthorise: {
+        updater: 'AccountId32',
         space: 'Bytes',
+        txHash: 'H256',
         delegates: 'Vec<AccountId32>',
+        txSignature: 'SpRuntimeMultiSignature',
       },
       create: {
+        creator: 'AccountId32',
         spaceHash: 'H256',
+        txSignature: 'SpRuntimeMultiSignature',
+      },
+      archive: {
+        updater: 'AccountId32',
+        space: 'Bytes',
+        txHash: 'H256',
+        txSignature: 'SpRuntimeMultiSignature',
+      },
+      restore: {
+        updater: 'AccountId32',
+        space: 'Bytes',
+        txHash: 'H256',
+        txSignature: 'SpRuntimeMultiSignature',
       },
       transfer: {
-        identifier: 'Bytes',
-        transferTo: 'AccountId32'
+        space: 'Bytes',
+        updater: 'AccountId32',
+        transferTo: 'AccountId32',
+        txHash: 'H256',
+        txSignature: 'SpRuntimeMultiSignature'
       }
     }
   },
   /**
-   * Lookup173: pallet_schema::pallet::Call<T>
+   * Lookup173: sp_runtime::MultiSignature
+   **/
+  SpRuntimeMultiSignature: {
+    _enum: {
+      Ed25519: 'SpCoreEd25519Signature',
+      Sr25519: 'SpCoreSr25519Signature',
+      Ecdsa: 'SpCoreEcdsaSignature'
+    }
+  },
+  /**
+   * Lookup174: sp_core::ecdsa::Signature
+   **/
+  SpCoreEcdsaSignature: '[u8;65]',
+  /**
+   * Lookup176: pallet_schema::pallet::Call<T>
    **/
   PalletSchemaCall: {
     _enum: {
       authorise: {
+        creator: 'AccountId32',
         schema: 'Bytes',
+        txHash: 'H256',
         delegates: 'Vec<AccountId32>',
-        spaceId: 'Option<Bytes>',
+        space: 'Option<Bytes>',
+        txSignature: 'SpRuntimeMultiSignature',
       },
       deauthorise: {
+        updater: 'AccountId32',
         schema: 'Bytes',
-        spaceId: 'Option<Bytes>',
+        txHash: 'H256',
         delegates: 'Vec<AccountId32>',
+        space: 'Option<Bytes>',
+        txSignature: 'SpRuntimeMultiSignature',
       },
       create: {
+        creator: 'AccountId32',
         schemaHash: 'H256',
-        spaceId: 'Option<Bytes>',
+        space: 'Option<Bytes>',
+        txSignature: 'SpRuntimeMultiSignature',
       },
       revoke: {
-        identifier: 'Bytes',
-        spaceId: 'Option<Bytes>'
+        updater: 'AccountId32',
+        schema: 'Bytes',
+        txHash: 'H256',
+        space: 'Option<Bytes>',
+        txSignature: 'SpRuntimeMultiSignature'
       }
     }
   },
   /**
-   * Lookup174: pallet_stream::pallet::Call<T>
+   * Lookup177: pallet_stream::pallet::Call<T>
    **/
   PalletStreamCall: {
     _enum: {
@@ -1483,7 +1543,7 @@ export default {
         holder: 'Option<AccountId32>',
         schema: 'Option<Bytes>',
         link: 'Option<Bytes>',
-        spaceId: 'Option<Bytes>',
+        space: 'Option<Bytes>',
         txSignature: 'SpRuntimeMultiSignature',
       },
       update: {
@@ -1491,18 +1551,18 @@ export default {
         updater: 'AccountId32',
         streamHash: 'H256',
         txSignature: 'SpRuntimeMultiSignature',
-        spaceId: 'Option<Bytes>',
+        space: 'Option<Bytes>',
       },
       revoke: {
         identifier: 'Bytes',
         updater: 'AccountId32',
         txHash: 'H256',
         txSignature: 'SpRuntimeMultiSignature',
-        spaceId: 'Option<Bytes>',
+        space: 'Option<Bytes>',
       },
       remove_space_stream: {
         identifier: 'Bytes',
-        spaceId: 'Bytes',
+        space: 'Bytes',
       },
       council_remove: {
         identifier: 'Bytes',
@@ -1515,20 +1575,6 @@ export default {
       }
     }
   },
-  /**
-   * Lookup175: sp_runtime::MultiSignature
-   **/
-  SpRuntimeMultiSignature: {
-    _enum: {
-      Ed25519: 'SpCoreEd25519Signature',
-      Sr25519: 'SpCoreSr25519Signature',
-      Ecdsa: 'SpCoreEcdsaSignature'
-    }
-  },
-  /**
-   * Lookup176: sp_core::ecdsa::Signature
-   **/
-  SpCoreEcdsaSignature: '[u8;65]',
   /**
    * Lookup178: pallet_sudo::pallet::Call<T>
    **/
@@ -1838,7 +1884,7 @@ export default {
    * Lookup256: pallet_treasury::pallet::Error<T, I>
    **/
   PalletTreasuryError: {
-    _enum: ['InsufficientProposersBalance', 'InvalidIndex', 'TooManyApprovals']
+    _enum: ['InsufficientProposersBalance', 'InvalidIndex', 'TooManyApprovals', 'ProposalNotApproved']
   },
   /**
    * Lookup260: pallet_im_online::BoundedOpaqueNetworkState<PeerIdEncodingLimit, MultiAddrEncodingLimit, AddressesLimit>
@@ -1873,28 +1919,36 @@ export default {
     _enum: ['InsufficientBalance']
   },
   /**
-   * Lookup274: pallet_space::pallet::Error<T>
+   * Lookup273: pallet_space::spaces::SpaceDetails<T>
    **/
-  PalletSpaceError: {
-    _enum: ['SpaceAlreadyAnchored', 'SpaceNotFound', 'UnauthorizedOperation', 'TooManyDelegates', 'UnauthorizedDelegation', 'InvalidIdentifier', 'InvalidIdentifierLength', 'InvalidIdentifierPrefix']
+  PalletSpaceSpacesSpaceDetails: {
+    spaceHash: 'H256',
+    controller: 'AccountId32',
+    archived: 'bool'
   },
   /**
-   * Lookup275: pallet_schema::schemas::SchemaDetails<T>
+   * Lookup275: pallet_space::pallet::Error<T>
+   **/
+  PalletSpaceError: {
+    _enum: ['SpaceAlreadyAnchored', 'SpaceNotFound', 'UnauthorizedOperation', 'TooManyDelegates', 'UnauthorizedDelegation', 'InvalidSpaceIdentifier', 'InvalidIdentifierLength', 'InvalidIdentifierPrefix', 'InvalidSignature', 'ArchivedSpace', 'SpaceAlreadyArchived', 'SpaceNotArchived']
+  },
+  /**
+   * Lookup276: pallet_schema::schemas::SchemaDetails<T>
    **/
   PalletSchemaSchemasSchemaDetails: {
     schemaHash: 'H256',
     controller: 'AccountId32',
-    spaceId: 'Option<Bytes>',
+    space: 'Option<Bytes>',
     revoked: 'bool'
   },
   /**
-   * Lookup277: pallet_schema::pallet::Error<T>
+   * Lookup278: pallet_schema::pallet::Error<T>
    **/
   PalletSchemaError: {
-    _enum: ['SchemaAlreadyAnchored', 'SchemaNotFound', 'SchemaRevoked', 'UnauthorizedOperation', 'TooManyDelegates', 'UnauthorizedDelegation', 'InvalidIdentifier', 'InvalidIdentifierLength', 'InvalidIdentifierPrefix', 'SchemaSpaceMismatch']
+    _enum: ['SchemaAlreadyAnchored', 'SchemaNotFound', 'SchemaRevoked', 'UnauthorizedOperation', 'TooManyDelegates', 'UnauthorizedDelegation', 'InvalidSchemaIdentifier', 'InvalidIdentifierLength', 'InvalidIdentifierPrefix', 'SchemaSpaceMismatch', 'InvalidSignature']
   },
   /**
-   * Lookup278: pallet_stream::streams::StreamDetails<T>
+   * Lookup279: pallet_stream::streams::StreamDetails<T>
    **/
   PalletStreamStreamsStreamDetails: {
     streamHash: 'H256',
@@ -1902,51 +1956,51 @@ export default {
     holder: 'Option<AccountId32>',
     schema: 'Option<Bytes>',
     link: 'Option<Bytes>',
-    spaceId: 'Option<Bytes>',
+    space: 'Option<Bytes>',
     revoked: 'bool'
   },
   /**
-   * Lookup279: pallet_stream::pallet::Error<T>
+   * Lookup280: pallet_stream::pallet::Error<T>
    **/
   PalletStreamError: {
-    _enum: ['StreamAlreadyAnchored', 'StreamNotFound', 'StreamRevoked', 'UnauthorizedOperation', 'StreamLinkNotFound', 'StreamLinkRevoked', 'InvalidSignature', 'HashAlreadyAnchored', 'ExpiredSignature', 'InvalidIdentifier', 'StreamSpaceMismatch']
+    _enum: ['StreamAlreadyAnchored', 'StreamNotFound', 'StreamRevoked', 'UnauthorizedOperation', 'StreamLinkNotFound', 'StreamLinkRevoked', 'InvalidSignature', 'HashAlreadyAnchored', 'ExpiredSignature', 'InvalidStreamIdentifier', 'StreamSpaceMismatch', 'DigestHashAlreadyAnchored']
   },
   /**
-   * Lookup280: pallet_sudo::pallet::Error<T>
+   * Lookup281: pallet_sudo::pallet::Error<T>
    **/
   PalletSudoError: {
     _enum: ['RequireSudo']
   },
   /**
-   * Lookup283: frame_system::extensions::check_non_zero_sender::CheckNonZeroSender<T>
+   * Lookup284: frame_system::extensions::check_non_zero_sender::CheckNonZeroSender<T>
    **/
   FrameSystemExtensionsCheckNonZeroSender: 'Null',
   /**
-   * Lookup284: frame_system::extensions::check_spec_version::CheckSpecVersion<T>
+   * Lookup285: frame_system::extensions::check_spec_version::CheckSpecVersion<T>
    **/
   FrameSystemExtensionsCheckSpecVersion: 'Null',
   /**
-   * Lookup285: frame_system::extensions::check_tx_version::CheckTxVersion<T>
+   * Lookup286: frame_system::extensions::check_tx_version::CheckTxVersion<T>
    **/
   FrameSystemExtensionsCheckTxVersion: 'Null',
   /**
-   * Lookup286: frame_system::extensions::check_genesis::CheckGenesis<T>
+   * Lookup287: frame_system::extensions::check_genesis::CheckGenesis<T>
    **/
   FrameSystemExtensionsCheckGenesis: 'Null',
   /**
-   * Lookup289: frame_system::extensions::check_nonce::CheckNonce<T>
+   * Lookup290: frame_system::extensions::check_nonce::CheckNonce<T>
    **/
   FrameSystemExtensionsCheckNonce: 'Compact<u32>',
   /**
-   * Lookup290: frame_system::extensions::check_weight::CheckWeight<T>
+   * Lookup291: frame_system::extensions::check_weight::CheckWeight<T>
    **/
   FrameSystemExtensionsCheckWeight: 'Null',
   /**
-   * Lookup291: pallet_transaction_payment::ChargeTransactionPayment<T>
+   * Lookup292: pallet_transaction_payment::ChargeTransactionPayment<T>
    **/
   PalletTransactionPaymentChargeTransactionPayment: 'Compact<u128>',
   /**
-   * Lookup292: cord_runtime::Runtime
+   * Lookup293: cord_runtime::Runtime
    **/
   CordRuntimeRuntime: 'Null'
 };
