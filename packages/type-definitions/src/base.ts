@@ -8,8 +8,10 @@ export default {
     CordAccountOf: 'AccountId',
     DidIdentifierOf: 'AccountId',
     HashOf: 'Hash',
+    VersionOf: 'Hash',
     IdOf: 'Hash',
     IdentifierOf: 'Vec<u8>',
+    CidOf: 'Vec<u8>',
     StatusOf: 'bool'
   }
 };

@@ -8,11 +8,11 @@
     "IdentifierOf": "Vec<u8>",
     "CidOf": "Vec<u8>",
     "StatusOf": "bool",
-    "VerifierDetails": {
-        "block": "BlockNumber",
-        "revoked": "bool"
+    "SpaceDetails": {
+        "stream_hash": "HashOf",
+        "contoller": "CordAccountOf",
+        "archived": "StatusOf"
     },
-    "PalletEntityVerifiersVerifierDetails": "VerifierDetails",
     "SchemaDetails": {
         "schema_hash": "HashOf",
         "contoller": "CordAccountOf",
