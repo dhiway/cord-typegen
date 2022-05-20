@@ -1,7 +1,7 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import type { AccountId, Hash } from '@cord.network/types/interfaces/runtime';
+import type { AccountId, Hash } from '@cord.network/known-types/interfaces/runtime';
 import type { Bytes, bool } from '@polkadot/types-codec';
 
 /** @name AccountIdentifierOf */

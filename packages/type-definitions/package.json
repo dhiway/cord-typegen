@@ -1,6 +1,6 @@
 {
   "name": "@cord.network/type-definitions",
-  "version": "0.6.1-4",
+  "version": "0.7.2-2",
   "description": "Type definitions for CORD Network",
   "main": "index.js",
   "author": "Dhiway <engineering@dhiway.com>",
@@ -15,6 +15,6 @@
   },
   "homepage": "https://github.com/dhiway/cord-typegen",
   "dependencies": {
-    "@open-web3/orml-type-definitions": "^1.0.2-0"
+    "@open-web3/orml-type-definitions": "^1.1.4"
   }
 }

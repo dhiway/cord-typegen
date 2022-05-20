@@ -1,11 +1,12 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import type { AccountIdentifierOf, CidOf, CordAccountOf, DidIdentifierOf, HashOf, IdOf, IdentifierOf, StatusOf, VersionOf } from '@cord.network/types/interfaces/base';
-import type { PalletEntityVerifiersVerifierDetails, VerifierDetails } from '@cord.network/types/interfaces/entity';
-import type { AccountId, AccountId20, AccountId32, AccountIdOf, AccountIndex, Address, AssetId, Balance, BalanceOf, Block, BlockNumber, BlockNumberFor, BlockNumberOf, Call, CallHash, CallHashOf, ChangesTrieConfiguration, ChangesTrieSignal, CodecHash, Consensus, ConsensusEngineId, CrateVersion, Digest, DigestItem, EncodedJustification, ExtrinsicsWeight, Fixed128, Fixed64, FixedI128, FixedI64, FixedU128, FixedU64, H1024, H128, H160, H2048, H256, H32, H512, H64, Hash, Header, HeaderPartial, I32F32, Index, IndicesLookupSource, Justification, Justifications, KeyTypeId, KeyValue, LockIdentifier, LookupSource, LookupTarget, ModuleId, Moment, MultiAddress, MultiSigner, OpaqueCall, Origin, OriginCaller, PalletId, PalletVersion, PalletsOrigin, Pays, PerU16, Perbill, Percent, Permill, Perquintill, Phantom, PhantomData, PreRuntime, Releases, RuntimeDbWeight, Seal, SealV0, SignedBlock, SignedBlockWithJustification, SignedBlockWithJustifications, Slot, StorageData, StorageProof, TransactionInfo, TransactionPriority, TransactionStorageProof, U32F32, ValidatorId, ValidatorIdOf, Weight, WeightMultiplier } from '@cord.network/types/interfaces/runtime';
-import type { SchemaDetails } from '@cord.network/types/interfaces/schema';
-import type { StreamDetails } from '@cord.network/types/interfaces/stream';
+import type { AccountIdentifierOf, CidOf, CordAccountOf, DidIdentifierOf, HashOf, IdOf, IdentifierOf, StatusOf, VersionOf } from '@cord.network/known-types/interfaces/base';
+import type { PalletEntityVerifiersVerifierDetails, VerifierDetails } from '@cord.network/known-types/interfaces/entity';
+import type { AccountId, AccountId20, AccountId32, AccountIdOf, AccountIndex, Address, AssetId, Balance, BalanceOf, Block, BlockNumber, BlockNumberFor, BlockNumberOf, Call, CallHash, CallHashOf, ChangesTrieConfiguration, ChangesTrieSignal, CodecHash, Consensus, ConsensusEngineId, CrateVersion, Digest, DigestItem, EncodedJustification, ExtrinsicsWeight, Fixed128, Fixed64, FixedI128, FixedI64, FixedU128, FixedU64, H1024, H128, H160, H2048, H256, H32, H512, H64, Hash, Header, HeaderPartial, I32F32, Index, IndicesLookupSource, Justification, Justifications, KeyTypeId, KeyValue, LockIdentifier, LookupSource, LookupTarget, ModuleId, Moment, MultiAddress, MultiSigner, OpaqueCall, Origin, OriginCaller, PalletId, PalletVersion, PalletsOrigin, Pays, PerU16, Perbill, Percent, Permill, Perquintill, Phantom, PhantomData, PreRuntime, Releases, RuntimeDbWeight, Seal, SealV0, SignedBlock, SignedBlockWithJustification, SignedBlockWithJustifications, Slot, StorageData, StorageProof, TransactionInfo, TransactionPriority, TransactionStorageProof, U32F32, ValidatorId, ValidatorIdOf, Weight, WeightMultiplier } from '@cord.network/known-types/interfaces/runtime';
+import type { SchemaDetails } from '@cord.network/known-types/interfaces/schema';
+import type { SpaceDetails } from '@cord.network/known-types/interfaces/space';
+import type { StreamDetails } from '@cord.network/known-types/interfaces/stream';
 import type { Data, StorageKey } from '@polkadot/types';
 import type { BitVec, Bool, Bytes, I128, I16, I256, I32, I64, I8, Json, Null, Raw, Text, Type, U128, U16, U256, U32, U64, U8, USize, bool, i128, i16, i256, i32, i64, i8, u128, u16, u256, u32, u64, u8, usize } from '@polkadot/types-codec';
 import type { AssetApproval, AssetApprovalKey, AssetBalance, AssetDestroyWitness, AssetDetails, AssetMetadata, TAssetBalance, TAssetDepositBalance } from '@polkadot/types/interfaces/assets';
@@ -934,6 +935,7 @@ declare module '@polkadot/types/types/registry' {
     SolutionOrSnapshotSize: SolutionOrSnapshotSize;
     SolutionSupport: SolutionSupport;
     SolutionSupports: SolutionSupports;
+    SpaceDetails: SpaceDetails;
     SpanIndex: SpanIndex;
     SpanRecord: SpanRecord;
     SpecVersion: SpecVersion;

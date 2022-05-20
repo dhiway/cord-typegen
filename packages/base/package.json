@@ -1,6 +1,6 @@
 {
   "name": "@cord.network/base",
-  "version": "0.6.1-4",
+  "version": "0.7.2-2",
   "description": "CORD JS API",
   "main": "index.js",
   "author": "Dhiway <engineering@dhiway.com>",
@@ -16,13 +16,13 @@
   "homepage": "https://github.com/dhiway/cord-typegen",
   "dependencies": {
     "@babel/runtime": "^7.10.2",
-    "@cord.network/types": "0.6.1-4",
-    "@open-web3/orml-api-derive": "^1.0.2-0",
-    "@polkadot/api": "^7.8.1",
+    "@cord.network/known-types": "0.7.2-2",
+    "@open-web3/orml-api-derive": "^1.1.4",
+    "@polkadot/api": "7.12.1",
     "@polkadot/rpc-core": "^6.7.2"
   },
   "peerDependencies": {
-    "@polkadot/api": "^7.8.1",
-    "@polkadot/types": "^7.8.1"
+    "@polkadot/api": "7.12.1",
+    "@polkadot/types": "7.12.1"
   }
 }

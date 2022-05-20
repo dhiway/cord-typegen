@@ -1,6 +1,6 @@
 {
-  "name": "@cord.network/types",
-  "version": "0.6.1-4",
+  "name": "@cord.network/known-types",
+  "version": "0.7.2-2",
   "description": "Polkadot.js type definitions for CORD Network",
   "main": "index.js",
   "author": "Dhiway <engineering@dhiway.com>",
@@ -15,19 +15,19 @@
   },
   "homepage": "https://github.com/dhiway/cord-typegen",
   "dependencies": {
-    "@babel/runtime": "^7.10.2",
-    "@open-web3/orml-types": "^1.0.2-1",
-    "@polkadot/api": "^7.8.1",
-    "@polkadot/typegen": "^7.8.1",
-    "@polkadot/types": "^7.8.1"
+    "@babel/runtime": "^7.17.9",
+    "@open-web3/orml-types": "^1.1.4",
+    "@polkadot/api": "7.12.1",
+    "@polkadot/typegen": "7.12.1",
+    "@polkadot/types": "7.12.1"
   },
   "devDependencies": {
     "@types/websocket": "^1.0.0",
     "websocket": "^1.0.31"
   },
   "peerDependencies": {
-    "@polkadot/api": "^7.8.1",
-    "@polkadot/typegen": "^7.8.1",
-    "@polkadot/types": "^7.8.1"
+    "@polkadot/api": "7.12.1",
+    "@polkadot/typegen": "7.12.1",
+    "@polkadot/types": "7.12.1"
   }
 }

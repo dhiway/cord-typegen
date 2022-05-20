@@ -1,23 +1,23 @@
 // Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable */
 
-import type { AccountId32, H256 } from '@cord.network/types/interfaces/runtime';
+import type { AccountId32, H256 } from '@cord.network/known-types/interfaces/runtime';
 import type { ApiTypes } from '@polkadot/api-base/types';
-import type { Bytes, Null, Option, Result, U8aFixed, Vec, bool, u128, u16, u32, u64 } from '@polkadot/types-codec';
+import type { Bytes, Null, Option, Result, U8aFixed, Vec, bool, u128, u32, u64 } from '@polkadot/types-codec';
 import type { ITuple } from '@polkadot/types-codec/types';
-import type { CordRuntimeProxyType, FrameSupportScheduleLookupError, FrameSupportTokensMiscBalanceStatus, FrameSupportWeightsDispatchInfo, PalletDemocracyVoteAccountVote, PalletDemocracyVoteThreshold, PalletImOnlineSr25519AppSr25519Public, PalletMultisigTimepoint, SpFinalityGrandpaAppPublic, SpRuntimeDispatchError } from '@polkadot/types/lookup';
+import type { FrameSupportScheduleLookupError, FrameSupportTokensMiscBalanceStatus, FrameSupportWeightsDispatchInfo, PalletDemocracyVoteAccountVote, PalletDemocracyVoteThreshold, PalletImOnlineSr25519AppSr25519Public, PalletMultisigTimepoint, SpFinalityGrandpaAppPublic, SpRuntimeDispatchError } from '@polkadot/types/lookup';
 
 declare module '@polkadot/api-base/types/events' {
   export interface AugmentedEvents<ApiType extends ApiTypes> {
     authorities: {
       /**
-       * Authorities were removed from the set.
+       * An authority scheduled to be removed from the set.
        **/
-      AuthoritiesDeregistered: AugmentedEvent<ApiType, [Vec<AccountId32>]>;
+      AuthorityDeregistered: AugmentedEvent<ApiType, [AccountId32, u32]>;
       /**
-       * New Authorities were added to the set.
+       * A new authority candidate added to the set.
        **/
-      AuthoritiesRegistered: AugmentedEvent<ApiType, [Vec<AccountId32>]>;
+      AuthorityRegistered: AugmentedEvent<ApiType, [AccountId32, u32]>;
       /**
        * Generic event
        **/
@@ -71,6 +71,86 @@ declare module '@polkadot/api-base/types/events' {
        **/
       [key: string]: AugmentedEvent<ApiType>;
     };
+    builder: {
+      /**
+       * Some funds have been deposited  \[deposit\]
+       **/
+      Deposit: AugmentedEvent<ApiType, [u128]>;
+      /**
+       * Some funds have been transfered  \[recipient, amount\].
+       **/
+      Transfer: AugmentedEvent<ApiType, [AccountId32, u128]>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
+    builderCouncil: {
+      /**
+       * A motion was approved by the required threshold.
+       **/
+      Approved: AugmentedEvent<ApiType, [H256]>;
+      /**
+       * A proposal was closed because its threshold was reached or after its duration was up.
+       **/
+      Closed: AugmentedEvent<ApiType, [H256, u32, u32]>;
+      /**
+       * A motion was not approved by the required threshold.
+       **/
+      Disapproved: AugmentedEvent<ApiType, [H256]>;
+      /**
+       * A motion was executed; result will be `Ok` if it returned without error.
+       **/
+      Executed: AugmentedEvent<ApiType, [H256, Result<Null, SpRuntimeDispatchError>]>;
+      /**
+       * A single member did some action; result will be `Ok` if it returned without error.
+       **/
+      MemberExecuted: AugmentedEvent<ApiType, [H256, Result<Null, SpRuntimeDispatchError>]>;
+      /**
+       * A motion (given hash) has been proposed (by given account) with a threshold (given
+       * `MemberCount`).
+       **/
+      Proposed: AugmentedEvent<ApiType, [AccountId32, u32, H256, u32]>;
+      /**
+       * A motion (given hash) has been voted on by given account, leaving
+       * a tally (yes votes and no votes given respectively as `MemberCount`).
+       **/
+      Voted: AugmentedEvent<ApiType, [AccountId32, H256, bool, u32, u32]>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
+    builderCouncilMembership: {
+      /**
+       * Phantom member, never used.
+       **/
+      Dummy: AugmentedEvent<ApiType, []>;
+      /**
+       * One of the members' keys changed.
+       **/
+      KeyChanged: AugmentedEvent<ApiType, []>;
+      /**
+       * The given member was added; see the transaction for who.
+       **/
+      MemberAdded: AugmentedEvent<ApiType, []>;
+      /**
+       * The given member was removed; see the transaction for who.
+       **/
+      MemberRemoved: AugmentedEvent<ApiType, []>;
+      /**
+       * The membership was reset; see the transaction for who the new set is.
+       **/
+      MembersReset: AugmentedEvent<ApiType, []>;
+      /**
+       * Two members were swapped; see the transaction for who.
+       **/
+      MembersSwapped: AugmentedEvent<ApiType, []>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
     council: {
       /**
        * A motion was approved by the required threshold.
@@ -102,6 +182,36 @@ declare module '@polkadot/api-base/types/events' {
        * a tally (yes votes and no votes given respectively as `MemberCount`).
        **/
       Voted: AugmentedEvent<ApiType, [AccountId32, H256, bool, u32, u32]>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
+    councilMembership: {
+      /**
+       * Phantom member, never used.
+       **/
+      Dummy: AugmentedEvent<ApiType, []>;
+      /**
+       * One of the members' keys changed.
+       **/
+      KeyChanged: AugmentedEvent<ApiType, []>;
+      /**
+       * The given member was added; see the transaction for who.
+       **/
+      MemberAdded: AugmentedEvent<ApiType, []>;
+      /**
+       * The given member was removed; see the transaction for who.
+       **/
+      MemberRemoved: AugmentedEvent<ApiType, []>;
+      /**
+       * The membership was reset; see the transaction for who the new set is.
+       **/
+      MembersReset: AugmentedEvent<ApiType, []>;
+      /**
+       * Two members were swapped; see the transaction for who.
+       **/
+      MembersSwapped: AugmentedEvent<ApiType, []>;
       /**
        * Generic event
        **/
@@ -189,44 +299,77 @@ declare module '@polkadot/api-base/types/events' {
        **/
       [key: string]: AugmentedEvent<ApiType>;
     };
-    elections: {
+    foundation: {
       /**
-       * A candidate was slashed by amount due to failing to obtain a seat as member or
-       * runner-up.
-       * 
-       * Note that old members and runners-up are also candidates.
+       * Some funds have been transfered  \[recipient, amount\].
        **/
-      CandidateSlashed: AugmentedEvent<ApiType, [AccountId32, u128]>;
+      Transfer: AugmentedEvent<ApiType, [AccountId32, u128]>;
       /**
-       * Internal error happened while trying to perform election.
+       * Generic event
        **/
-      ElectionError: AugmentedEvent<ApiType, []>;
+      [key: string]: AugmentedEvent<ApiType>;
+    };
+    foundationCouncil: {
       /**
-       * No (or not enough) candidates existed for this round. This is different from
-       * `NewTerm(\[\])`. See the description of `NewTerm`.
+       * A motion was approved by the required threshold.
        **/
-      EmptyTerm: AugmentedEvent<ApiType, []>;
+      Approved: AugmentedEvent<ApiType, [H256]>;
       /**
-       * A member has been removed. This should always be followed by either `NewTerm` or
-       * `EmptyTerm`.
+       * A proposal was closed because its threshold was reached or after its duration was up.
        **/
-      MemberKicked: AugmentedEvent<ApiType, [AccountId32]>;
+      Closed: AugmentedEvent<ApiType, [H256, u32, u32]>;
       /**
-       * A new term with new_members. This indicates that enough candidates existed to run
-       * the election, not that enough have has been elected. The inner value must be examined
-       * for this purpose. A `NewTerm(\[\])` indicates that some candidates got their bond
-       * slashed and none were elected, whilst `EmptyTerm` means that no candidates existed to
-       * begin with.
+       * A motion was not approved by the required threshold.
        **/
-      NewTerm: AugmentedEvent<ApiType, [Vec<ITuple<[AccountId32, u128]>>]>;
+      Disapproved: AugmentedEvent<ApiType, [H256]>;
       /**
-       * Someone has renounced their candidacy.
+       * A motion was executed; result will be `Ok` if it returned without error.
        **/
-      Renounced: AugmentedEvent<ApiType, [AccountId32]>;
+      Executed: AugmentedEvent<ApiType, [H256, Result<Null, SpRuntimeDispatchError>]>;
       /**
-       * A seat holder was slashed by amount by being forcefully removed from the set.
+       * A single member did some action; result will be `Ok` if it returned without error.
        **/
-      SeatHolderSlashed: AugmentedEvent<ApiType, [AccountId32, u128]>;
+      MemberExecuted: AugmentedEvent<ApiType, [H256, Result<Null, SpRuntimeDispatchError>]>;
+      /**
+       * A motion (given hash) has been proposed (by given account) with a threshold (given
+       * `MemberCount`).
+       **/
+      Proposed: AugmentedEvent<ApiType, [AccountId32, u32, H256, u32]>;
+      /**
+       * A motion (given hash) has been voted on by given account, leaving
+       * a tally (yes votes and no votes given respectively as `MemberCount`).
+       **/
+      Voted: AugmentedEvent<ApiType, [AccountId32, H256, bool, u32, u32]>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
+    foundationCouncilMembership: {
+      /**
+       * Phantom member, never used.
+       **/
+      Dummy: AugmentedEvent<ApiType, []>;
+      /**
+       * One of the members' keys changed.
+       **/
+      KeyChanged: AugmentedEvent<ApiType, []>;
+      /**
+       * The given member was added; see the transaction for who.
+       **/
+      MemberAdded: AugmentedEvent<ApiType, []>;
+      /**
+       * The given member was removed; see the transaction for who.
+       **/
+      MemberRemoved: AugmentedEvent<ApiType, []>;
+      /**
+       * The membership was reset; see the transaction for who the new set is.
+       **/
+      MembersReset: AugmentedEvent<ApiType, []>;
+      /**
+       * Two members were swapped; see the transaction for who.
+       **/
+      MembersSwapped: AugmentedEvent<ApiType, []>;
       /**
        * Generic event
        **/
@@ -250,53 +393,6 @@ declare module '@polkadot/api-base/types/events' {
        **/
       [key: string]: AugmentedEvent<ApiType>;
     };
-    identity: {
-      /**
-       * A name was cleared, and the given balance returned.
-       **/
-      IdentityCleared: AugmentedEvent<ApiType, [AccountId32, u128]>;
-      /**
-       * A name was removed and the given balance slashed.
-       **/
-      IdentityKilled: AugmentedEvent<ApiType, [AccountId32, u128]>;
-      /**
-       * A name was set or reset (which will remove all judgements).
-       **/
-      IdentitySet: AugmentedEvent<ApiType, [AccountId32]>;
-      /**
-       * A judgement was given by a registrar.
-       **/
-      JudgementGiven: AugmentedEvent<ApiType, [AccountId32, u32]>;
-      /**
-       * A judgement was asked from a registrar.
-       **/
-      JudgementRequested: AugmentedEvent<ApiType, [AccountId32, u32]>;
-      /**
-       * A judgement request was retracted.
-       **/
-      JudgementUnrequested: AugmentedEvent<ApiType, [AccountId32, u32]>;
-      /**
-       * A registrar was added.
-       **/
-      RegistrarAdded: AugmentedEvent<ApiType, [u32]>;
-      /**
-       * A sub-identity was added to an identity and the deposit paid.
-       **/
-      SubIdentityAdded: AugmentedEvent<ApiType, [AccountId32, AccountId32, u128]>;
-      /**
-       * A sub-identity was removed from an identity and the deposit freed.
-       **/
-      SubIdentityRemoved: AugmentedEvent<ApiType, [AccountId32, AccountId32, u128]>;
-      /**
-       * A sub-identity was cleared, and the given deposit repatriated from the
-       * main identity account to the sub-identity account.
-       **/
-      SubIdentityRevoked: AugmentedEvent<ApiType, [AccountId32, AccountId32, u128]>;
-      /**
-       * Generic event
-       **/
-      [key: string]: AugmentedEvent<ApiType>;
-    };
     imOnline: {
       /**
        * At the end of the session, no offence was committed.
@@ -309,7 +405,7 @@ declare module '@polkadot/api-base/types/events' {
       /**
        * At the end of the session, at least one validator was found to be offline.
        **/
-      SomeOffline: AugmentedEvent<ApiType, [Vec<ITuple<[AccountId32, Null]>>]>;
+      SomeOffline: AugmentedEvent<ApiType, [Vec<ITuple<[AccountId32, AccountId32]>>]>;
       /**
        * Generic event
        **/
@@ -385,29 +481,6 @@ declare module '@polkadot/api-base/types/events' {
        **/
       [key: string]: AugmentedEvent<ApiType>;
     };
-    proxy: {
-      /**
-       * An announcement was placed to make a call in the future.
-       **/
-      Announced: AugmentedEvent<ApiType, [AccountId32, AccountId32, H256]>;
-      /**
-       * Anonymous account has been created by new proxy with given
-       * disambiguation index and proxy type.
-       **/
-      AnonymousCreated: AugmentedEvent<ApiType, [AccountId32, AccountId32, CordRuntimeProxyType, u16]>;
-      /**
-       * A proxy was added.
-       **/
-      ProxyAdded: AugmentedEvent<ApiType, [AccountId32, AccountId32, CordRuntimeProxyType, u32]>;
-      /**
-       * A proxy was executed correctly, with the given.
-       **/
-      ProxyExecuted: AugmentedEvent<ApiType, [Result<Null, SpRuntimeDispatchError>]>;
-      /**
-       * Generic event
-       **/
-      [key: string]: AugmentedEvent<ApiType>;
-    };
     scheduler: {
       /**
        * The call for the provided hash was not found so the task has been aborted.
@@ -435,7 +508,7 @@ declare module '@polkadot/api-base/types/events' {
        * Schema delegates has been added.
        * \[schema identifier,  controller\]
        **/
-      AddDelegates: AugmentedEvent<ApiType, [H256, AccountId32]>;
+      AddDelegates: AugmentedEvent<ApiType, [Bytes, AccountId32]>;
       /**
        * A new schema has been created.
        * \[schema identifier, version, controller\]
@@ -445,22 +518,22 @@ declare module '@polkadot/api-base/types/events' {
        * A schema status has been changed.
        * \[schema identifier, version, controller\]
        **/
-      Permission: AugmentedEvent<ApiType, [H256, AccountId32]>;
+      Permission: AugmentedEvent<ApiType, [Bytes, AccountId32]>;
       /**
        * Schema delegates has been removed.
        * \[schema identifier,  controller\]
        **/
-      RemoveDelegates: AugmentedEvent<ApiType, [H256, AccountId32]>;
+      RemoveDelegates: AugmentedEvent<ApiType, [Bytes, AccountId32]>;
       /**
        * A schema status has been changed.
        * \[schema identifier, controller\]
        **/
-      Status: AugmentedEvent<ApiType, [H256, AccountId32]>;
+      Revoke: AugmentedEvent<ApiType, [Bytes, AccountId32]>;
       /**
        * A schema has been updated.
        * \[schema identifier, version, controller\]
        **/
-      Update: AugmentedEvent<ApiType, [H256, Bytes, AccountId32]>;
+      Update: AugmentedEvent<ApiType, [Bytes, Bytes, AccountId32]>;
       /**
        * Generic event
        **/
@@ -477,22 +550,68 @@ declare module '@polkadot/api-base/types/events' {
        **/
       [key: string]: AugmentedEvent<ApiType>;
     };
+    space: {
+      /**
+       * Space delegates has been added.
+       * \[space identifier,  controller\]
+       **/
+      AddDelegates: AugmentedEvent<ApiType, [Bytes, AccountId32]>;
+      /**
+       * A spaces has been archived.
+       * \[space identifier\]
+       **/
+      Archive: AugmentedEvent<ApiType, [Bytes, AccountId32]>;
+      /**
+       * A new space has been created.
+       * \[space hash, space identifier, controller\]
+       **/
+      Create: AugmentedEvent<ApiType, [H256, Bytes, AccountId32]>;
+      /**
+       * Space delegates has been removed.
+       * \[space identifier,  controller\]
+       **/
+      RemoveDelegates: AugmentedEvent<ApiType, [Bytes, AccountId32]>;
+      /**
+       * A spaces has been restored.
+       * \[space identifier\]
+       **/
+      Restore: AugmentedEvent<ApiType, [Bytes, AccountId32]>;
+      /**
+       * A space controller has changed.
+       * \[space identifier, new controller\]
+       **/
+      Transfer: AugmentedEvent<ApiType, [Bytes, AccountId32]>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
     stream: {
       /**
        * A new stream has been created.
-       * \[stream identifier, controller\]
+       * \[stream hash, identifier, controller\]
        **/
-      Anchor: AugmentedEvent<ApiType, [H256, H256, AccountId32]>;
+      Anchor: AugmentedEvent<ApiType, [H256, Bytes, AccountId32]>;
       /**
-       * A stream status has been changed.
+       * A stream digest has been added.
+       * \[stream identifier, hash, controller\]
+       **/
+      Digest: AugmentedEvent<ApiType, [Bytes, H256, AccountId32]>;
+      /**
+       * A stream has been removed.
        * \[stream identifier\]
        **/
-      Status: AugmentedEvent<ApiType, [H256, AccountId32]>;
+      Remove: AugmentedEvent<ApiType, [Bytes]>;
       /**
-       * A stream has been updated.
+       * A stream status has been changed.
        * \[stream identifier, controller\]
        **/
-      Update: AugmentedEvent<ApiType, [H256, H256, AccountId32]>;
+      Revoke: AugmentedEvent<ApiType, [Bytes, AccountId32]>;
+      /**
+       * A stream has been updated.
+       * \[stream identifier, hash, controller\]
+       **/
+      Update: AugmentedEvent<ApiType, [Bytes, H256, AccountId32]>;
       /**
        * Generic event
        **/
@@ -652,6 +771,10 @@ declare module '@polkadot/api-base/types/events' {
        **/
       BatchCompleted: AugmentedEvent<ApiType, []>;
       /**
+       * Batch of dispatches completed but has errors.
+       **/
+      BatchCompletedWithErrors: AugmentedEvent<ApiType, []>;
+      /**
        * Batch of dispatches did not complete fully. Index of first failing dispatch given, as
        * well as the error.
        **/
@@ -664,6 +787,10 @@ declare module '@polkadot/api-base/types/events' {
        * A single item within a Batch of dispatches has completed with no error.
        **/
       ItemCompleted: AugmentedEvent<ApiType, []>;
+      /**
+       * A single item within a Batch of dispatches has completed with error.
+       **/
+      ItemFailed: AugmentedEvent<ApiType, [SpRuntimeDispatchError]>;
       /**
        * Generic event
        **/

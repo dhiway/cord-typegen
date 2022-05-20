@@ -5,11 +5,10 @@
 export default {
   rpc: {},
   types: {
-    SchemaDetails: {
-      schema_hash: 'HashOf',
+    SpaceDetails: {
+      stream_hash: 'HashOf',
       contoller: 'CordAccountOf',
-      space_id: 'Option<IdentifierOf>',
-      revoked: 'StatusOf'
+      archived: 'StatusOf'
     }
   }
 };

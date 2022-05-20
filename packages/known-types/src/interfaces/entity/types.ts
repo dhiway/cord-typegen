@@ -1,7 +1,7 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-import type { BlockNumber } from '@cord.network/types/interfaces/runtime';
+import type { BlockNumber } from '@cord.network/known-types/interfaces/runtime';
 import type { Struct, bool } from '@polkadot/types-codec';
 
 /** @name PalletEntityVerifiersVerifierDetails */

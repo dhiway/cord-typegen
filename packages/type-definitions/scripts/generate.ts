@@ -6,7 +6,7 @@ import fs from 'fs';
 
 fs.writeFileSync('packages/type-definitions/src/json/typesV4.json', JSON.stringify(types0, null, 4));
 fs.writeFileSync('packages/type-definitions/src/json/typesV5.json', JSON.stringify(types1, null, 4));
-fs.writeFileSync('packages/type-definitions/src/json/typesV5.json', JSON.stringify(types2, null, 4));
+fs.writeFileSync('packages/type-definitions/src/json/typesV7.json', JSON.stringify(types2, null, 4));
 fs.writeFileSync(
   'packages/type-definitions/src/json/typesBundle.json',
   JSON.stringify(typesBundleForPolkadot, null, 4)
